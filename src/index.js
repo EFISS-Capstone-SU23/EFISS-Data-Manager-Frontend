@@ -1,15 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import './style.css';
+import 'flowbite/dist/flowbite.js';
+import './sidebar';
+import './charts';
+import './dark-mode';
 
-import './index.css';
-import App from './App';
-import { ContextProvider } from './contexts/ContextProvider';
-
-ReactDOM.render(
-	<React.StrictMode>
-		<ContextProvider>
-			<App />
-		</ContextProvider>{' '}
-	</React.StrictMode>,
-	document.getElementById('root')
-);
+// Have the courage to follow your heart and intuition.

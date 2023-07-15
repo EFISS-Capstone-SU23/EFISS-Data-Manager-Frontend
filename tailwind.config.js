@@ -1,47 +1,49 @@
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: 'class',
+  content: [
+    './layouts/**/*.html',
+    './content/**/*.md',
+    './content/**/*.html',
+    './src/*.js',
+    './node_modules/flowbite/**/*.js'
+  ],
+  safelist: [
+    'w-64',
+    'w-1/2',
+    'rounded-l-lg',
+    'rounded-r-lg',
+    'bg-gray-200',
+    'grid-cols-4',
+    'grid-cols-7',
+    'h-6',
+    'leading-6',
+    'h-9',
+    'leading-9',
+    'shadow-lg',
+    'bg-opacity-50',
+    'dark:bg-opacity-80'
+  ],
+  darkMode: "class",
   theme: {
-    fontFamily: {
-      display: ['Open Sans', 'sans-serif'],
-      body: ['Open Sans', 'sans-serif'],
-    },
     extend: {
-      fontSize: {
-        14: '14px',
+      colors: {
+        primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a" }
       },
-      backgroundColor: {
-        'main-bg': '#FAFBFB',
-        'main-dark-bg': '#20232A',
-        'secondary-dark-bg': '#33373E',
-        'light-gray': '#F7F7F7',
-        'half-transparent': 'rgba(0, 0, 0, 0.5)',
+      fontFamily: {
+        'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+        'body': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+        'mono': ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
       },
-      borderWidth: {
-        1: '1px',
+      transitionProperty: {
+        'width': 'width'
       },
-      borderColor: {
-        color: 'rgba(0, 0, 0, 0.1)',
-      },
-      width: {
-        400: '400px',
-        760: '760px',
-        780: '780px',
-        800: '800px',
-        1000: '1000px',
-        1200: '1200px',
-        1400: '1400px',
-      },
-      height: {
-        80: '80px',
-      },
-      minHeight: {
-        590: '590px',
-      },
-      backgroundImage: {
-        'hero-pattern': "url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')",
+      textDecoration: ['active'],
+      minWidth: {
+        'kanban': '28rem'
       },
     },
   },
-  plugins: [],
-};
+
+  plugins: [
+    require('flowbite/plugin')
+  ],
+}
