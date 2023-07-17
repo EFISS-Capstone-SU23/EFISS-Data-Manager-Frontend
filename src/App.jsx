@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Dashboard from './components/pages/dashboard/Dashboard';
-import Template from './components/pages/tenplate/Template';
+import TemplatePage from './components/pages/tenplate/TemplatePage';
 
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
@@ -19,7 +19,7 @@ function App() {
 					<main>
 						<Routes>
 							<Route path="/" element={<Dashboard />} />
-							<Route path="/template" element={<Template />} />
+							<Route path="/template" element={<TemplatePage />} />
 						</Routes>
 					</main>
 				</div>
