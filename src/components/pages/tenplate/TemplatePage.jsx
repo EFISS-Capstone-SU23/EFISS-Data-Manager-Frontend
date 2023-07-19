@@ -65,7 +65,7 @@ function TemplatePage() {
 								type="button"
 								className="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto"
 								onClick={() => {
-									navigate('/template/upsert');
+									navigate('/template/new');
 								}}
 							>
 								<FontAwesomeIcon icon={faPlus} className="w-4 h-4 mr-2" />
