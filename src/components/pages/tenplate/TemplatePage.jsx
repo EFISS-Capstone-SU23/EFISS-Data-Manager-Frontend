@@ -33,8 +33,8 @@ function TemplatePage() {
 	}, []);
 
 	return (
-		<>
-			<div className="p-4 block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 ">
+		<div className="m-4 p-5 bg-white border border-gray-200 rounded-lg shadow-sm">
+			<div className="pb-4 block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 ">
 				<div className="w-full mb-1">
 					<div className="mb-4">
 						<h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
@@ -203,7 +203,7 @@ function TemplatePage() {
 					</a>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
 
