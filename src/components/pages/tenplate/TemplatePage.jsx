@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faPlus, faEdit, faTrash, faChevronLeft, faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const dummyData = [
 	{
@@ -27,6 +28,7 @@ const dummyData = [
 
 function TemplatePage() {
 	const [data, setData] = useState([]);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		setData(dummyData);
@@ -62,6 +64,9 @@ function TemplatePage() {
 							<button
 								type="button"
 								className="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+								onClick={() => {
+									navigate('/template/upsert');
+								}}
 							>
 								<FontAwesomeIcon icon={faPlus} className="w-4 h-4 mr-2" />
 								Add template
