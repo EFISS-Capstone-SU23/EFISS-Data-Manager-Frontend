@@ -13,7 +13,7 @@ function NavBar() {
 							aria-expanded="true"
 							aria-controls="sidebar"
 							type="button"
-							className="p-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+							className="p-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100"
 						>
 							<svg
 								id="toggleSidebarMobileHamburger"
@@ -48,7 +48,7 @@ function NavBar() {
 								className="h-8 mr-3"
 								alt="EFISS Logo"
 							/>
-							<span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+							<span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
 								EFISS
 							</span>
 						</a>
@@ -58,7 +58,7 @@ function NavBar() {
 							id="theme-toggle"
 							data-tooltip-target="tooltip-toggle"
 							type="button"
-							className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+							className="text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5"
 						>
 							<svg
 								id="theme-toggle-dark-icon"
@@ -96,7 +96,7 @@ function NavBar() {
 							<div>
 								<button
 									type="button"
-									className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+									className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
 									id="user-menu-button-2"
 									aria-expanded="false"
 									data-dropdown-toggle="dropdown-2"
@@ -111,18 +111,18 @@ function NavBar() {
 							</div>
 							{/* Dropdown menu */}
 							<div
-								className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+								className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
 								id="dropdown-2"
 							>
 								<div className="px-4 py-3" role="none">
 									<p
-										className="text-sm text-gray-900 dark:text-white"
+										className="text-sm text-gray-900"
 										role="none"
 									>
 										Neil Sims
 									</p>
 									<p
-										className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
+										className="text-sm font-medium text-gray-900 truncate"
 										role="none"
 									>
 										neil.sims@flowbite.com
@@ -132,7 +132,7 @@ function NavBar() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Dashboard
@@ -141,7 +141,7 @@ function NavBar() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Settings
@@ -150,7 +150,7 @@ function NavBar() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Earnings
@@ -159,7 +159,7 @@ function NavBar() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Sign out
