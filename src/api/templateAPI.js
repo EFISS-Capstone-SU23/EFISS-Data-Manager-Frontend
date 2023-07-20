@@ -13,3 +13,7 @@ export const getListTemplate = (page, pageSize, query) => {
 		query,
 	});
 };
+
+export const deleteById = (id) => {
+	return instance.delete(`/delete/${id}`);
+};

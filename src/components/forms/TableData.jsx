@@ -10,6 +10,7 @@ const PAGE_SIZE = 5;
 function TableData({
 	schema,
 	fetchData,
+	tableLoad,
 }) {
 	const [data, setData] = useState([]);
 	const [page, setPage] = useState(1);
@@ -17,7 +18,7 @@ function TableData({
 	const [start, setStart] = useState(1);
 	const [end, setEnd] = useState(0);
 
-	useEffect(() => {
+	const loadData = () => {
 		fetchData(page, PAGE_SIZE)
 			.then((res) => {
 				setData(res.data.data);
@@ -26,7 +27,15 @@ function TableData({
 				setStart((page - 1) * PAGE_SIZE + 1);
 				setEnd(Math.min(page * PAGE_SIZE, res.data.total));
 			});
+	};
+
+	useEffect(() => {
+		loadData();
 	}, [page]);
+
+	useEffect(() => {
+		loadData();
+	}, [tableLoad]);
 
 	return (
 		<>

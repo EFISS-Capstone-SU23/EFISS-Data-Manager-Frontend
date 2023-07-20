@@ -1,80 +1,93 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-unused-vars */
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 import TableData from '../../forms/TableData';
-import { getListTemplate } from '../../../api/templateAPI';
+import { getListTemplate, deleteById } from '../../../api/templateAPI';
 import { TemplateIcon } from '../../../icons';
 import Breadcrumb from '../../forms/Breadcrumb';
+import ModalManager from '../../../utils/ModalManager';
 
-const schema = [
-	{
-		header: 'Website',
-		size: '25%',
-		render: (data) => (
-			<a
-				href={`https://${data.website}`}
-				className="text-primary-700"
-				target="_blank"
-				rel="noreferrer"
-			>
-				{data.website}
-			</a>
-		),
-	},
-	{
-		header: 'Added by',
-		size: '10%',
-		render: (data) => data.addedBy,
-	},
-	{
-		header: 'Added Date',
-		size: '10%',
-		render: (data) => moment(data.createdAt).format('DD/MM/YYYY'),
-	},
-	{
-		header: 'Last crawl',
-		size: '15%',
-		render: (data) => (data.lastCrawl ? moment(data.lastCrawl).format('DD/MM/YYYY HH:mm:ss') : ''),
-	},
-	{
-		header: 'Number of crawls',
-		size: '15%',
-		render: (data) => data.numberOfCrawls,
-	},
-	{
-		header: 'Actions',
-		size: '25%',
-		render: () => (
-			<>
-				<button
-					type="button"
-					className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
-				>
-					<FontAwesomeIcon icon={faEdit} className="w-4 h-4 mr-2" />
-					Edit
-				</button>
-				<button
-					type="button"
-					className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300"
-				>
-					<FontAwesomeIcon icon={faTrash} className="w-4 h-4 mr-2" />
-					Delete
-				</button>
-			</>
-		),
-	},
-];
+const breadcrumbList = [{
+	text: 'Templates',
+	path: '/template',
+	icon: TemplateIcon,
+}];
 
 function TemplatePage() {
-	const breadcrumbList = [{
-		text: 'Templates',
-		path: '/template',
-		icon: TemplateIcon,
-	}];
 	const navigate = useNavigate();
+	const [tableLoad, setTableLoad] = useState(0);
+
+	const handleDelete = async (id) => {
+		const confirm = await ModalManager.showConfirm('Are you sure you want to delete this template?');
+		if (confirm.isConfirmed) {
+			await deleteById(id);
+			setTableLoad(tableLoad + 1);
+		}
+	};
+
+	const schema = [
+		{
+			header: 'Website',
+			size: '25%',
+			render: (data) => (
+				<a
+					href={`https://${data.website}`}
+					className="text-primary-700"
+					target="_blank"
+					rel="noreferrer"
+				>
+					{data.website}
+				</a>
+			),
+		},
+		{
+			header: 'Added by',
+			size: '10%',
+			render: (data) => data.addedBy,
+		},
+		{
+			header: 'Added Date',
+			size: '10%',
+			render: (data) => moment(data.createdAt).format('DD/MM/YYYY'),
+		},
+		{
+			header: 'Last crawl',
+			size: '15%',
+			render: (data) => (data.lastCrawl ? moment(data.lastCrawl).format('DD/MM/YYYY HH:mm:ss') : ''),
+		},
+		{
+			header: 'Number of crawls',
+			size: '15%',
+			render: (data) => data.numberOfCrawls,
+		},
+		{
+			header: 'Actions',
+			size: '25%',
+			render: (data) => (
+				<>
+					<button
+						type="button"
+						className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
+					>
+						<FontAwesomeIcon icon={faEdit} className="w-4 h-4 mr-2" />
+						Edit
+					</button>
+					<button
+						type="button"
+						className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300"
+						onClick={() => handleDelete(data._id)}
+					>
+						<FontAwesomeIcon icon={faTrash} className="w-4 h-4 mr-2" />
+						Delete
+					</button>
+				</>
+			),
+		},
+	];
 
 	return (
 		<>
@@ -125,6 +138,7 @@ function TemplatePage() {
 				<TableData
 					schema={schema}
 					fetchData={getListTemplate}
+					tableLoad={tableLoad}
 				/>
 			</div>
 		</>
