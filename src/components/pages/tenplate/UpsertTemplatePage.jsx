@@ -1,10 +1,17 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { FileInput, Button } from 'flowbite-react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
 import Breadcrumb from '../../forms/Breadcrumb';
 import Input from '../../forms/Input';
 import { TemplateIcon } from '../../../icons';
+import FileUtil from '../../../utils/FileUtil';
+import ModalManager from '../../../utils/ModalManager';
+
+const codeEditorStyle = {
+	fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+	fontSize: 12,
+};
 
 function UpsertTemplatePage() {
 	const breadcrumbList = [{
@@ -21,9 +28,38 @@ function UpsertTemplatePage() {
 	const descriptionXPathRef = useRef('');
 	const imageContainerXPathRef = useRef('');
 	const paginationButtonXPathRef = useRef('');
-	const metadataXPathRef = useRef('');
-	const ignoreUrlPatternsRef = useRef('');
 	const fileInputRef = useRef('');
+
+	const [metadataXPath, setMetadataXPath] = useState('{}');
+	const [ignoreUrlPatterns, setIgnoreUrlPatterns] = useState('[]');
+
+	const handleImport = async () => {
+		const file = fileInputRef.current.files[0];
+		// name of file
+		const content = await FileUtil.readFile(file);
+		const jsonTemplate = FileUtil.parseJson(content);
+
+		if (!jsonTemplate) {
+			ModalManager.alert({
+				message: 'Invalid JSON file',
+			});
+			return;
+		}
+
+		const { xPath } = jsonTemplate;
+
+		startUrlRef.current.value = jsonTemplate.startUrl || startUrlRef.current.value;
+		titleXPathRef.current.value = xPath.title || titleXPathRef.current.value;
+		priceXPathRef.current.value = xPath.price || priceXPathRef.current.value;
+		descriptionXPathRef.current.value = xPath.description || descriptionXPathRef.current.value;
+		imageContainerXPathRef.current.value = xPath.imageContainer || imageContainerXPathRef.current.value;
+		paginationButtonXPathRef.current.value = xPath.paginationButton || paginationButtonXPathRef.current.value;
+
+		setMetadataXPath(JSON.stringify(jsonTemplate.metadataXPath || {}, null, 2));
+		setIgnoreUrlPatterns(JSON.stringify(jsonTemplate.ignoreUrlPatterns || [], null, 2));
+
+		fileInputRef.current.value = '';
+	};
 
 	return (
 		<div className="px-4">
@@ -96,6 +132,7 @@ function UpsertTemplatePage() {
 
 							<Button
 								className="col-span-1 bg-orange-400 hover:bg-orange-600 px-2 py-1"
+								onClick={handleImport}
 							>
 								Import
 							</Button>
@@ -118,12 +155,9 @@ function UpsertTemplatePage() {
 								language="json"
 								placeholder="Enter your XPath here..."
 								padding={15}
-								style={{
-									fontFamily:
-              'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-									fontSize: 12,
-								}}
-								ref={metadataXPathRef}
+								style={codeEditorStyle}
+								value={metadataXPath}
+								onChange={(e) => setMetadataXPath(e.target.value)}
 							/>
 						</div>
 					</div>
@@ -143,12 +177,9 @@ function UpsertTemplatePage() {
 								language="json"
 								placeholder="Enter your URL patterns here..."
 								padding={15}
-								style={{
-									fontFamily:
-              'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-									fontSize: 12,
-								}}
-								ref={ignoreUrlPatternsRef}
+								style={codeEditorStyle}
+								value={ignoreUrlPatterns}
+								onChange={(e) => setIgnoreUrlPatterns(e.target.value)}
 							/>
 						</div>
 					</div>
