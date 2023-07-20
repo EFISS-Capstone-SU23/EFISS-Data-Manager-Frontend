@@ -1,12 +1,14 @@
 import { useRef, useState } from 'react';
 import { FileInput, Button } from 'flowbite-react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
+import { useNavigate } from 'react-router-dom';
 
 import Breadcrumb from '../../forms/Breadcrumb';
 import Input from '../../forms/Input';
 import { TemplateIcon } from '../../../icons';
 import FileUtil from '../../../utils/FileUtil';
 import ModalManager from '../../../utils/ModalManager';
+import { insertTemplate } from '../../../api/templateAPI';
 
 const codeEditorStyle = {
 	fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
@@ -46,6 +48,8 @@ const validateData = (data) => {
 };
 
 function UpsertTemplatePage() {
+	const navigate = useNavigate();
+
 	const breadcrumbList = [{
 		text: 'Templates',
 		path: '/template',
@@ -91,7 +95,7 @@ function UpsertTemplatePage() {
 		fileInputRef.current.value = '';
 	};
 
-	const handleSave = () => {
+	const handleSave = async () => {
 		const data = {
 			startUrl: startUrlRef.current.value,
 			xPath: {
@@ -111,7 +115,13 @@ function UpsertTemplatePage() {
 			return;
 		}
 
-		console.log(data);
+		// insert template
+		const res = await insertTemplate(data);
+		if (res.status === 200) {
+			navigate('/template');
+		} else {
+			ModalManager.showError(res.message);
+		}
 	};
 
 	return (
