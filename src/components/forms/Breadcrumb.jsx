@@ -8,7 +8,7 @@ function Breadcrumb({
 
 	return (
 		<FlowbiteBreadcrumb
-			className="mt-4"
+			className="m-4"
 		>
 			{breadcrumbList.map((breadcrumb) => (
 				<FlowbiteBreadcrumb.Item
