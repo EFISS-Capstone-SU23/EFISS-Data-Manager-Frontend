@@ -99,7 +99,7 @@ function UpsertTemplatePage() {
 		fileInputRef.current.value = '';
 	};
 
-	const handleSave = async () => {
+	const handleSave = () => {
 		const data = {
 			startUrl: startUrlRef.current.value,
 			xPath: {
@@ -120,12 +120,12 @@ function UpsertTemplatePage() {
 		}
 
 		// insert template
-		const res = await insertTemplate(data);
-		if (res.status === 200) {
-			navigate('/template');
-		} else {
-			ModalManager.showError(res.message);
-		}
+		insertTemplate(data)
+			.then(() => {
+				navigate('/template');
+			}).catch((err) => {
+				ModalManager.showError(err.response.data.message);
+			});
 	};
 
 	return (
