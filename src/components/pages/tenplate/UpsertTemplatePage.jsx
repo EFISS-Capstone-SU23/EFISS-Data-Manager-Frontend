@@ -1,11 +1,24 @@
 import { FileInput, Button } from 'flowbite-react';
+import Breadcrumb from '../../forms/Breadcrumb';
 
 import Input from '../../forms/Input';
+import { TemplateIcon } from '../../../icons';
 
 function UpsertTemplatePage() {
+	const breadcrumbList = [{
+		text: 'Templates',
+		path: '/template',
+		icon: TemplateIcon,
+	}, {
+		text: 'Create new template',
+	}];
+
 	return (
 		<div className="px-4">
-			<div className="grid pt-6 grid-cols-4 gap-4">
+			<Breadcrumb
+				breadcrumbList={breadcrumbList}
+			/>
+			<div className="grid pt-4 grid-cols-4 gap-4">
 				<div className="col-span-2">
 					<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 sm:p-6">
 						<h3 className="mb-4 text-xl font-semibold">
