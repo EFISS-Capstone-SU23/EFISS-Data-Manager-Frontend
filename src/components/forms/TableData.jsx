@@ -5,7 +5,7 @@ import {
 	faChevronLeft, faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-const PAGE_SIZE = 15;
+const PAGE_SIZE = 5;
 
 function TableData({
 	schema,
@@ -13,11 +13,18 @@ function TableData({
 }) {
 	const [data, setData] = useState([]);
 	const [page, setPage] = useState(1);
+	const [total, setTotal] = useState(0);
+	const [start, setStart] = useState(1);
+	const [end, setEnd] = useState(0);
 
 	useEffect(() => {
 		fetchData(page, PAGE_SIZE)
 			.then((res) => {
 				setData(res.data.data);
+
+				setTotal(res.data.total);
+				setStart((page - 1) * PAGE_SIZE + 1);
+				setEnd(Math.min(page * PAGE_SIZE, res.data.total));
 			});
 	}, [page]);
 
@@ -61,31 +68,44 @@ function TableData({
 						Showing
 						{' '}
 						<span className="font-semibold text-gray-900">
-							1-20
+							{`${start}-${end}`}
 						</span>
 						{' '}
 						of
 						{' '}
 						<span className="font-semibold text-gray-900">
-							2290
+							{total}
 						</span>
 					</span>
 				</div>
 				<div className="flex items-center space-x-3">
-					<a
-						href="#"
+					<button
 						className="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300"
+						type="button"
+						style={{ visibility: page === 1 ? 'hidden' : 'visible' }}
+						onClick={() => {
+							if (page > 1) {
+								setPage(page - 1);
+							}
+						}}
 					>
 						<FontAwesomeIcon icon={faChevronLeft} className="w-4 h-4 mr-1 -ml-1" />
 						Previous
-					</a>
-					<a
+					</button>
+					<button
 						href="#"
 						className="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300"
+						type="button"
+						style={{ visibility: page * PAGE_SIZE >= total ? 'hidden' : 'visible' }}
+						onClick={() => {
+							if (page * PAGE_SIZE < total) {
+								setPage(page + 1);
+							}
+						}}
 					>
 						Next
 						<FontAwesomeIcon icon={faChevronRight} className="w-4 h-4 ml-1 -mr-1" />
-					</a>
+					</button>
 				</div>
 			</div>
 		</>
