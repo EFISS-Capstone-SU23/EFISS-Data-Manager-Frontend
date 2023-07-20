@@ -34,31 +34,35 @@ function UpsertTemplatePage() {
 							className="mt-5 border-gray-300"
 						/>
 
-						<Input
-							label="Title XPath"
-							name="title-xpath"
-							placeholder="//*[@id='title']"
-						/>
-						<Input
-							label="Price XPath"
-							name="price-xpath"
-							placeholder="//*[@id='price']"
-						/>
-						<Input
-							label="Description XPath"
-							name="description-xpath"
-							placeholder="//*[@id='description']"
-						/>
-						<Input
-							label="Image Conatiner XPath"
-							name="image-container-xpath"
-							placeholder="//*[@id='image-container']"
-						/>
-						<Input
-							label="Pagination Button XPath"
-							name="pagination-button-xpath"
-							placeholder="//*[@id='pagination-button']"
-						/>
+						<div
+							className="grid grid-cols-2 gap-x-4"
+						>
+							<Input
+								label="Title XPath"
+								name="title-xpath"
+								placeholder="//*[@id='title']"
+							/>
+							<Input
+								label="Price XPath"
+								name="price-xpath"
+								placeholder="//*[@id='price']"
+							/>
+							<Input
+								label="Description XPath"
+								name="description-xpath"
+								placeholder="//*[@id='description']"
+							/>
+							<Input
+								label="Image Conatiner XPath"
+								name="image-container-xpath"
+								placeholder="//*[@id='image-container']"
+							/>
+							<Input
+								label="Pagination Button XPath"
+								name="pagination-button-xpath"
+								placeholder="//*[@id='pagination-button']"
+							/>
+						</div>
 					</div>
 
 					<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 sm:p-6">
