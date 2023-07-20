@@ -11,7 +11,7 @@ const FileUtil = {
 			reader.readAsText(file);
 		});
 	},
-	parseJson: (json) => {
+	parseJson: (json = '') => {
 		try {
 			return JSON.parse(json);
 		} catch (error) {

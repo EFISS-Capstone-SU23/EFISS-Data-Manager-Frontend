@@ -13,6 +13,38 @@ const codeEditorStyle = {
 	fontSize: 12,
 };
 
+const validateData = (data) => {
+	if (!data.startUrl) {
+		return 'Start URL is required';
+	}
+
+	if (!data.xPath.title) {
+		return 'Title XPath is required';
+	}
+
+	if (!data.xPath.price) {
+		return 'Price XPath is required';
+	}
+
+	if (!data.xPath.description) {
+		return 'Description XPath is required';
+	}
+
+	if (!data.xPath.imageContainer) {
+		return 'Image Container XPath is required';
+	}
+
+	if (typeof data.xPath.metadata !== 'object') {
+		return 'Metadata XPath must be an object';
+	}
+
+	if (!Array.isArray(data.ignoreUrlPatterns)) {
+		return 'Ignore URL Patterns must be an array';
+	}
+
+	return '';
+};
+
 function UpsertTemplatePage() {
 	const breadcrumbList = [{
 		text: 'Templates',
@@ -40,9 +72,7 @@ function UpsertTemplatePage() {
 		const jsonTemplate = FileUtil.parseJson(content);
 
 		if (!jsonTemplate) {
-			ModalManager.alert({
-				message: 'Invalid JSON file',
-			});
+			ModalManager.showError('Invalid JSON file');
 			return;
 		}
 
@@ -59,6 +89,29 @@ function UpsertTemplatePage() {
 		setIgnoreUrlPatterns(JSON.stringify(jsonTemplate.ignoreUrlPatterns || [], null, 2));
 
 		fileInputRef.current.value = '';
+	};
+
+	const handleSave = () => {
+		const data = {
+			startUrl: startUrlRef.current.value,
+			xPath: {
+				title: titleXPathRef.current.value,
+				price: priceXPathRef.current.value,
+				description: descriptionXPathRef.current.value,
+				imageContainer: imageContainerXPathRef.current.value,
+				paginationButton: paginationButtonXPathRef.current.value,
+				metadata: FileUtil.parseJson(metadataXPath),
+			},
+			ignoreUrlPatterns: FileUtil.parseJson(ignoreUrlPatterns),
+		};
+
+		const error = validateData(data);
+		if (error) {
+			ModalManager.showError(error);
+			return;
+		}
+
+		console.log(data);
 	};
 
 	return (
@@ -188,6 +241,7 @@ function UpsertTemplatePage() {
 			<div className="">
 				<Button
 					className="col-span-1 bg-primary-700 hover:bg-primary-800 px-2 py-1"
+					onClick={handleSave}
 				>
 					Save Template
 				</Button>
