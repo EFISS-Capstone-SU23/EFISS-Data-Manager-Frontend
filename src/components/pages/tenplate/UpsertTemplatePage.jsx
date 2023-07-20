@@ -20,6 +20,14 @@ const validateData = (data) => {
 		return 'Start URL is required';
 	}
 
+	// check if start url is valid
+	try {
+		// eslint-disable-next-line no-new
+		new URL(data.startUrl);
+	} catch (err) {
+		return 'Start URL is invalid';
+	}
+
 	if (!data.xPath.title) {
 		return 'Title XPath is required';
 	}
