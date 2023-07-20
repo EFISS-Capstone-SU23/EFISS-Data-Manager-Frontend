@@ -5,14 +5,15 @@ import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 import TableData from '../../forms/TableData';
+import { getListTemplate } from '../../../api/templateAPI';
 
 const schema = [
 	{
 		header: 'Website',
 		size: '25%',
-		cellData: (data) => (
+		render: (data) => (
 			<a
-				href={data.startUrl}
+				href={`https://${data.website}`}
 				className="text-primary-700"
 				target="_blank"
 				rel="noreferrer"
@@ -23,32 +24,32 @@ const schema = [
 	},
 	{
 		header: 'Added by',
-		size: '15%',
-		cellData: (data) => data.addedBy,
+		size: '10%',
+		render: (data) => data.addedBy,
 	},
 	{
 		header: 'Added Date',
 		size: '10%',
-		cellData: (data) => moment(data.date).format('DD/MM/YYYY'),
+		render: (data) => moment(data.createdAt).format('DD/MM/YYYY'),
 	},
 	{
 		header: 'Last crawl',
-		size: '10%',
-		cellData: (data) => moment(data.lastCrawl).format('DD/MM/YYYY HH:mm:ss'),
+		size: '15%',
+		render: (data) => (data.lastCrawl ? moment(data.lastCrawl).format('DD/MM/YYYY HH:mm:ss') : ''),
 	},
 	{
 		header: 'Number of crawls',
-		size: '10%',
-		cellData: (data) => data.numberOfCrawls,
+		size: '15%',
+		render: (data) => data.numberOfCrawls,
 	},
 	{
 		header: 'Actions',
-		size: '30%',
-		cellData: () => (
+		size: '25%',
+		render: () => (
 			<>
 				<button
 					type="button"
-					className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300"
+					className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
 				>
 					<FontAwesomeIcon icon={faEdit} className="w-4 h-4 mr-2" />
 					Edit
@@ -60,7 +61,6 @@ const schema = [
 					<FontAwesomeIcon icon={faTrash} className="w-4 h-4 mr-2" />
 					Delete
 				</button>
-				E.
 			</>
 		),
 	},
@@ -113,7 +113,10 @@ function TemplatePage() {
 					</div>
 				</div>
 			</div>
-			<TableData schema={schema} />
+			<TableData
+				schema={schema}
+				fetchData={getListTemplate}
+			/>
 		</div>
 	);
 }

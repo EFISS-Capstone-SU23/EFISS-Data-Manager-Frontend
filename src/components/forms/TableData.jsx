@@ -1,14 +1,25 @@
-import { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faChevronLeft, faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
+const PAGE_SIZE = 15;
+
 function TableData({
 	schema,
+	fetchData,
 }) {
-	// eslint-disable-next-line no-unused-vars
 	const [data, setData] = useState([]);
+	const [page, setPage] = useState(1);
+
+	useEffect(() => {
+		fetchData(page, PAGE_SIZE)
+			.then((res) => {
+				setData(res.data.data);
+			});
+	}, [page]);
 
 	return (
 		<>
