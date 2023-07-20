@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { FileInput, Button } from 'flowbite-react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
@@ -14,6 +15,16 @@ function UpsertTemplatePage() {
 		text: 'Create new template',
 	}];
 
+	const startUrlRef = useRef('');
+	const titleXPathRef = useRef('');
+	const priceXPathRef = useRef('');
+	const descriptionXPathRef = useRef('');
+	const imageContainerXPathRef = useRef('');
+	const paginationButtonXPathRef = useRef('');
+	const metadataXPathRef = useRef('');
+	const ignoreUrlPatternsRef = useRef('');
+	const fileInputRef = useRef('');
+
 	return (
 		<div className="px-4">
 			<Breadcrumb
@@ -29,6 +40,7 @@ function UpsertTemplatePage() {
 							label="Start URL"
 							name="start-url"
 							placeholder="https://www.example.com"
+							ref={startUrlRef}
 						/>
 
 						<hr
@@ -42,26 +54,31 @@ function UpsertTemplatePage() {
 								label="Title XPath"
 								name="title-xpath"
 								placeholder="//*[@id='title']"
+								ref={titleXPathRef}
 							/>
 							<Input
 								label="Price XPath"
 								name="price-xpath"
 								placeholder="//*[@id='price']"
+								ref={priceXPathRef}
 							/>
 							<Input
 								label="Description XPath"
 								name="description-xpath"
 								placeholder="//*[@id='description']"
+								ref={descriptionXPathRef}
 							/>
 							<Input
 								label="Image Conatiner XPath"
 								name="image-container-xpath"
 								placeholder="//*[@id='image-container']"
+								ref={imageContainerXPathRef}
 							/>
 							<Input
 								label="Pagination Button XPath"
 								name="pagination-button-xpath"
 								placeholder="//*[@id='pagination-button']"
+								ref={paginationButtonXPathRef}
 							/>
 						</div>
 					</div>
@@ -74,6 +91,7 @@ function UpsertTemplatePage() {
 							<FileInput
 								className="col-span-5"
 								accept=".json"
+								ref={fileInputRef}
 							/>
 
 							<Button
@@ -105,6 +123,7 @@ function UpsertTemplatePage() {
               'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
 									fontSize: 12,
 								}}
+								ref={metadataXPathRef}
 							/>
 						</div>
 					</div>
@@ -129,6 +148,7 @@ function UpsertTemplatePage() {
               'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
 									fontSize: 12,
 								}}
+								ref={ignoreUrlPatternsRef}
 							/>
 						</div>
 					</div>
