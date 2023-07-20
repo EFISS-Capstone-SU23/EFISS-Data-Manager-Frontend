@@ -1,6 +1,7 @@
 import { FileInput, Button } from 'flowbite-react';
-import Breadcrumb from '../../forms/Breadcrumb';
+import CodeEditor from '@uiw/react-textarea-code-editor';
 
+import Breadcrumb from '../../forms/Breadcrumb';
 import Input from '../../forms/Input';
 import { TemplateIcon } from '../../../icons';
 
@@ -86,13 +87,50 @@ function UpsertTemplatePage() {
 				<div className="col-span-2 pb-8">
 					<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 sm:p-6 h-1/2">
 						<h3 className="mb-4 text-xl font-semibold">
-							Metadata
+							Metadata XPath
 						</h3>
+						<div
+							data-color-mode="light"
+							style={{
+								maxHeight: 200,
+								overflow: 'auto',
+							}}
+						>
+							<CodeEditor
+								language="json"
+								placeholder="Enter your XPath here..."
+								padding={15}
+								style={{
+									fontFamily:
+              'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+									fontSize: 12,
+								}}
+							/>
+						</div>
 					</div>
 					<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 sm:p-6 h-1/2">
 						<h3 className="mb-4 text-xl font-semibold">
 							Ignore URL Patterns
 						</h3>
+
+						<div
+							data-color-mode="light"
+							style={{
+								maxHeight: 200,
+								overflow: 'auto',
+							}}
+						>
+							<CodeEditor
+								language="json"
+								placeholder="Enter your URL patterns here..."
+								padding={15}
+								style={{
+									fontFamily:
+              'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+									fontSize: 12,
+								}}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
