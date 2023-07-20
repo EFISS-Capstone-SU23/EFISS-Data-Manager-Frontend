@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import TableData from '../../forms/TableData';
 import { getListTemplate, deleteById } from '../../../api/templateAPI';
@@ -69,13 +69,17 @@ function TemplatePage() {
 			size: '25%',
 			render: (data) => (
 				<>
-					<button
-						type="button"
-						className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
+					<Link
+						to={`/template/${data._id}`}
 					>
-						<FontAwesomeIcon icon={faEdit} className="w-4 h-4 mr-2" />
-						Edit
-					</button>
+						<button
+							type="button"
+							className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
+						>
+							<FontAwesomeIcon icon={faEdit} className="w-4 h-4 mr-2" />
+							Edit
+						</button>
+					</Link>
 					<button
 						type="button"
 						className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300"

@@ -1,14 +1,14 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FileInput, Button } from 'flowbite-react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Breadcrumb from '../../forms/Breadcrumb';
 import Input from '../../forms/Input';
 import { TemplateIcon } from '../../../icons';
 import FileUtil from '../../../utils/FileUtil';
 import ModalManager from '../../../utils/ModalManager';
-import { insertTemplate } from '../../../api/templateAPI';
+import { insertTemplate, getTemplateByID } from '../../../api/templateAPI';
 
 const codeEditorStyle = {
 	fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
@@ -53,13 +53,15 @@ const validateData = (data) => {
 
 function UpsertTemplatePage() {
 	const navigate = useNavigate();
+	const { id } = useParams();
+	const isCreateNew = id === 'new';
 
 	const breadcrumbList = [{
 		text: 'Templates',
 		path: '/template',
 		icon: TemplateIcon,
 	}, {
-		text: 'Create new template',
+		text: isCreateNew ? 'Create new template' : 'Edit template',
 	}];
 
 	const startUrlRef = useRef('');
@@ -73,17 +75,7 @@ function UpsertTemplatePage() {
 	const [metadataXPath, setMetadataXPath] = useState('{}');
 	const [ignoreUrlPatterns, setIgnoreUrlPatterns] = useState('[]');
 
-	const handleImport = async () => {
-		const file = fileInputRef.current.files[0];
-		// name of file
-		const content = await FileUtil.readFile(file);
-		const jsonTemplate = FileUtil.parseJson(content);
-
-		if (!jsonTemplate) {
-			ModalManager.showError('Invalid JSON file');
-			return;
-		}
-
+	const updateFormByTemplate = (jsonTemplate) => {
 		const { xPath } = jsonTemplate;
 
 		startUrlRef.current.value = jsonTemplate.startUrl || startUrlRef.current.value;
@@ -95,7 +87,34 @@ function UpsertTemplatePage() {
 
 		setMetadataXPath(JSON.stringify(xPath.metadata || {}, null, 4));
 		setIgnoreUrlPatterns(JSON.stringify(jsonTemplate.ignoreUrlPatterns || [], null, 4));
+	};
 
+	useEffect(() => {
+		if (isCreateNew) {
+			return;
+		}
+
+		getTemplateByID(id)
+			.then((res) => {
+				updateFormByTemplate(res.data.template.template);
+			})
+			.catch((err) => {
+				ModalManager.showError(err.response.data.message);
+			});
+	}, []);
+
+	const handleImport = async () => {
+		const file = fileInputRef.current.files[0];
+		// name of file
+		const content = await FileUtil.readFile(file);
+		const jsonTemplate = FileUtil.parseJson(content);
+
+		if (!jsonTemplate) {
+			ModalManager.showError('Invalid JSON file');
+			return;
+		}
+
+		updateFormByTemplate(jsonTemplate);
 		fileInputRef.current.value = '';
 	};
 

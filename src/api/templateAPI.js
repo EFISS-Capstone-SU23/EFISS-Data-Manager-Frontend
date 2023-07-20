@@ -17,3 +17,7 @@ export const getListTemplate = (page, pageSize, query) => {
 export const deleteById = (id) => {
 	return instance.delete(`/delete/${id}`);
 };
+
+export const getTemplateByID = (id) => {
+	return instance.get(`/${id}`);
+};
