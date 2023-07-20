@@ -36,6 +36,10 @@ const validateData = (data) => {
 		return 'Image Container XPath is required';
 	}
 
+	if (data.xPath.metadata === null) {
+		return 'Metadata XPath is invalid';
+	}
+
 	if (typeof data.xPath.metadata !== 'object') {
 		return 'Metadata XPath must be an object';
 	}
@@ -89,8 +93,8 @@ function UpsertTemplatePage() {
 		imageContainerXPathRef.current.value = xPath.imageContainer || imageContainerXPathRef.current.value;
 		paginationButtonXPathRef.current.value = xPath.paginationButton || paginationButtonXPathRef.current.value;
 
-		setMetadataXPath(JSON.stringify(jsonTemplate.metadataXPath || {}, null, 2));
-		setIgnoreUrlPatterns(JSON.stringify(jsonTemplate.ignoreUrlPatterns || [], null, 2));
+		setMetadataXPath(JSON.stringify(xPath.metadata || {}, null, 4));
+		setIgnoreUrlPatterns(JSON.stringify(jsonTemplate.ignoreUrlPatterns || [], null, 4));
 
 		fileInputRef.current.value = '';
 	};
@@ -104,9 +108,9 @@ function UpsertTemplatePage() {
 				description: descriptionXPathRef.current.value,
 				imageContainer: imageContainerXPathRef.current.value,
 				paginationButton: paginationButtonXPathRef.current.value,
-				metadata: FileUtil.parseJson(metadataXPath),
+				metadata: FileUtil.parseJson(metadataXPath || '{}'),
 			},
-			ignoreUrlPatterns: FileUtil.parseJson(ignoreUrlPatterns),
+			ignoreUrlPatterns: FileUtil.parseJson(ignoreUrlPatterns || '[]'),
 		};
 
 		const error = validateData(data);
