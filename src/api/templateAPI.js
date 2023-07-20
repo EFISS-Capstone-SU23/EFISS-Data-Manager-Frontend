@@ -2,8 +2,8 @@ import getInstance from './utils/getInstance';
 
 const instance = getInstance('template');
 
-export const insertTemplate = (template) => {
-	return instance.post('/insert', {
+export const upsertTemplate = (template) => {
+	return instance.post('/upsert', {
 		template,
 	});
 };

@@ -8,7 +8,7 @@ import Input from '../../forms/Input';
 import { TemplateIcon } from '../../../icons';
 import FileUtil from '../../../utils/FileUtil';
 import ModalManager from '../../../utils/ModalManager';
-import { insertTemplate, getTemplateByID } from '../../../api/templateAPI';
+import { upsertTemplate, getTemplateByID } from '../../../api/templateAPI';
 
 const codeEditorStyle = {
 	fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
@@ -138,8 +138,12 @@ function UpsertTemplatePage() {
 			return;
 		}
 
+		if (!isCreateNew) {
+			data._id = id;
+		}
+
 		// insert template
-		insertTemplate(data)
+		upsertTemplate(data)
 			.then(() => {
 				navigate('/template');
 			}).catch((err) => {
