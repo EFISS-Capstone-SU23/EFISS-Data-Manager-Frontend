@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './components/pages/dashboard/Dashboard';
 import TemplatePage from './components/pages/tenplate/TemplatePage';
 import UpsertTemplatePage from './components/pages/tenplate/UpsertTemplatePage';
+import CrawlPage from './components/pages/crawl/CrawlPage';
 
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
@@ -23,6 +24,7 @@ function App() {
 						<Route path="/" element={<Dashboard />} />
 						<Route path="/template" element={<TemplatePage />} />
 						<Route path="/template/:id" element={<UpsertTemplatePage />} />
+						<Route path="/crawl" element={<CrawlPage />} />
 					</Routes>
 				</main>
 			</div>
