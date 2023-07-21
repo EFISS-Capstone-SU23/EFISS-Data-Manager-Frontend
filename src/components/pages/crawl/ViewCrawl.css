@@ -1,0 +1,32 @@
+#view-crawl-conatiner {
+	display: grid;
+
+	grid-template-columns: 1fr 1fr 2fr 2fr;
+	grid-template-rows: 7rem 26rem;
+
+	grid-template-areas:
+		"number time visited queue"
+		"log log visited queue"
+	;
+
+}
+
+#number-panel {
+	grid-area: number;
+}
+
+#time-panel {
+	grid-area: time;
+}
+
+#visited-panel {
+	grid-area: visited;
+}
+
+#queue-panel {
+	grid-area: queue;
+}
+
+#log-panel {
+	grid-area: log;
+}

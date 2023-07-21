@@ -9,7 +9,6 @@ import TableData from '../../forms/TableData';
 import { getListCrawl } from '../../../api/crawlAPI';
 import { CrawIcon } from '../../../icons';
 import Breadcrumb from '../../forms/Breadcrumb';
-import ModalManager from '../../../utils/ModalManager';
 
 const breadcrumbList = [{
 	text: 'Crawl',

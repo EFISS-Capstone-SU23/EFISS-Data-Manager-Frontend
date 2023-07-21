@@ -9,11 +9,7 @@ import { TemplateIcon } from '../../../icons';
 import FileUtil from '../../../utils/FileUtil';
 import ModalManager from '../../../utils/ModalManager';
 import { upsertTemplate, getTemplateByID } from '../../../api/templateAPI';
-
-const codeEditorStyle = {
-	fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-	fontSize: 12,
-};
+import { codeEditorStyle } from '../../../config';
 
 const validateData = (data) => {
 	if (!data.startUrl) {
@@ -284,7 +280,7 @@ function UpsertTemplatePage() {
 						</div>
 					</div>
 				</div>
-				<div className="">
+				<div>
 					<Button
 						className="col-span-1 bg-primary-700 hover:bg-primary-800 px-2 py-1"
 						onClick={handleSave}
