@@ -26,9 +26,11 @@ function TableData({
 
 				setTotal(res.data.total);
 				setStart((page - 1) * PAGE_SIZE + 1);
-				setEnd(Math.min(page * PAGE_SIZE, res.data.total));
 
-				if (end === 0) {
+				const newEnd = Math.min(page * PAGE_SIZE, res.data.total);
+				setEnd(newEnd);
+
+				if (newEnd === 0) {
 					setStart(0);
 				}
 			});
