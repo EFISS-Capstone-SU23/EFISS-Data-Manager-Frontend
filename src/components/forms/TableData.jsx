@@ -11,6 +11,7 @@ function TableData({
 	schema,
 	fetchData,
 	tableLoad,
+	query,
 }) {
 	const [data, setData] = useState([]);
 	const [page, setPage] = useState(1);
@@ -19,7 +20,7 @@ function TableData({
 	const [end, setEnd] = useState(0);
 
 	const loadData = () => {
-		fetchData(page, PAGE_SIZE)
+		fetchData(page, PAGE_SIZE, query)
 			.then((res) => {
 				setData(res.data.data);
 
@@ -34,8 +35,9 @@ function TableData({
 	}, [page]);
 
 	useEffect(() => {
+		setPage(1);
 		loadData();
-	}, [tableLoad]);
+	}, [tableLoad, query]);
 
 	return (
 		<>

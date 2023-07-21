@@ -20,6 +20,7 @@ const breadcrumbList = [{
 function TemplatePage() {
 	const navigate = useNavigate();
 	const [tableLoad, setTableLoad] = useState(0);
+	const [query, setQuery] = useState({});
 
 	const handleDelete = async (id) => {
 		const confirm = await ModalManager.showConfirm('Are you sure you want to delete this template?');
@@ -93,6 +94,13 @@ function TemplatePage() {
 		},
 	];
 
+	const handleSearch = (website) => {
+		setQuery({
+			...query,
+			website,
+		});
+	};
+
 	return (
 		<>
 			<Breadcrumb breadcrumbList={breadcrumbList} />
@@ -106,20 +114,20 @@ function TemplatePage() {
 						</div>
 						<div className="sm:flex">
 							<div className="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0">
-								<form className="lg:pr-3" action="#" method="GET">
-									<label htmlFor="templates-search" className="sr-only">
-										Search
-									</label>
-									<div className="relative mt-1 lg:w-64 xl:w-96">
-										<input
-											type="text"
-											name="email"
-											id="templates-search"
-											className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
-											placeholder="Search for templates"
-										/>
-									</div>
-								</form>
+								<div className="relative mt-1 lg:w-64 xl:w-96">
+									<input
+										type="text"
+										name="email"
+										id="templates-search"
+										className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
+										placeholder="Search for templates"
+										onKeyDown={(e) => {
+											if (e.key === 'Enter') {
+												handleSearch(e.target.value);
+											}
+										}}
+									/>
+								</div>
 							</div>
 							<div className="flex items-center ml-auto space-x-2 sm:space-x-3">
 								<button
@@ -143,6 +151,7 @@ function TemplatePage() {
 					schema={schema}
 					fetchData={getListTemplate}
 					tableLoad={tableLoad}
+					query={query}
 				/>
 			</div>
 		</>
