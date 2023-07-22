@@ -73,10 +73,10 @@ function UpsertCrawlPage() {
 				const { ignoreUrlPatterns: ignoreUrlPatternsData } = crawl;
 
 				setIgnoreUrlPatterns(JSON.stringify(ignoreUrlPatternsData, null, 4));
-				delete crawl.templateData.template.ignoreUrlPatterns;
+				delete crawl.templateData.ignoreUrlPatterns;
 
-				setTemplate(crawl.templateData.template);
-				setWebsite(crawl.templateData.template.website);
+				setTemplate(crawl.templateData);
+				setWebsite(crawl.website);
 				numInstanceRef.current.value = crawl.numInstance;
 				statusRef.current.value = crawl.status;
 

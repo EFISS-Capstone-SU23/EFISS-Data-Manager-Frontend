@@ -29,7 +29,7 @@ function TemplatePage() {
 			size: '25%',
 			render: (data) => (
 				<b>
-					{data.templateData.website}
+					{data.website}
 				</b>
 			),
 		},
