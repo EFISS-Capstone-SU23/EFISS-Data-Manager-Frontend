@@ -7,3 +7,7 @@ export const getListCrawl = (page, pageSize, query) => {
 		query,
 	});
 };
+
+export const upsertCrawl = (crawl) => {
+	return instance.post('/upsert', crawl);
+};

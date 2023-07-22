@@ -1,20 +1,43 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
 import Breadcrumb from '../../forms/Breadcrumb';
 import { CrawIcon } from '../../../icons';
 import { codeEditorStyle } from '../../../config';
 import { getTemplateByID } from '../../../api/templateAPI';
+import { upsertCrawl } from '../../../api/crawlAPI';
+import ModalManager from '../../../utils/ModalManager';
+import FileUtil from '../../../utils/FileUtil';
+
+const validateData = (data) => {
+	if (!Array.isArray(data.ignoreUrlPatterns)) {
+		return 'Ignore URL Patterns must be an array';
+	}
+
+	if (!data.numInstance) {
+		return 'Number of instances is required';
+	}
+
+	if (data.numInstance < 1) {
+		return 'Number of instances must be greater than 0';
+	}
+
+	return '';
+};
 
 function UpsertCrawlPage() {
+	const navigate = useNavigate();
 	const { id } = useParams();
 	const isCreate = id === 'new';
+	const templateId = new URLSearchParams(window.location.search).get('templateId');
 
 	const [template, setTemplate] = useState({});
 	const [website, setWebsite] = useState();
 	const [ignoreUrlPatterns, setIgnoreUrlPatterns] = useState([]);
-	const [numInstance, setNumInstance] = useState(1);
+
+	const numInstanceRef = useRef(1);
+	const statusRef = useRef('running');
 
 	const breadcrumbList = [
 		{
@@ -27,12 +50,12 @@ function UpsertCrawlPage() {
 		},
 	];
 
-	const fetchTemplate = (templateId) => {
+	const fetchTemplate = () => {
 		getTemplateByID(templateId)
 			.then((res) => {
 				const { template: templateData, website: websiteData } = res.data.template;
 
-				setIgnoreUrlPatterns(templateData.ignoreUrlPatterns);
+				setIgnoreUrlPatterns(JSON.stringify(templateData.ignoreUrlPatterns, null, 4));
 				delete templateData.ignoreUrlPatterns;
 				setTemplate(templateData);
 				setWebsite(websiteData);
@@ -42,12 +65,34 @@ function UpsertCrawlPage() {
 			});
 	};
 
+	const handleSave = () => {
+		const data = {
+			ignoreUrlPatterns: FileUtil.parseJSON(ignoreUrlPatterns || '[]'),
+			numInstance: numInstanceRef.current.value,
+			status: statusRef.current.value,
+			templateId,
+		};
+
+		const error = validateData(data);
+
+		if (error) {
+			ModalManager.getInstance().alert(error);
+			return;
+		}
+
+		upsertCrawl(data)
+			.then(() => {
+				navigate('/crawl');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	useEffect(() => {
 		if (isCreate) {
-			// get templateId query in url
-			const urlParams = new URLSearchParams(window.location.search);
-			const templateId = urlParams.get('templateId');
-			fetchTemplate(templateId);
+			// get templateId query in url\
+			fetchTemplate();
 		}
 	}, []);
 
@@ -99,7 +144,8 @@ function UpsertCrawlPage() {
 								padding={15}
 								style={codeEditorStyle}
 								minHeight="25rem"
-								value={JSON.stringify(ignoreUrlPatterns, null, 4)}
+								value={ignoreUrlPatterns}
+								onChange={(e) => setIgnoreUrlPatterns(e.target.value)}
 							/>
 						</div>
 					</div>
@@ -119,30 +165,34 @@ function UpsertCrawlPage() {
 									name="num-instance"
 									className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
 									min="1"
-									value={numInstance}
-									onChange={(e) => setNumInstance(e.target.value)}
+									defaultValue={1}
+									ref={numInstanceRef}
 								/>
+								<label
+									htmlFor="status"
+									className="block my-3 text-sm font-medium text-gray-900 dark:text-white"
+								>
+									Crawl status
+								</label>
+								<select
+									name="status"
+									className="bg-gray-50 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
+									disabled={isCreate}
+									defaultValue="running"
+									ref={statusRef}
+								>
+									<option value="running">Running</option>
+									{!isCreate && <option value="paused">Paused</option>}
+									{!isCreate && <option value="stopped">Stopped</option>}
+								</select>
 
 								<div className="flex justify-end mt-4">
 									<button
 										type="button"
 										className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 border border-transparent rounded-md hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+										onClick={handleSave}
 									>
 										Save
-									</button>
-									<button
-										type="button"
-										className="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-orange-400 border border-transparent rounded-md hover:bg-orange-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 disabled:opacity-50"
-										disabled={isCreate}
-									>
-										Resume
-									</button>
-									<button
-										type="button"
-										className="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 disabled:opacity-50"
-										disabled={isCreate}
-									>
-										Stop
 									</button>
 								</div>
 							</div>

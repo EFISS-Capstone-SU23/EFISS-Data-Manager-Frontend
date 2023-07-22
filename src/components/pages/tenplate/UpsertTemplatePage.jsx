@@ -111,7 +111,7 @@ function UpsertTemplatePage() {
 		const file = fileInputRef.current.files[0];
 		// name of file
 		const content = await FileUtil.readFile(file);
-		const jsonTemplate = FileUtil.parseJson(content);
+		const jsonTemplate = FileUtil.parseJSON(content);
 
 		if (!jsonTemplate) {
 			ModalManager.showError('Invalid JSON file');
@@ -131,9 +131,9 @@ function UpsertTemplatePage() {
 				description: descriptionXPathRef.current.value,
 				imageContainer: imageContainerXPathRef.current.value,
 				paginationButton: paginationButtonXPathRef.current.value,
-				metadata: FileUtil.parseJson(metadataXPath || '{}'),
+				metadata: FileUtil.parseJSON(metadataXPath || '{}'),
 			},
-			ignoreUrlPatterns: FileUtil.parseJson(ignoreUrlPatterns || '[]'),
+			ignoreUrlPatterns: FileUtil.parseJSON(ignoreUrlPatterns || '[]'),
 		};
 
 		const error = validateData(data);
