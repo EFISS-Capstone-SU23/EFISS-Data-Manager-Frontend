@@ -6,7 +6,7 @@ import Breadcrumb from '../../forms/Breadcrumb';
 import { CrawIcon } from '../../../icons';
 import { codeEditorStyle } from '../../../config';
 import { getTemplateByID } from '../../../api/templateAPI';
-import { upsertCrawl } from '../../../api/crawlAPI';
+import { upsertCrawl, getCrawlById } from '../../../api/crawlAPI';
 import ModalManager from '../../../utils/ModalManager';
 import FileUtil from '../../../utils/FileUtil';
 
@@ -65,13 +65,36 @@ function UpsertCrawlPage() {
 			});
 	};
 
+	const fetchCrawl = (crawlId) => {
+		getCrawlById(crawlId)
+			.then((res) => {
+				const { crawl } = res.data;
+				const { ignoreUrlPatterns: ignoreUrlPatternsData } = crawl;
+
+				setIgnoreUrlPatterns(JSON.stringify(ignoreUrlPatternsData, null, 4));
+				delete crawl.templateData.template.ignoreUrlPatterns;
+
+				setTemplate(crawl.templateData.template);
+				setWebsite(crawl.templateData.template.website);
+				numInstanceRef.current.value = crawl.numInstance;
+				statusRef.current.value = crawl.status;
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	const handleSave = () => {
 		const data = {
 			ignoreUrlPatterns: FileUtil.parseJSON(ignoreUrlPatterns || '[]'),
-			numInstance: numInstanceRef.current.value,
+			numInstance: parseInt(numInstanceRef.current.value, 10),
 			status: statusRef.current.value,
 			templateId,
 		};
+
+		if (!isCreate) {
+			data._id = id;
+		}
 
 		const error = validateData(data);
 
@@ -91,8 +114,11 @@ function UpsertCrawlPage() {
 
 	useEffect(() => {
 		if (isCreate) {
-			// get templateId query in url\
+			// get templateId query in url
 			fetchTemplate();
+		} else {
+			// get crawl by id
+			fetchCrawl(id);
 		}
 	}, []);
 
@@ -107,7 +133,6 @@ function UpsertCrawlPage() {
 							{' '}
 							{website}
 						</h3>
-
 						<div
 							data-color-mode="light"
 							style={{
@@ -130,7 +155,6 @@ function UpsertCrawlPage() {
 						<h3 className="mb-4 text-xl font-semibold">
 							Ignore URL Patterns
 						</h3>
-
 						<div
 							data-color-mode="light"
 							style={{

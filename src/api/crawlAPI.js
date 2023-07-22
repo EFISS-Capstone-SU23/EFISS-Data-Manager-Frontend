@@ -11,3 +11,7 @@ export const getListCrawl = (page, pageSize, query) => {
 export const upsertCrawl = (crawl) => {
 	return instance.post('/upsert', crawl);
 };
+
+export const getCrawlById = (id) => {
+	return instance.get(`/${id}`);
+};
