@@ -10,6 +10,8 @@ import { getListCrawl } from '../../../api/crawlAPI';
 import { CrawIcon } from '../../../icons';
 import Breadcrumb from '../../forms/Breadcrumb';
 
+import './CrawlPage.css';
+
 const breadcrumbList = [{
 	text: 'Crawl',
 	path: '/crawl',
@@ -49,7 +51,7 @@ function TemplatePage() {
 		{
 			header: 'Status',
 			size: '10%',
-			render: (data) => data.status,
+			render: (data) => (<p className={`status text-xs font-medium mr-2 px-2.5 py-1 whitespace-nowrap rounded-md border status-${data.status}`}>{data.status}</p>),
 		},
 		{
 			header: 'Actions',
@@ -67,7 +69,6 @@ function TemplatePage() {
 							View
 						</button>
 					</Link>
-
 					<Link
 						to={`/crawl/${data._id}`}
 					>

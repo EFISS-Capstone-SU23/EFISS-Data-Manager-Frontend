@@ -1,0 +1,21 @@
+.status-running {
+	color: rgba(3, 84, 63, 0.8);
+	background-color: rgba(3, 84, 63, 0.1);
+	border-color: rgba(3, 84, 63, 0.1);
+}
+
+.status-paused {
+	color: rgba(184, 44, 13, 0.8);
+	background-color: rgba(184, 44, 13, 0.1);
+	border-color: rgba(184, 44, 13, 0.1);
+}
+
+.status-stopped {
+	color: rgba(155, 28, 28, 0.8);
+	background-color: rgba(155, 28, 28, 0.1);
+	border-color: rgba(155, 28, 28, 0.1);
+}
+
+.status::first-letter {
+	text-transform: uppercase;
+}
