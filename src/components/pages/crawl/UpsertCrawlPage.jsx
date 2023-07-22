@@ -34,6 +34,7 @@ function UpsertCrawlPage() {
 
 	const [template, setTemplate] = useState({});
 	const [website, setWebsite] = useState();
+	const [formDisabled, setFormDisabled] = useState(false);
 	const [ignoreUrlPatterns, setIgnoreUrlPatterns] = useState([]);
 
 	const numInstanceRef = useRef(1);
@@ -78,6 +79,10 @@ function UpsertCrawlPage() {
 				setWebsite(crawl.templateData.template.website);
 				numInstanceRef.current.value = crawl.numInstance;
 				statusRef.current.value = crawl.status;
+
+				if (crawl.status === 'stopped') {
+					setFormDisabled(true);
+				}
 			})
 			.catch((err) => {
 				console.log(err);
@@ -170,6 +175,7 @@ function UpsertCrawlPage() {
 								minHeight="25rem"
 								value={ignoreUrlPatterns}
 								onChange={(e) => setIgnoreUrlPatterns(e.target.value)}
+								disabled={formDisabled}
 							/>
 						</div>
 					</div>
@@ -191,6 +197,7 @@ function UpsertCrawlPage() {
 									min="1"
 									defaultValue={1}
 									ref={numInstanceRef}
+									disabled={formDisabled}
 								/>
 								<label
 									htmlFor="status"
@@ -201,7 +208,7 @@ function UpsertCrawlPage() {
 								<select
 									name="status"
 									className="bg-gray-50 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
-									disabled={isCreate}
+									disabled={isCreate || formDisabled}
 									defaultValue="running"
 									ref={statusRef}
 								>
@@ -215,6 +222,7 @@ function UpsertCrawlPage() {
 										type="button"
 										className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 border border-transparent rounded-md hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
 										onClick={handleSave}
+										disabled={formDisabled}
 									>
 										Save
 									</button>
