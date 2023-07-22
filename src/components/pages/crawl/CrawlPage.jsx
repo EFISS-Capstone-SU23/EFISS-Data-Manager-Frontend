@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEye } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, Link } from 'react-router-dom';
 
 import TableData from '../../forms/TableData';
@@ -39,12 +39,12 @@ function TemplatePage() {
 		{
 			header: 'Start Date',
 			size: '15%',
-			render: (data) => moment(data.createdAt).format('DD/MM/YYYY'),
+			render: (data) => moment(data.createdAt).format('DD/MM/YYYY HH:mm'),
 		},
 		{
 			header: 'End Date',
 			size: '15%',
-			render: (data) => (data.endTime ? moment(data.endTime).format('DD/MM/YYYY') : ''),
+			render: (data) => (data.endTime ? moment(data.endTime).format('DD/MM/YYYY HH:mm') : ''),
 		},
 		{
 			header: 'Status',
@@ -55,16 +55,31 @@ function TemplatePage() {
 			header: 'Actions',
 			size: '25%',
 			render: (data) => (
-				<Link
-					to={`/template/${data._id}`}
-				>
-					<button
-						type="button"
-						className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
+				<>
+					<Link
+						to={`/crawl/view/${data._id}`}
 					>
-						View
-					</button>
-				</Link>
+						<button
+							type="button"
+							className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
+						>
+							<FontAwesomeIcon icon={faEye} className="mr-2" />
+							View
+						</button>
+					</Link>
+
+					<Link
+						to={`/crawl/${data._id}`}
+					>
+						<button
+							type="button"
+							className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300"
+						>
+							<FontAwesomeIcon icon={faCog} className="mr-2" />
+							Settings
+						</button>
+					</Link>
+				</>
 			),
 		},
 	];
