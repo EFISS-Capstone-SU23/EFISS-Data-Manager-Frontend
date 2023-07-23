@@ -4,17 +4,17 @@ function Dashboard() {
 		<div className="px-4 pt-6">
 			<div className="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
 				{/* Main widget */}
-				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 sm:p-6">
 					<div className="flex items-center justify-between mb-4">
 						<div className="flex-shrink-0">
-							<span className="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">
+							<span className="text-xl font-bold leading-none text-gray-900 sm:text-2xl">
 								$45,385
 							</span>
-							<h3 className="text-base font-light text-gray-500 dark:text-gray-400">
+							<h3 className="text-base font-light text-gray-500">
 								Sales this week
 							</h3>
 						</div>
-						<div className="flex items-center justify-end flex-1 text-base font-medium text-green-500 dark:text-green-400">
+						<div className="flex items-center justify-end flex-1 text-base font-medium text-green-500">
 							12.5%
 							<svg
 								className="w-5 h-5"
@@ -32,10 +32,10 @@ function Dashboard() {
 					</div>
 					<div id="main-chart" />
 					{/* Card Footer */}
-					<div className="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
+					<div className="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6">
 						<div>
 							<button
-								className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+								className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900"
 								type="button"
 								data-dropdown-toggle="weekly-sales-dropdown"
 							>
@@ -58,12 +58,12 @@ function Dashboard() {
 							</button>
 							{/* Dropdown menu */}
 							<div
-								className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+								className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
 								id="weekly-sales-dropdown"
 							>
 								<div className="px-4 py-3" role="none">
 									<p
-										className="text-sm font-medium text-gray-900 truncate dark:text-white"
+										className="text-sm font-medium text-gray-900 truncate"
 										role="none"
 									>
 										Sep 16, 2021 - Sep 22, 2021
@@ -73,7 +73,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Yesterday
@@ -82,7 +82,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Today
@@ -91,7 +91,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Last 7 days
@@ -100,7 +100,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Last 30 days
@@ -109,7 +109,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Last 90 days
@@ -119,7 +119,7 @@ function Dashboard() {
 								<div className="py-1" role="none">
 									<a
 										href="#"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 										role="menuitem"
 									>
 										Custom...
@@ -130,7 +130,7 @@ function Dashboard() {
 						<div className="flex-shrink-0">
 							<a
 								href="#"
-								className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+								className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100"
 							>
 								Sales Report
 								<svg
@@ -152,8 +152,8 @@ function Dashboard() {
 					</div>
 				</div>
 				{/* Tabs widget */}
-				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-					<h3 className="flex items-center mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6">
+					<h3 className="flex items-center mb-4 text-lg font-semibold text-gray-900">
 						Statistics this month
 						<button
 							data-popover-target="popover-description"
@@ -180,10 +180,10 @@ function Dashboard() {
 						data-popover
 						id="popover-description"
 						role="tooltip"
-						className="absolute z-10 invisible inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400"
+						className="absolute z-10 invisible inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72"
 					>
 						<div className="p-3 space-y-2">
-							<h3 className="font-semibold text-gray-900 dark:text-white">
+							<h3 className="font-semibold text-gray-900">
 								Statistics
 							</h3>
 							<p>
@@ -193,7 +193,7 @@ function Dashboard() {
 							</p>
 							<a
 								href="#"
-								className="flex items-center font-medium text-primary-600 dark:text-primary-500 dark:hover:text-primary-600 hover:text-primary-700"
+								className="flex items-center font-medium text-primary-600 hover:text-primary-700"
 							>
 								Read more
 								{' '}
@@ -220,7 +220,7 @@ function Dashboard() {
 						</label>
 						<select
 							id="tabs"
-							className="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+							className="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
 						>
 							<option>Statistics</option>
 							<option>Services</option>
@@ -228,7 +228,7 @@ function Dashboard() {
 						</select>
 					</div>
 					<ul
-						className="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400"
+						className="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex"
 						id="fullWidthTab"
 						data-tabs-toggle="#fullWidthTabContent"
 						role="tablist"
@@ -241,7 +241,7 @@ function Dashboard() {
 								role="tab"
 								aria-controls="faq"
 								aria-selected="true"
-								className="inline-block w-full p-4 rounded-tl-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600"
+								className="inline-block w-full p-4 rounded-tl-lg bg-gray-50 hover:bg-gray-100 focus:outline-none"
 							>
 								Top products
 							</button>
@@ -254,7 +254,7 @@ function Dashboard() {
 								role="tab"
 								aria-controls="about"
 								aria-selected="false"
-								className="inline-block w-full p-4 rounded-tr-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600"
+								className="inline-block w-full p-4 rounded-tr-lg bg-gray-50 hover:bg-gray-100 focus:outline-none"
 							>
 								Top Customers
 							</button>
@@ -262,7 +262,7 @@ function Dashboard() {
 					</ul>
 					<div
 						id="fullWidthTabContent"
-						className="border-t border-gray-200 dark:border-gray-600"
+						className="border-t border-gray-200"
 					>
 						<div
 							className="hidden pt-4"
@@ -270,7 +270,7 @@ function Dashboard() {
 							role="tabpanel"
 							aria-labelledby="faq-tab"
 						>
-							<ul className="divide-y divide-gray-200 dark:divide-gray-700">
+							<ul className="divide-y divide-gray-200">
 								<li className="py-3 sm:py-4">
 									<div className="flex items-center justify-between">
 										<div className="flex items-center min-w-0">
@@ -280,10 +280,10 @@ function Dashboard() {
 												alt="imac"
 											/>
 											<div className="ml-3">
-												<p className="font-medium text-gray-900 truncate dark:text-white">
+												<p className="font-medium text-gray-900 truncate">
 													iPhone 14 Pro
 												</p>
-												<div className="flex items-center justify-end flex-1 text-sm text-green-500 dark:text-green-400">
+												<div className="flex items-center justify-end flex-1 text-sm text-green-500">
 													<svg
 														className="w-4 h-4"
 														fill="currentColor"
@@ -304,7 +304,7 @@ function Dashboard() {
 												</div>
 											</div>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$445,467
 										</div>
 									</div>
@@ -318,10 +318,10 @@ function Dashboard() {
 												alt="imac"
 											/>
 											<div className="ml-3">
-												<p className="font-medium text-gray-900 truncate dark:text-white">
+												<p className="font-medium text-gray-900 truncate">
 													Apple iMac 27
 												</p>
-												<div className="flex items-center justify-end flex-1 text-sm text-green-500 dark:text-green-400">
+												<div className="flex items-center justify-end flex-1 text-sm text-green-500">
 													<svg
 														className="w-4 h-4"
 														fill="currentColor"
@@ -342,7 +342,7 @@ function Dashboard() {
 												</div>
 											</div>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$256,982
 										</div>
 									</div>
@@ -356,10 +356,10 @@ function Dashboard() {
 												alt="watch"
 											/>
 											<div className="ml-3">
-												<p className="font-medium text-gray-900 truncate dark:text-white">
+												<p className="font-medium text-gray-900 truncate">
 													Apple Watch SE
 												</p>
-												<div className="flex items-center justify-end flex-1 text-sm text-red-600 dark:text-red-500">
+												<div className="flex items-center justify-end flex-1 text-sm text-red-600">
 													<svg
 														className="w-4 h-4"
 														fill="currentColor"
@@ -380,7 +380,7 @@ function Dashboard() {
 												</div>
 											</div>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$201,869
 										</div>
 									</div>
@@ -394,10 +394,10 @@ function Dashboard() {
 												alt="ipad"
 											/>
 											<div className="ml-3">
-												<p className="font-medium text-gray-900 truncate dark:text-white">
+												<p className="font-medium text-gray-900 truncate">
 													Apple iPad Air
 												</p>
-												<div className="flex items-center justify-end flex-1 text-sm text-green-500 dark:text-green-400">
+												<div className="flex items-center justify-end flex-1 text-sm text-green-500">
 													<svg
 														className="w-4 h-4"
 														fill="currentColor"
@@ -418,7 +418,7 @@ function Dashboard() {
 												</div>
 											</div>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$103,967
 										</div>
 									</div>
@@ -432,10 +432,10 @@ function Dashboard() {
 												alt="imac"
 											/>
 											<div className="ml-3">
-												<p className="font-medium text-gray-900 truncate dark:text-white">
+												<p className="font-medium text-gray-900 truncate">
 													Apple iMac 24
 												</p>
-												<div className="flex items-center justify-end flex-1 text-sm text-red-600 dark:text-red-500">
+												<div className="flex items-center justify-end flex-1 text-sm text-red-600">
 													<svg
 														className="w-4 h-4"
 														fill="currentColor"
@@ -456,7 +456,7 @@ function Dashboard() {
 												</div>
 											</div>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$98,543
 										</div>
 									</div>
@@ -469,7 +469,7 @@ function Dashboard() {
 							role="tabpanel"
 							aria-labelledby="about-tab"
 						>
-							<ul className="divide-y divide-gray-200 dark:divide-gray-700">
+							<ul className="divide-y divide-gray-200">
 								<li className="py-3 sm:py-4">
 									<div className="flex items-center space-x-4">
 										<div className="flex-shrink-0">
@@ -480,14 +480,14 @@ function Dashboard() {
 											/>
 										</div>
 										<div className="flex-1 min-w-0">
-											<p className="font-medium text-gray-900 truncate dark:text-white">
+											<p className="font-medium text-gray-900 truncate">
 												Neil Sims
 											</p>
-											<p className="text-sm text-gray-500 truncate dark:text-gray-400">
+											<p className="text-sm text-gray-500 truncate">
 												email@flowbite.com
 											</p>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$3320
 										</div>
 									</div>
@@ -502,14 +502,14 @@ function Dashboard() {
 											/>
 										</div>
 										<div className="flex-1 min-w-0">
-											<p className="font-medium text-gray-900 truncate dark:text-white">
+											<p className="font-medium text-gray-900 truncate">
 												Bonnie Green
 											</p>
-											<p className="text-sm text-gray-500 truncate dark:text-gray-400">
+											<p className="text-sm text-gray-500 truncate">
 												email@flowbite.com
 											</p>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$2467
 										</div>
 									</div>
@@ -524,14 +524,14 @@ function Dashboard() {
 											/>
 										</div>
 										<div className="flex-1 min-w-0">
-											<p className="font-medium text-gray-900 truncate dark:text-white">
+											<p className="font-medium text-gray-900 truncate">
 												Michael Gough
 											</p>
-											<p className="text-sm text-gray-500 truncate dark:text-gray-400">
+											<p className="text-sm text-gray-500 truncate">
 												email@flowbite.com
 											</p>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$2235
 										</div>
 									</div>
@@ -546,14 +546,14 @@ function Dashboard() {
 											/>
 										</div>
 										<div className="flex-1 min-w-0">
-											<p className="font-medium text-gray-900 truncate dark:text-white">
+											<p className="font-medium text-gray-900 truncate">
 												Thomes Lean
 											</p>
-											<p className="text-sm text-gray-500 truncate dark:text-gray-400">
+											<p className="text-sm text-gray-500 truncate">
 												email@flowbite.com
 											</p>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$1842
 										</div>
 									</div>
@@ -568,14 +568,14 @@ function Dashboard() {
 											/>
 										</div>
 										<div className="flex-1 min-w-0">
-											<p className="font-medium text-gray-900 truncate dark:text-white">
+											<p className="font-medium text-gray-900 truncate">
 												Lana Byrd
 											</p>
-											<p className="text-sm text-gray-500 truncate dark:text-gray-400">
+											<p className="text-sm text-gray-500 truncate">
 												email@flowbite.com
 											</p>
 										</div>
-										<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+										<div className="inline-flex items-center text-base font-semibold text-gray-900">
 											$1044
 										</div>
 									</div>
@@ -584,10 +584,10 @@ function Dashboard() {
 						</div>
 					</div>
 					{/* Card Footer */}
-					<div className="flex items-center justify-between pt-3 mt-5 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
+					<div className="flex items-center justify-between pt-3 mt-5 border-t border-gray-200 sm:pt-6">
 						<div>
 							<button
-								className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+								className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900"
 								type="button"
 								data-dropdown-toggle="stats-dropdown"
 							>
@@ -610,12 +610,12 @@ function Dashboard() {
 							</button>
 							{/* Dropdown menu */}
 							<div
-								className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+								className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
 								id="stats-dropdown"
 							>
 								<div className="px-4 py-3" role="none">
 									<p
-										className="text-sm font-medium text-gray-900 truncate dark:text-white"
+										className="text-sm font-medium text-gray-900 truncate"
 										role="none"
 									>
 										Sep 16, 2021 - Sep 22, 2021
@@ -625,7 +625,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Yesterday
@@ -634,7 +634,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Today
@@ -643,7 +643,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Last 7 days
@@ -652,7 +652,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Last 30 days
@@ -661,7 +661,7 @@ function Dashboard() {
 									<li>
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Last 90 days
@@ -671,7 +671,7 @@ function Dashboard() {
 								<div className="py-1" role="none">
 									<a
 										href="#"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 										role="menuitem"
 									>
 										Custom...
@@ -682,7 +682,7 @@ function Dashboard() {
 						<div className="flex-shrink-0">
 							<a
 								href="#"
-								className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+								className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100"
 							>
 								Full Report
 								<svg
@@ -705,16 +705,16 @@ function Dashboard() {
 				</div>
 			</div>
 			<div className="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3">
-				<div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+				<div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex sm:p-6">
 					<div className="w-full">
-						<h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
+						<h3 className="text-base font-normal text-gray-500">
 							New products
 						</h3>
-						<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+						<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl">
 							2,340
 						</span>
-						<p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
-							<span className="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
+						<p className="flex items-center text-base font-normal text-gray-500">
+							<span className="flex items-center mr-1.5 text-sm text-green-500">
 								<svg
 									className="w-4 h-4"
 									fill="currentColor"
@@ -735,16 +735,16 @@ function Dashboard() {
 					</div>
 					<div className="w-full" id="new-products-chart" />
 				</div>
-				<div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+				<div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex sm:p-6">
 					<div className="w-full">
-						<h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
+						<h3 className="text-base font-normal text-gray-500">
 							Users
 						</h3>
-						<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+						<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl">
 							2,340
 						</span>
-						<p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
-							<span className="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
+						<p className="flex items-center text-base font-normal text-gray-500">
+							<span className="flex items-center mr-1.5 text-sm text-green-500">
 								<svg
 									className="w-4 h-4"
 									fill="currentColor"
@@ -765,51 +765,51 @@ function Dashboard() {
 					</div>
 					<div className="w-full" id="week-signups-chart" />
 				</div>
-				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6">
 					<div className="w-full">
-						<h3 className="mb-2 text-base font-normal text-gray-500 dark:text-gray-400">
+						<h3 className="mb-2 text-base font-normal text-gray-500">
 							Audience by age
 						</h3>
 						<div className="flex items-center mb-2">
-							<div className="w-16 text-sm font-medium dark:text-white">
+							<div className="w-16 text-sm font-medium">
 								50+
 							</div>
-							<div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+							<div className="w-full bg-gray-200 rounded-full h-2.5">
 								<div
-									className="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500"
+									className="bg-primary-600 h-2.5 rounded-full"
 									style={{ width: '18%' }}
 								/>
 							</div>
 						</div>
 						<div className="flex items-center mb-2">
-							<div className="w-16 text-sm font-medium dark:text-white">
+							<div className="w-16 text-sm font-medium">
 								40+
 							</div>
-							<div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+							<div className="w-full bg-gray-200 rounded-full h-2.5">
 								<div
-									className="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500"
+									className="bg-primary-600 h-2.5 rounded-full"
 									style={{ width: '15%' }}
 								/>
 							</div>
 						</div>
 						<div className="flex items-center mb-2">
-							<div className="w-16 text-sm font-medium dark:text-white">
+							<div className="w-16 text-sm font-medium">
 								30+
 							</div>
-							<div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+							<div className="w-full bg-gray-200 rounded-full h-2.5">
 								<div
-									className="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500"
+									className="bg-primary-600 h-2.5 rounded-full"
 									style={{ width: '60%' }}
 								/>
 							</div>
 						</div>
 						<div className="flex items-center mb-2">
-							<div className="w-16 text-sm font-medium dark:text-white">
+							<div className="w-16 text-sm font-medium">
 								20+
 							</div>
-							<div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+							<div className="w-full bg-gray-200 rounded-full h-2.5">
 								<div
-									className="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500"
+									className="bg-primary-600 h-2.5 rounded-full"
 									style={{ width: '30%' }}
 								/>
 							</div>
@@ -819,14 +819,14 @@ function Dashboard() {
 				</div>
 			</div>
 			<div className="grid grid-cols-1 my-4 xl:grid-cols-2 xl:gap-4">
-				<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 xl:mb-0">
+				<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 xl:mb-0">
 					<div className="flex items-center justify-between mb-4">
-						<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+						<h3 className="text-lg font-semibold text-gray-900">
 							Smart chat
 						</h3>
 						<a
 							href="#"
-							className="inline-flex items-center p-2 text-sm font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+							className="inline-flex items-center p-2 text-sm font-medium rounded-lg text-primary-700 hover:bg-gray-100"
 						>
 							View all
 						</a>
@@ -836,7 +836,7 @@ function Dashboard() {
 						<article className="mb-5">
 							<footer className="flex items-center justify-between mb-2">
 								<div className="flex items-center">
-									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white">
+									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900">
 										<img
 											className="w-6 h-6 mr-2 rounded-full"
 											src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
@@ -844,7 +844,7 @@ function Dashboard() {
 										/>
 										Michael Gough
 									</p>
-									<p className="text-sm text-gray-600 dark:text-gray-400">
+									<p className="text-sm text-gray-600">
 										<time
 											dateTime="2022-02-08"
 											title="February 8th, 2022"
@@ -857,7 +857,7 @@ function Dashboard() {
 								<button
 									id="dropdownComment1Button"
 									data-dropdown-toggle="dropdownComment1"
-									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
 									type="button"
 								>
 									<svg
@@ -874,16 +874,16 @@ function Dashboard() {
 								{/* Dropdown menu */}
 								<div
 									id="dropdownComment1"
-									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36 dark:bg-gray-700 dark:divide-gray-600"
+									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36"
 								>
 									<ul
-										className="py-1 text-sm text-gray-700 dark:text-gray-200"
+										className="py-1 text-sm text-gray-700"
 										aria-labelledby="dropdownMenuIconHorizontalButton"
 									>
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Edit
 											</a>
@@ -891,7 +891,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Remove
 											</a>
@@ -899,7 +899,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Report
 											</a>
@@ -907,12 +907,12 @@ function Dashboard() {
 									</ul>
 								</div>
 							</footer>
-							<p className="mb-2 text-gray-900 dark:text-white">
+							<p className="mb-2 text-gray-900">
 								Hello
 								{' '}
 								<a
 									href="#"
-									className="font-medium hover:underline text-primary-600 dark:text-primary-500"
+									className="font-medium hover:underline text-primary-600"
 								>
 									@designteam
 								</a>
@@ -922,12 +922,12 @@ function Dashboard() {
 								design project. Let me know about your availability in
 								the thread.
 							</p>
-							<p className="mb-3 text-gray-900 dark:text-white">
+							<p className="mb-3 text-gray-900">
 								Looking forward to it! Thanks.
 							</p>
 							<a
 								href="#"
-								className="inline-flex items-center text-xs font-medium text-primary-700 sm:text-sm dark:text-primary-500"
+								className="inline-flex items-center text-xs font-medium text-primary-700 sm:text-sm"
 							>
 								4 replies
 								<svg
@@ -948,7 +948,7 @@ function Dashboard() {
 						<article className="mb-5">
 							<footer className="flex items-center justify-between mb-2">
 								<div className="flex items-center">
-									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white">
+									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900">
 										<img
 											className="w-6 h-6 mr-2 rounded-full"
 											src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
@@ -956,7 +956,7 @@ function Dashboard() {
 										/>
 										Bonnie Green
 									</p>
-									<p className="text-sm text-gray-600 dark:text-gray-400">
+									<p className="text-sm text-gray-600">
 										<time
 											dateTime="2022-02-08"
 											title="February 8th, 2022"
@@ -969,7 +969,7 @@ function Dashboard() {
 								<button
 									id="dropdownComment2Button"
 									data-dropdown-toggle="dropdownComment2"
-									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
 									type="button"
 								>
 									<svg
@@ -986,16 +986,16 @@ function Dashboard() {
 								{/* Dropdown menu */}
 								<div
 									id="dropdownComment2"
-									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36 dark:bg-gray-700 dark:divide-gray-600"
+									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36"
 								>
 									<ul
-										className="py-1 text-sm text-gray-700 dark:text-gray-200"
+										className="py-1 text-sm text-gray-700"
 										aria-labelledby="dropdownMenuIconHorizontalButton"
 									>
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Edit
 											</a>
@@ -1003,7 +1003,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Remove
 											</a>
@@ -1011,7 +1011,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Report
 											</a>
@@ -1019,23 +1019,23 @@ function Dashboard() {
 									</ul>
 								</div>
 							</footer>
-							<p className="mb-3 text-gray-900 dark:text-white">
+							<p className="mb-3 text-gray-900">
 								Hello everyone,
 							</p>
-							<p className="mb-2 text-gray-900 dark:text-white">
+							<p className="mb-2 text-gray-900">
 								Thank you for the workshop, it was very productive
 								meeting. I cant wait to start working on this new
 								project with you guys. But first things first, Iam
 								waiting for the offer and pitch deck from you. It would
 								be great to get it by the end o the month.
 							</p>
-							<p className="mb-3 text-gray-900 dark:text-white">
+							<p className="mb-3 text-gray-900">
 								Cheers!
 							</p>
 							<div className="flex items-center mb-2 space-x-2">
 								<button
 									type="button"
-									className="py-1.5 px-3 inline-flex items-center rounded-lg bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600 dark:bg-gray-700"
+									className="py-1.5 px-3 inline-flex items-center rounded-lg bg-gray-100 hover:bg-gray-200"
 								>
 									<svg
 										aria-hidden="true"
@@ -1053,13 +1053,13 @@ function Dashboard() {
 											fill="#FFCC4D"
 										/>
 									</svg>
-									<span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+									<span className="text-sm font-medium text-gray-500">
 										14
 									</span>
 								</button>
 								<button
 									type="button"
-									className="py-1.5 px-3 inline-flex items-center rounded-lg bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600 dark:bg-gray-700"
+									className="py-1.5 px-3 inline-flex items-center rounded-lg bg-gray-100 hover:bg-gray-200"
 								>
 									<svg
 										aria-hidden="true"
@@ -1089,13 +1089,13 @@ function Dashboard() {
 											fill="#5DADEC"
 										/>
 									</svg>
-									<span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+									<span className="text-sm font-medium text-gray-500">
 										8
 									</span>
 								</button>
 								<button
 									type="button"
-									className="py-1.5 px-3 inline-flex items-center rounded-lg bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600 dark:bg-gray-700"
+									className="py-1.5 px-3 inline-flex items-center rounded-lg bg-gray-100 hover:bg-gray-200"
 								>
 									<svg
 										aria-hidden="true"
@@ -1165,7 +1165,7 @@ function Dashboard() {
 											fill="#FFCC4D"
 										/>
 									</svg>
-									<span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+									<span className="text-sm font-medium text-gray-500">
 										3
 									</span>
 								</button>
@@ -1174,7 +1174,7 @@ function Dashboard() {
 						<article className="mb-5">
 							<footer className="flex items-center justify-between mb-2">
 								<div className="flex items-center">
-									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white">
+									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900">
 										<img
 											className="w-6 h-6 mr-2 rounded-full"
 											src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
@@ -1182,7 +1182,7 @@ function Dashboard() {
 										/>
 										Jese Leos
 									</p>
-									<p className="text-sm text-gray-600 dark:text-gray-400">
+									<p className="text-sm text-gray-600">
 										<time
 											dateTime="2022-02-08"
 											title="February 8th, 2022"
@@ -1195,7 +1195,7 @@ function Dashboard() {
 								<button
 									id="dropdownComment3Button"
 									data-dropdown-toggle="dropdownComment3"
-									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
 									type="button"
 								>
 									<svg
@@ -1212,16 +1212,16 @@ function Dashboard() {
 								{/* Dropdown menu */}
 								<div
 									id="dropdownComment3"
-									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36 dark:bg-gray-700 dark:divide-gray-600"
+									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36"
 								>
 									<ul
-										className="py-1 text-sm text-gray-700 dark:text-gray-200"
+										className="py-1 text-sm text-gray-700"
 										aria-labelledby="dropdownMenuIconHorizontalButton"
 									>
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Edit
 											</a>
@@ -1229,7 +1229,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Remove
 											</a>
@@ -1237,7 +1237,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Report
 											</a>
@@ -1245,12 +1245,12 @@ function Dashboard() {
 									</ul>
 								</div>
 							</footer>
-							<p className="mb-2 text-gray-900 dark:text-white">
+							<p className="mb-2 text-gray-900">
 								Ok
 								{' '}
 								<a
 									href="#"
-									className="font-medium hover:underline text-primary-600 dark:text-primary-500"
+									className="font-medium hover:underline text-primary-600"
 								>
 									@team
 								</a>
@@ -1259,15 +1259,15 @@ function Dashboard() {
 								to review everything. Iam looking forward to the next
 								steps! Thank you.
 							</p>
-							<p className="mb-3 text-gray-900 dark:text-white">
+							<p className="mb-3 text-gray-900">
 								Looking forward to it! Thanks.
 							</p>
 							<div className="items-center 2xl:space-x-4 2xl:flex">
 								{/* Item */}
-								<div className="flex items-center p-3 mb-3.5 border border-gray-200 dark:border-gray-700 rounded-lg">
-									<div className="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-primary-100 dark:bg-primary-900">
+								<div className="flex items-center p-3 mb-3.5 border border-gray-200 rounded-lg">
+									<div className="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-primary-100">
 										<svg
-											className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+											className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6"
 											fill="currentColor"
 											viewBox="0 0 24 24"
 											xmlns="http://www.w3.org/2000/svg"
@@ -1282,10 +1282,10 @@ function Dashboard() {
 										</svg>
 									</div>
 									<div className="mr-4">
-										<p className="text-sm font-semibold text-gray-900 dark:text-white">
+										<p className="text-sm font-semibold text-gray-900">
 											flowbite_offer_345
 										</p>
-										<p className="text-sm text-gray-500 dark:text-gray-400">
+										<p className="text-sm text-gray-500">
 											PDF, 2.3 MB
 										</p>
 									</div>
@@ -1295,7 +1295,7 @@ function Dashboard() {
 											className="p-2 rounded hover:bg-gray-100"
 										>
 											<svg
-												className="w-5 h-5 text-gray-500 dark:text-gray-400"
+												className="w-5 h-5 text-gray-500"
 												fill="currentColor"
 												viewBox="0 0 24 24"
 												xmlns="http://www.w3.org/2000/svg"
@@ -1314,7 +1314,7 @@ function Dashboard() {
 											className="p-2 rounded hover:bg-gray-100"
 										>
 											<svg
-												className="w-5 h-5 text-gray-500 dark:text-gray-400"
+												className="w-5 h-5 text-gray-500"
 												fill="currentColor"
 												viewBox="0 0 20 20"
 												xmlns="http://www.w3.org/2000/svg"
@@ -1327,10 +1327,10 @@ function Dashboard() {
 									</div>
 								</div>
 								{/* Item */}
-								<div className="flex items-center p-3 mb-3.5 border border-gray-200 dark:border-gray-700 rounded-lg">
-									<div className="flex items-center justify-center w-10 h-10 mr-3 bg-teal-100 rounded-lg dark:bg-teal-900">
+								<div className="flex items-center p-3 mb-3.5 border border-gray-200 rounded-lg">
+									<div className="flex items-center justify-center w-10 h-10 mr-3 bg-teal-100 rounded-lg">
 										<svg
-											className="w-5 h-5 text-teal-600 lg:w-6 lg:h-6 dark:text-teal-300"
+											className="w-5 h-5 text-teal-600 lg:w-6 lg:h-6"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -1340,10 +1340,10 @@ function Dashboard() {
 										</svg>
 									</div>
 									<div className="mr-4">
-										<p className="text-sm font-semibold text-gray-900 dark:text-white">
+										<p className="text-sm font-semibold text-gray-900">
 											bergside_pitch
 										</p>
-										<p className="text-sm text-gray-500 dark:text-gray-400">
+										<p className="text-sm text-gray-500">
 											PPTX, 10.1 MB
 										</p>
 									</div>
@@ -1353,7 +1353,7 @@ function Dashboard() {
 											className="p-2 rounded hover:bg-gray-100"
 										>
 											<svg
-												className="w-5 h-5 text-gray-500 dark:text-gray-400"
+												className="w-5 h-5 text-gray-500"
 												fill="currentColor"
 												viewBox="0 0 24 24"
 												xmlns="http://www.w3.org/2000/svg"
@@ -1372,7 +1372,7 @@ function Dashboard() {
 											className="p-2 rounded hover:bg-gray-100"
 										>
 											<svg
-												className="w-5 h-5 text-gray-500 dark:text-gray-400"
+												className="w-5 h-5 text-gray-500"
 												fill="currentColor"
 												viewBox="0 0 20 20"
 												xmlns="http://www.w3.org/2000/svg"
@@ -1389,7 +1389,7 @@ function Dashboard() {
 						<article className="pl-12 mb-5">
 							<footer className="flex items-center justify-between mb-2">
 								<div className="flex items-center">
-									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white">
+									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900">
 										<img
 											className="w-6 h-6 mr-2 rounded-full"
 											src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
@@ -1397,7 +1397,7 @@ function Dashboard() {
 										/>
 										Joseph McFallen
 									</p>
-									<p className="text-sm text-gray-600 dark:text-gray-400">
+									<p className="text-sm text-gray-600">
 										<time
 											dateTime="2022-02-08"
 											title="February 8th, 2022"
@@ -1410,7 +1410,7 @@ function Dashboard() {
 								<button
 									id="dropdownComment4Button"
 									data-dropdown-toggle="dropdownComment4"
-									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
 									type="button"
 								>
 									<svg
@@ -1427,16 +1427,16 @@ function Dashboard() {
 								{/* Dropdown menu */}
 								<div
 									id="dropdownComment4"
-									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36 dark:bg-gray-700 dark:divide-gray-600"
+									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36"
 								>
 									<ul
-										className="py-1 text-sm text-gray-700 dark:text-gray-200"
+										className="py-1 text-sm text-gray-700"
 										aria-labelledby="dropdownMenuIconHorizontalButton"
 									>
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Edit
 											</a>
@@ -1444,7 +1444,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Remove
 											</a>
@@ -1452,7 +1452,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Report
 											</a>
@@ -1460,12 +1460,12 @@ function Dashboard() {
 									</ul>
 								</div>
 							</footer>
-							<p className="mb-2 text-gray-900 dark:text-white">
+							<p className="mb-2 text-gray-900">
 								Hello
 								{' '}
 								<a
 									href="#"
-									className="font-medium hover:underline text-primary-600 dark:text-primary-500"
+									className="font-medium hover:underline text-primary-600"
 								>
 									@jeseleos
 								</a>
@@ -1476,7 +1476,7 @@ function Dashboard() {
 						<article className="pl-12 mb-5">
 							<footer className="flex items-center justify-between mb-2">
 								<div className="flex items-center">
-									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white">
+									<p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900">
 										<img
 											className="w-6 h-6 mr-2 rounded-full"
 											src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
@@ -1484,7 +1484,7 @@ function Dashboard() {
 										/>
 										Jese Leos
 									</p>
-									<p className="text-sm text-gray-600 dark:text-gray-400">
+									<p className="text-sm text-gray-600">
 										<time
 											dateTime="2022-02-08"
 											title="February 8th, 2022"
@@ -1497,7 +1497,7 @@ function Dashboard() {
 								<button
 									id="dropdownComment5Button"
 									data-dropdown-toggle="dropdownComment5"
-									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
 									type="button"
 								>
 									<svg
@@ -1514,16 +1514,16 @@ function Dashboard() {
 								{/* Dropdown menu */}
 								<div
 									id="dropdownComment5"
-									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36 dark:bg-gray-700 dark:divide-gray-600"
+									className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-36"
 								>
 									<ul
-										className="py-1 text-sm text-gray-700 dark:text-gray-200"
+										className="py-1 text-sm text-gray-700"
 										aria-labelledby="dropdownMenuIconHorizontalButton"
 									>
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Edit
 											</a>
@@ -1531,7 +1531,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Remove
 											</a>
@@ -1539,7 +1539,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 hover:bg-gray-100"
 											>
 												Report
 											</a>
@@ -1547,12 +1547,12 @@ function Dashboard() {
 									</ul>
 								</div>
 							</footer>
-							<p className="mb-4 text-gray-900 dark:text-white">
+							<p className="mb-4 text-gray-900">
 								Hi
 								{' '}
 								<a
 									href="#"
-									className="font-medium hover:underline text-primary-600 dark:text-primary-500"
+									className="font-medium hover:underline text-primary-600"
 								>
 									@josephh
 								</a>
@@ -1567,13 +1567,13 @@ function Dashboard() {
 								<textarea
 									id="chat"
 									rows={1}
-									className="block mr-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+									className="block mr-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
 									placeholder="Reply in thread..."
 									defaultValue=""
 								/>
 								<button
 									type="submit"
-									className="inline-flex justify-center p-2 rounded-lg cursor-pointer text-primary-600 hover:bg-primary-100 dark:text-primary-500 dark:hover:bg-gray-600"
+									className="inline-flex justify-center p-2 rounded-lg cursor-pointer text-primary-600 hover:bg-primary-100"
 								>
 									<svg
 										aria-hidden="true"
@@ -1587,7 +1587,7 @@ function Dashboard() {
 									<span className="sr-only">Send message</span>
 								</button>
 							</div>
-							<span className="inline-flex items-center text-xs font-medium cursor-pointer hover:underline text-primary-700 sm:text-sm dark:text-primary-500">
+							<span className="inline-flex items-center text-xs font-medium cursor-pointer hover:underline text-primary-700 sm:text-sm">
 								Hide thread
 								<svg
 									className="w-5 h-5 ml-1"
@@ -1605,31 +1605,31 @@ function Dashboard() {
 							</span>
 						</article>
 					</form>
-					<div className="w-full border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
-						<div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
+					<div className="w-full border border-gray-200 rounded-lg bg-gray-50">
+						<div className="px-4 py-2 bg-white rounded-t-lg">
 							<label htmlFor="comment" className="sr-only">
 								Write your message
 							</label>
 							<textarea
 								id="comment"
 								rows={8}
-								className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+								className="w-full px-0 text-sm text-gray-900 bg-white border-0 focus:ring-0"
 								placeholder="Write your message"
 								required
 								defaultValue=""
 							/>
 						</div>
-						<div className="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+						<div className="flex items-center justify-between px-3 py-2 border-t">
 							<button
 								type="submit"
-								className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+								className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800"
 							>
 								Send message
 							</button>
 							<div className="flex pl-0 space-x-1 sm:pl-2">
 								<button
 									type="button"
-									className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
+									className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100"
 								>
 									<svg
 										aria-hidden="true"
@@ -1648,7 +1648,7 @@ function Dashboard() {
 								</button>
 								<button
 									type="button"
-									className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
+									className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100"
 								>
 									<svg
 										aria-hidden="true"
@@ -1667,7 +1667,7 @@ function Dashboard() {
 								</button>
 								<button
 									type="button"
-									className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
+									className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100"
 								>
 									<svg
 										aria-hidden="true"
@@ -1690,17 +1690,17 @@ function Dashboard() {
 				</div>
 				{/* Right Content */}
 				<div className="grid gap-4">
-					<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-						<div className="items-center justify-between pb-4 border-b border-gray-200 sm:flex dark:border-gray-700">
+					<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6">
+						<div className="items-center justify-between pb-4 border-b border-gray-200 sm:flex">
 							<div className="w-full mb-4 sm:mb-0">
-								<h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
+								<h3 className="text-base font-normal text-gray-500">
 									Sales by category
 								</h3>
-								<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+								<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl">
 									Desktop PC
 								</span>
-								<p className="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
-									<span className="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
+								<p className="flex items-center text-base font-normal text-gray-500">
+									<span className="flex items-center mr-1.5 text-sm text-green-500">
 										<svg
 											className="w-4 h-4"
 											fill="currentColor"
@@ -1724,7 +1724,7 @@ function Dashboard() {
 									<div className="relative">
 										<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 											<svg
-												className="w-5 h-5 text-gray-500 dark:text-gray-400"
+												className="w-5 h-5 text-gray-500"
 												fill="currentColor"
 												viewBox="0 0 20 20"
 												xmlns="http://www.w3.org/2000/svg"
@@ -1741,14 +1741,14 @@ function Dashboard() {
 										<input
 											name="start"
 											type="text"
-											className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+											className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 "
 											placeholder="From"
 										/>
 									</div>
 									<div className="relative">
 										<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 											<svg
-												className="w-5 h-5 text-gray-500 dark:text-gray-400"
+												className="w-5 h-5 text-gray-500"
 												fill="currentColor"
 												viewBox="0 0 20 20"
 												xmlns="http://www.w3.org/2000/svg"
@@ -1765,7 +1765,7 @@ function Dashboard() {
 										<input
 											name="end"
 											type="text"
-											className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+											className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 "
 											placeholder="To"
 										/>
 									</div>
@@ -1774,10 +1774,10 @@ function Dashboard() {
 						</div>
 						<div className="w-full" id="sales-by-category" />
 						{/* Card Footer */}
-						<div className="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
+						<div className="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6">
 							<div>
 								<button
-									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+									className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900"
 									type="button"
 									data-dropdown-toggle="sales-by-category-dropdown"
 								>
@@ -1800,12 +1800,12 @@ function Dashboard() {
 								</button>
 								{/* Dropdown menu */}
 								<div
-									className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+									className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
 									id="sales-by-category-dropdown"
 								>
 									<div className="px-4 py-3" role="none">
 										<p
-											className="text-sm font-medium text-gray-900 truncate dark:text-white"
+											className="text-sm font-medium text-gray-900 truncate"
 											role="none"
 										>
 											Sep 16, 2021 - Sep 22, 2021
@@ -1815,7 +1815,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 												role="menuitem"
 											>
 												Yesterday
@@ -1824,7 +1824,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 												role="menuitem"
 											>
 												Today
@@ -1833,7 +1833,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 												role="menuitem"
 											>
 												Last 7 days
@@ -1842,7 +1842,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 												role="menuitem"
 											>
 												Last 30 days
@@ -1851,7 +1851,7 @@ function Dashboard() {
 										<li>
 											<a
 												href="#"
-												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 												role="menuitem"
 											>
 												Last 90 days
@@ -1861,7 +1861,7 @@ function Dashboard() {
 									<div className="py-1" role="none">
 										<a
 											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 											role="menuitem"
 										>
 											Custom...
@@ -1872,7 +1872,7 @@ function Dashboard() {
 							<div className="flex-shrink-0">
 								<a
 									href="#"
-									className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+									className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100"
 								>
 									Sales Report
 									<svg
@@ -1893,19 +1893,19 @@ function Dashboard() {
 							</div>
 						</div>
 					</div>
-					<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-						<div className="flex items-center justify-between pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">
+					<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6">
+						<div className="flex items-center justify-between pb-4 mb-4 border-b border-gray-200">
 							<div>
-								<h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
+								<h3 className="text-base font-normal text-gray-500">
 									Traffic by device
 								</h3>
-								<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+								<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl">
 									Desktop
 								</span>
 							</div>
 							<a
 								href="#"
-								className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+								className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100"
 							>
 								Full report
 								<svg
@@ -1929,7 +1929,7 @@ function Dashboard() {
 						<div className="flex items-center justify-between pt-4 lg:justify-evenly sm:pt-6">
 							<div>
 								<svg
-									className="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400"
+									className="w-8 h-8 mb-1 text-gray-500"
 									fill="currentColor"
 									viewBox="0 0 20 20"
 									xmlns="http://www.w3.org/2000/svg"
@@ -1941,14 +1941,14 @@ function Dashboard() {
 										d="M2 4.25A2.25 2.25 0 014.25 2h11.5A2.25 2.25 0 0118 4.25v8.5A2.25 2.25 0 0115.75 15h-3.105a3.501 3.501 0 001.1 1.677A.75.75 0 0113.26 18H6.74a.75.75 0 01-.484-1.323A3.501 3.501 0 007.355 15H4.25A2.25 2.25 0 012 12.75v-8.5zm1.5 0a.75.75 0 01.75-.75h11.5a.75.75 0 01.75.75v7.5a.75.75 0 01-.75.75H4.25a.75.75 0 01-.75-.75v-7.5z"
 									/>
 								</svg>
-								<h3 className="text-gray-500 dark:text-gray-400">
+								<h3 className="text-gray-500">
 									Desktop
 								</h3>
-								<h4 className="text-xl font-bold dark:text-white">
+								<h4 className="text-xl font-bold">
 									234k
 								</h4>
-								<p className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-									<span className="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
+								<p className="flex items-center text-sm text-gray-500">
+									<span className="flex items-center mr-1.5 text-sm text-green-500">
 										<svg
 											className="w-4 h-4"
 											fill="currentColor"
@@ -1969,7 +1969,7 @@ function Dashboard() {
 							</div>
 							<div>
 								<svg
-									className="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400"
+									className="w-8 h-8 mb-1 text-gray-500"
 									fill="currentColor"
 									viewBox="0 0 20 20"
 									xmlns="http://www.w3.org/2000/svg"
@@ -1982,14 +1982,14 @@ function Dashboard() {
 										d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5h1A1.5 1.5 0 0114.5 4v12a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 16V4A1.5 1.5 0 017 2.5h1z"
 									/>
 								</svg>
-								<h3 className="text-gray-500 dark:text-gray-400">
+								<h3 className="text-gray-500">
 									Phone
 								</h3>
-								<h4 className="text-xl font-bold dark:text-white">
+								<h4 className="text-xl font-bold">
 									94k
 								</h4>
-								<p className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-									<span className="flex items-center mr-1.5 text-sm text-red-600 dark:text-red-500">
+								<p className="flex items-center text-sm text-gray-500">
+									<span className="flex items-center mr-1.5 text-sm text-red-600">
 										<svg
 											className="w-4 h-4"
 											fill="currentColor"
@@ -2010,7 +2010,7 @@ function Dashboard() {
 							</div>
 							<div>
 								<svg
-									className="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400"
+									className="w-8 h-8 mb-1 text-gray-500"
 									fill="currentColor"
 									viewBox="0 0 20 20"
 									xmlns="http://www.w3.org/2000/svg"
@@ -2022,14 +2022,14 @@ function Dashboard() {
 										d="M5 1a3 3 0 00-3 3v12a3 3 0 003 3h10a3 3 0 003-3V4a3 3 0 00-3-3H5zM3.5 4A1.5 1.5 0 015 2.5h10A1.5 1.5 0 0116.5 4v12a1.5 1.5 0 01-1.5 1.5H5A1.5 1.5 0 013.5 16V4zm5.25 11.5a.75.75 0 000 1.5h2.5a.75.75 0 000-1.5h-2.5z"
 									/>
 								</svg>
-								<h3 className="text-gray-500 dark:text-gray-400">
+								<h3 className="text-gray-500">
 									Tablet
 								</h3>
-								<h4 className="text-xl font-bold dark:text-white">
+								<h4 className="text-xl font-bold">
 									16k
 								</h4>
-								<p className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-									<span className="flex items-center mr-1.5 text-sm text-red-600 dark:text-red-500">
+								<p className="flex items-center text-sm text-gray-500">
+									<span className="flex items-center mr-1.5 text-sm text-red-600">
 										<svg
 											className="w-4 h-4"
 											fill="currentColor"
@@ -2055,35 +2055,35 @@ function Dashboard() {
 			{/* 2 columns */}
 			<div className="grid grid-cols-1 my-4 xl:grid-cols-2 xl:gap-4">
 				{/* Activity Card */}
-				<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 xl:mb-0">
+				<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 xl:mb-0">
 					<div className="flex items-center justify-between mb-4">
-						<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+						<h3 className="text-lg font-semibold text-gray-900">
 							Latest Activity
 						</h3>
 						<a
 							href="#"
-							className="inline-flex items-center p-2 text-sm font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+							className="inline-flex items-center p-2 text-sm font-medium rounded-lg text-primary-700 hover:bg-gray-100"
 						>
 							View all
 						</a>
 					</div>
-					<ol className="relative border-l border-gray-200 dark:border-gray-700">
+					<ol className="relative border-l border-gray-200">
 						<li className="mb-10 ml-4">
-							<div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-800 dark:bg-gray-700" />
-							<time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+							<div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white" />
+							<time className="mb-1 text-sm font-normal leading-none text-gray-400">
 								April 2023
 							</time>
-							<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+							<h3 className="text-lg font-semibold text-gray-900">
 								Application UI design in Figma
 							</h3>
-							<p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+							<p className="mb-4 text-base font-normal text-gray-500">
 								Get access to over 20+ pages including a dashboard
 								layout, charts, kanban board, calendar, and pre-order
 								E-commerce &amp; Marketing pages.
 							</p>
 							<a
 								href="#"
-								className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-primary-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+								className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-primary-700"
 							>
 								Learn more
 								{' '}
@@ -2102,20 +2102,20 @@ function Dashboard() {
 							</a>
 						</li>
 						<li className="mb-10 ml-4">
-							<div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-800 dark:bg-gray-700" />
-							<time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+							<div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white" />
+							<time className="mb-1 text-sm font-normal leading-none text-gray-400">
 								March 2023
 							</time>
-							<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+							<h3 className="text-lg font-semibold text-gray-900">
 								Marketing UI code in Flowbite
 							</h3>
-							<p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+							<p className="mb-4 text-base font-normal text-gray-500">
 								Get started with dozens of web components and
 								interactive elements built on top of Tailwind CSS.
 							</p>
 							<a
 								href="https://flowbite.com/blocks/"
-								className="inline-flex items-center text-xs font-medium hover:underline text-primary-700 sm:text-sm dark:text-primary-500"
+								className="inline-flex items-center text-xs font-medium hover:underline text-primary-700 sm:text-sm"
 							>
 								Go to Flowbite Blocks
 								<svg
@@ -2136,14 +2136,14 @@ function Dashboard() {
 							</a>
 						</li>
 						<li className="mb-10 ml-4">
-							<div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-800 dark:bg-gray-700" />
-							<time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+							<div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white" />
+							<time className="mb-1 text-sm font-normal leading-none text-gray-400">
 								February 2023
 							</time>
-							<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+							<h3 className="text-lg font-semibold text-gray-900">
 								Marketing UI design in Figma
 							</h3>
-							<p className="text-base font-normal text-gray-500 dark:text-gray-400">
+							<p className="text-base font-normal text-gray-500">
 								Get started with dozens of web components and
 								interactive elements built on top of Tailwind CSS.
 							</p>
@@ -2151,11 +2151,11 @@ function Dashboard() {
 					</ol>
 				</div>
 				{/* Carousel widget */}
-				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6">
 					<div id="carousel" className="relative" data-carousel>
 						<div className="relative mx-auto overflow-hidden h-[36rem] lg:h-[24rem]">
 							<div
-								className="hidden duration-700 ease-in-out bg-white dark:bg-gray-800"
+								className="hidden duration-700 ease-in-out bg-white"
 								data-carousel-item
 							>
 								<div className="flex items-center mb-4 text-lg font-medium text-primary-600">
@@ -2174,19 +2174,19 @@ function Dashboard() {
 									</svg>
 									Insights
 								</div>
-								<h3 className="mb-4 text-2xl font-medium text-gray-900 dark:text-white">
+								<h3 className="mb-4 text-2xl font-medium text-gray-900">
 									You are going to grow by 44% next year
 								</h3>
-								<p className="mb-4 text-gray-500 dark:text-gray-400">
+								<p className="mb-4 text-gray-500">
 									Get started with a free and open-source admin
 									dashboard layout built with Tailwind CSS and Flowbite
 									featuring charts, widgets, CRUD layouts,
 									authentication pages, and more
 								</p>
-								<p className="mb-2 text-lg font-medium text-gray-900 dark:text-white">
+								<p className="mb-2 text-lg font-medium text-gray-900">
 									Key Takeaways:
 								</p>
-								<ul className="pl-4 mb-4 space-y-3 text-gray-500 list-disc dark:text-gray-400">
+								<ul className="pl-4 mb-4 space-y-3 text-gray-500 list-disc">
 									<li>
 										What are the new challenges in the delivery
 										industry due to new consumer expectations.
@@ -2206,7 +2206,7 @@ function Dashboard() {
 								</ul>
 								<a
 									href="#"
-									className="inline-flex items-center p-2 font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+									className="inline-flex items-center p-2 font-medium rounded-lg text-primary-700 hover:bg-gray-100"
 								>
 									Get me there
 									<svg
@@ -2225,7 +2225,7 @@ function Dashboard() {
 								</a>
 							</div>
 							<div
-								className="hidden duration-700 ease-in-out bg-white dark:bg-gray-800"
+								className="hidden duration-700 ease-in-out bg-white"
 								data-carousel-item
 							>
 								<div className="flex items-center mb-4 text-lg font-medium text-teal-500">
@@ -2249,19 +2249,19 @@ function Dashboard() {
 									</svg>
 									Tips to grow
 								</div>
-								<p className="mb-4 text-gray-500 dark:text-gray-400">
+								<p className="mb-4 text-gray-500">
 									Marketing, sales &amp; business growth for small
 									business. Improve your marketing &amp; promotion
 									results - and grow your sales!
 								</p>
-								<p className="mb-4 text-lg font-medium text-gray-900 dark:text-white">
+								<p className="mb-4 text-lg font-medium text-gray-900">
 									What youll learn:
 								</p>
-								<ul className="pl-2 mb-4 space-y-3 text-gray-500 list-disc dark:text-gray-400">
+								<ul className="pl-2 mb-4 space-y-3 text-gray-500 list-disc">
 									<li className="flex space-x-2">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400"
+											className="flex-shrink-0 w-5 h-5 text-gray-500"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2280,7 +2280,7 @@ function Dashboard() {
 									<li className="flex space-x-2">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400"
+											className="flex-shrink-0 w-5 h-5 text-gray-500"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2300,7 +2300,7 @@ function Dashboard() {
 									<li className="flex space-x-2">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400"
+											className="flex-shrink-0 w-5 h-5 text-gray-500"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2319,7 +2319,7 @@ function Dashboard() {
 									<li className="flex space-x-2">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400"
+											className="flex-shrink-0 w-5 h-5 text-gray-500"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2338,7 +2338,7 @@ function Dashboard() {
 									<li className="flex space-x-2">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400"
+											className="flex-shrink-0 w-5 h-5 text-gray-500"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2358,7 +2358,7 @@ function Dashboard() {
 									<li className="flex space-x-2">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400"
+											className="flex-shrink-0 w-5 h-5 text-gray-500"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2377,7 +2377,7 @@ function Dashboard() {
 								</ul>
 								<a
 									href="#"
-									className="inline-flex items-center p-2 font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+									className="inline-flex items-center p-2 font-medium rounded-lg text-primary-700 hover:bg-gray-100"
 								>
 									Lets start
 									<svg
@@ -2396,7 +2396,7 @@ function Dashboard() {
 								</a>
 							</div>
 							<div
-								className="hidden duration-700 ease-in-out bg-white dark:bg-gray-800"
+								className="hidden duration-700 ease-in-out bg-white"
 								data-carousel-item
 							>
 								<div className="flex items-center mb-4 text-lg font-medium text-purple-600">
@@ -2415,21 +2415,21 @@ function Dashboard() {
 									</svg>
 									Features
 								</div>
-								<h3 className="mb-4 text-2xl font-medium text-gray-900 dark:text-white">
+								<h3 className="mb-4 text-2xl font-medium text-gray-900">
 									Go next level with Flowbite
 								</h3>
-								<p className="text-gray-500 dark:text-gray-400">
+								<p className="text-gray-500">
 									Deliver great service experiences fast - without the
 									complexity of traditional ITSM solutions.Accelerate
 									critical development work, eliminate toil, and deploy
 									changes with ease.
 								</p>
 								{/* List */}
-								<ul className="pl-2 my-5 mb-4 space-y-3 text-gray-500 list-disc dark:text-gray-400">
+								<ul className="pl-2 my-5 mb-4 space-y-3 text-gray-500 list-disc">
 									<li className="flex space-x-3">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-purple-600 dark:text-purple-500"
+											className="flex-shrink-0 w-5 h-5 text-purple-600"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2447,7 +2447,7 @@ function Dashboard() {
 									<li className="flex space-x-3">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-purple-600 dark:text-purple-500"
+											className="flex-shrink-0 w-5 h-5 text-purple-600"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2465,7 +2465,7 @@ function Dashboard() {
 									<li className="flex space-x-3">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-purple-600 dark:text-purple-500"
+											className="flex-shrink-0 w-5 h-5 text-purple-600"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2483,7 +2483,7 @@ function Dashboard() {
 									<li className="flex space-x-3">
 										{/* Icon */}
 										<svg
-											className="flex-shrink-0 w-5 h-5 text-purple-600 dark:text-purple-500"
+											className="flex-shrink-0 w-5 h-5 text-purple-600"
 											fill="currentColor"
 											viewBox="0 0 20 20"
 											xmlns="http://www.w3.org/2000/svg"
@@ -2501,7 +2501,7 @@ function Dashboard() {
 								</ul>
 								<button
 									type="button"
-									className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+									className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
 								>
 									View more
 									<svg
@@ -2526,7 +2526,7 @@ function Dashboard() {
 								className="flex items-center justify-center h-full mr-4 cursor-pointer group focus:outline-none"
 								data-carousel-prev
 							>
-								<span className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+								<span className="text-gray-500 hover:text-gray-700">
 									<svg
 										className="w-6 h-6"
 										fill="currentColor"
@@ -2547,7 +2547,7 @@ function Dashboard() {
 								className="flex items-center justify-center h-full cursor-pointer group focus:outline-none"
 								data-carousel-next
 							>
-								<span className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+								<span className="text-gray-500 hover:text-gray-700">
 									<svg
 										className="w-6 h-6"
 										fill="currentColor"
@@ -2567,14 +2567,14 @@ function Dashboard() {
 					</div>
 				</div>
 			</div>
-			<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+			<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6">
 				{/* Card header */}
 				<div className="items-center justify-between lg:flex">
 					<div className="mb-4 lg:mb-0">
-						<h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+						<h3 className="mb-2 text-xl font-bold text-gray-900">
 							Transactions
 						</h3>
-						<span className="text-base font-normal text-gray-500 dark:text-gray-400">
+						<span className="text-base font-normal text-gray-500">
 							This is a list of latest transactions
 						</span>
 					</div>
@@ -2583,7 +2583,7 @@ function Dashboard() {
 							<button
 								id="dropdownDefault"
 								data-dropdown-toggle="dropdown"
-								className="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+								className="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5"
 								type="button"
 							>
 								Filter by status
@@ -2606,9 +2606,9 @@ function Dashboard() {
 							{/* Dropdown menu */}
 							<div
 								id="dropdown"
-								className="z-10 hidden w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700"
+								className="z-10 hidden w-56 p-3 bg-white rounded-lg shadow"
 							>
-								<h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">
+								<h6 className="mb-3 text-sm font-medium text-gray-900">
 									Category
 								</h6>
 								<ul
@@ -2620,11 +2620,11 @@ function Dashboard() {
 											id="apple"
 											type="checkbox"
 											defaultValue
-											className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+											className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2"
 										/>
 										<label
 											htmlFor="apple"
-											className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+											className="ml-2 text-sm font-medium text-gray-900"
 										>
 											Completed (56)
 										</label>
@@ -2635,11 +2635,11 @@ function Dashboard() {
 											type="checkbox"
 											defaultValue
 											defaultChecked
-											className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+											className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2"
 										/>
 										<label
 											htmlFor="fitbit"
-											className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+											className="ml-2 text-sm font-medium text-gray-900"
 										>
 											Cancelled (56)
 										</label>
@@ -2649,11 +2649,11 @@ function Dashboard() {
 											id="dell"
 											type="checkbox"
 											defaultValue
-											className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+											className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2"
 										/>
 										<label
 											htmlFor="dell"
-											className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+											className="ml-2 text-sm font-medium text-gray-900"
 										>
 											In progress (56)
 										</label>
@@ -2664,11 +2664,11 @@ function Dashboard() {
 											type="checkbox"
 											defaultValue
 											defaultChecked
-											className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+											className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2"
 										/>
 										<label
 											htmlFor="asus"
-											className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+											className="ml-2 text-sm font-medium text-gray-900"
 										>
 											In review (97)
 										</label>
@@ -2680,7 +2680,7 @@ function Dashboard() {
 							<div className="relative">
 								<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 									<svg
-										className="w-5 h-5 text-gray-500 dark:text-gray-400"
+										className="w-5 h-5 text-gray-500"
 										fill="currentColor"
 										viewBox="0 0 20 20"
 										xmlns="http://www.w3.org/2000/svg"
@@ -2697,14 +2697,14 @@ function Dashboard() {
 								<input
 									name="start"
 									type="text"
-									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 "
 									placeholder="From"
 								/>
 							</div>
 							<div className="relative">
 								<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 									<svg
-										className="w-5 h-5 text-gray-500 dark:text-gray-400"
+										className="w-5 h-5 text-gray-500"
 										fill="currentColor"
 										viewBox="0 0 20 20"
 										xmlns="http://www.w3.org/2000/svg"
@@ -2721,7 +2721,7 @@ function Dashboard() {
 								<input
 									name="end"
 									type="text"
-									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 "
 									placeholder="To"
 								/>
 							</div>
@@ -2733,66 +2733,66 @@ function Dashboard() {
 					<div className="overflow-x-auto rounded-lg">
 						<div className="inline-block min-w-full align-middle">
 							<div className="overflow-hidden shadow sm:rounded-lg">
-								<table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-									<thead className="bg-gray-50 dark:bg-gray-700">
+								<table className="min-w-full divide-y divide-gray-200">
+									<thead className="bg-gray-50">
 										<tr>
 											<th
 												scope="col"
-												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
 											>
 												Transaction
 											</th>
 											<th
 												scope="col"
-												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
 											>
 												Date &amp; Time
 											</th>
 											<th
 												scope="col"
-												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
 											>
 												Amount
 											</th>
 											<th
 												scope="col"
-												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
 											>
 												Reference number
 											</th>
 											<th
 												scope="col"
-												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
 											>
 												Payment method
 											</th>
 											<th
 												scope="col"
-												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+												className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
 											>
 												Status
 											</th>
 										</tr>
 									</thead>
-									<tbody className="bg-white dark:bg-gray-800">
+									<tbody className="bg-white">
 										<tr>
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Payment from
 												{' '}
 												<span className="font-semibold">
 													Bonnie Green
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Apr 23 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												$2300
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												0047568936
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-7 h-7"
 													aria-hidden="true"
@@ -2822,29 +2822,29 @@ function Dashboard() {
 												<span>••• 475</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">
+												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-green-100">
 													Completed
 												</span>
 											</td>
 										</tr>
-										<tr className="bg-gray-50 dark:bg-gray-700">
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+										<tr className="bg-gray-50">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Payment refund to
 												{' '}
 												<span className="font-semibold">
 													#00910
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Apr 23 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												-$670
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												0078568936
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-6 h-6"
 													aria-hidden="true"
@@ -2878,29 +2878,29 @@ function Dashboard() {
 												<span>••• 924</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">
+												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-green-100">
 													Completed
 												</span>
 											</td>
 										</tr>
 										<tr>
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Payment failed from
 												{' '}
 												<span className="font-semibold">
 													#087651
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Apr 18 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												$234
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												0088568934
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-6 h-6"
 													aria-hidden="true"
@@ -2934,29 +2934,29 @@ function Dashboard() {
 												<span>••• 826</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-red-100 dark:border-red-400 dark:bg-gray-700 dark:text-red-400">
+												<span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-red-100">
 													Cancelled
 												</span>
 											</td>
 										</tr>
-										<tr className="bg-gray-50 dark:bg-gray-700">
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+										<tr className="bg-gray-50">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Payment from
 												{' '}
 												<span className="font-semibold">
 													Lana Byrd
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Apr 15 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												$5000
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												0018568911
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-6 h-6"
 													aria-hidden="true"
@@ -2990,29 +2990,29 @@ function Dashboard() {
 												<span>••• 634</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-purple-100 dark:bg-gray-700 dark:border-purple-500 dark:text-purple-400">
+												<span className="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-purple-100">
 													In progress
 												</span>
 											</td>
 										</tr>
 										<tr>
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Payment from
 												{' '}
 												<span className="font-semibold">
 													Jese Leos
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Apr 15 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												$2300
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												0045568939
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-7 h-7"
 													aria-hidden="true"
@@ -3042,29 +3042,29 @@ function Dashboard() {
 												<span>••• 163</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">
+												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-green-100">
 													Completed
 												</span>
 											</td>
 										</tr>
-										<tr className="bg-gray-50 dark:bg-gray-700">
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+										<tr className="bg-gray-50">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Refund to
 												{' '}
 												<span className="font-semibold">
 													THEMESBERG LLC
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Apr 11 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												-$560
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												0031568935
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-7 h-7"
 													aria-hidden="true"
@@ -3094,29 +3094,29 @@ function Dashboard() {
 												<span>••• 443</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-orange-100 text-orange-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-orange-100 dark:bg-gray-700 dark:border-orange-300 dark:text-orange-300">
+												<span className="bg-orange-100 text-orange-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-orange-100">
 													In review
 												</span>
 											</td>
 										</tr>
 										<tr>
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Payment from
 												{' '}
 												<span className="font-semibold">
 													Lana Lysle
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Apr 6 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												$1437
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												0023568934
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-7 h-7"
 													aria-hidden="true"
@@ -3146,29 +3146,29 @@ function Dashboard() {
 												<span>••• 223</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-orange-100 text-orange-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-orange-100 dark:bg-gray-700 dark:border-orange-300 dark:text-orange-300">
+												<span className="bg-orange-100 text-orange-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-orange-100">
 													In review
 												</span>
 											</td>
 										</tr>
-										<tr className="bg-gray-50 dark:bg-gray-700">
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+										<tr className="bg-gray-50">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Payment to
 												{' '}
 												<span className="font-semibold">
 													Joseph Mcfall
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Apr 1 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												$980
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												0057568935
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-6 h-6"
 													aria-hidden="true"
@@ -3202,29 +3202,29 @@ function Dashboard() {
 												<span>••• 363</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">
+												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-green-100">
 													Completed
 												</span>
 											</td>
 										</tr>
 										<tr>
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Payment from
 												{' '}
 												<span className="font-semibold">
 													Alphabet LLC
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Mar 23 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												$11,436
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												00836143841
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-7 h-7"
 													aria-hidden="true"
@@ -3254,29 +3254,29 @@ function Dashboard() {
 												<span>••• 771</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-purple-100 dark:bg-gray-700 dark:border-purple-500 dark:text-purple-400">
+												<span className="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-purple-100">
 													In progress
 												</span>
 											</td>
 										</tr>
-										<tr className="bg-gray-50 dark:bg-gray-700">
-											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+										<tr className="bg-gray-50">
+											<td className="p-4 text-sm font-normal text-gray-900 whitespace-nowrap">
 												Payment from
 												{' '}
 												<span className="font-semibold">
 													Bonnie Green
 												</span>
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												Mar 23 ,2021
 											</td>
-											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+											<td className="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 												$560
 											</td>
-											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap">
 												0031568935
 											</td>
-											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+											<td className="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap">
 												<svg
 													className="w-7 h-7"
 													aria-hidden="true"
@@ -3306,7 +3306,7 @@ function Dashboard() {
 												<span>••• 023</span>
 											</td>
 											<td className="p-4 whitespace-nowrap">
-												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">
+												<span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-green-100">
 													Completed
 												</span>
 											</td>
@@ -3321,7 +3321,7 @@ function Dashboard() {
 				<div className="flex items-center justify-between pt-3 sm:pt-6">
 					<div>
 						<button
-							className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+							className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900"
 							type="button"
 							data-dropdown-toggle="transactions-dropdown"
 						>
@@ -3344,12 +3344,12 @@ function Dashboard() {
 						</button>
 						{/* Dropdown menu */}
 						<div
-							className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+							className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
 							id="transactions-dropdown"
 						>
 							<div className="px-4 py-3" role="none">
 								<p
-									className="text-sm font-medium text-gray-900 truncate dark:text-white"
+									className="text-sm font-medium text-gray-900 truncate"
 									role="none"
 								>
 									Sep 16, 2021 - Sep 22, 2021
@@ -3359,7 +3359,7 @@ function Dashboard() {
 								<li>
 									<a
 										href="#"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 										role="menuitem"
 									>
 										Yesterday
@@ -3368,7 +3368,7 @@ function Dashboard() {
 								<li>
 									<a
 										href="#"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 										role="menuitem"
 									>
 										Today
@@ -3377,7 +3377,7 @@ function Dashboard() {
 								<li>
 									<a
 										href="#"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 										role="menuitem"
 									>
 										Last 7 days
@@ -3386,7 +3386,7 @@ function Dashboard() {
 								<li>
 									<a
 										href="#"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 										role="menuitem"
 									>
 										Last 30 days
@@ -3395,7 +3395,7 @@ function Dashboard() {
 								<li>
 									<a
 										href="#"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 										role="menuitem"
 									>
 										Last 90 days
@@ -3405,7 +3405,7 @@ function Dashboard() {
 							<div className="py-1" role="none">
 								<a
 									href="#"
-									className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+									className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 									role="menuitem"
 								>
 									Custom...
@@ -3416,7 +3416,7 @@ function Dashboard() {
 					<div className="flex-shrink-0">
 						<a
 							href="#"
-							className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+							className="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100"
 						>
 							Transactions Report
 							<svg

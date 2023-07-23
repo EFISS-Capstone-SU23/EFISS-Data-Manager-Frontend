@@ -21,3 +21,8 @@
 #main-content {
 	grid-area: main;
 }
+
+/* Breadcrumb */
+.breadcrumb-hide-first-icon > svg {
+	display: none;
+}
