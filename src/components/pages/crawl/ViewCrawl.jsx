@@ -14,6 +14,9 @@ import './ViewCrawl.css';
 function ViewCrawl() {
 	const { id } = useParams();
 	const [logs, setLogs] = useState([]);
+	const [visitedURls, setVisitedURls] = useState([]);
+	const [queue, setQueue] = useState([]);
+	const [numOfCrawledProduct, setNumOfCrawledProduct] = useState(0);
 
 	const breadcrumbList = [
 		{
@@ -35,6 +38,18 @@ function ViewCrawl() {
 
 		socket.on(`logData-${id}`, ({ data }) => {
 			setLogs(data);
+		});
+
+		socket.on(`visitedURLsData-${id}`, ({ visitedURLs }) => {
+			setVisitedURls(visitedURLs);
+		});
+
+		socket.on(`queueData-${id}`, ({ queue: queueData }) => {
+			setQueue(queueData);
+		});
+
+		socket.on(`numOfCrawledProduct-${id}`, ({ numOfCrawledProduct: numOfCrawledProductData }) => {
+			setNumOfCrawledProduct(numOfCrawledProductData);
 		});
 
 		return () => {
@@ -66,7 +81,7 @@ function ViewCrawl() {
 									icon={faFileArrowDown}
 									className="mr-3"
 								/>
-								2,340
+								{numOfCrawledProduct}
 							</span>
 						</div>
 					</div>
@@ -89,7 +104,9 @@ function ViewCrawl() {
 						id="visited-panel"
 					>
 						<h3 className="mb-4 text-xl font-semibold">
-							Visited URL List - 0
+							Visited URL List -
+							{' '}
+							{visitedURls.length}
 						</h3>
 						<div
 							data-color-mode="dark"
@@ -104,6 +121,7 @@ function ViewCrawl() {
 								style={codeEditorStyle}
 								minHeight="28rem"
 								disabled
+								value={JSON.stringify(visitedURls, null, 4)}
 							/>
 						</div>
 					</div>
@@ -112,7 +130,9 @@ function ViewCrawl() {
 						id="queue-panel"
 					>
 						<h3 className="mb-4 text-xl font-semibold">
-							Current Queue - 0
+							Current Queue -
+							{' '}
+							{queue.length}
 						</h3>
 						<div
 							data-color-mode="dark"
@@ -127,6 +147,7 @@ function ViewCrawl() {
 								style={codeEditorStyle}
 								minHeight="28rem"
 								disabled
+								value={JSON.stringify(queue, null, 4)}
 							/>
 						</div>
 					</div>
