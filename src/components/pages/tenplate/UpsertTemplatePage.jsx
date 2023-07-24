@@ -9,11 +9,7 @@ import { TemplateIcon } from '../../../icons';
 import FileUtil from '../../../utils/FileUtil';
 import ModalManager from '../../../utils/ModalManager';
 import { upsertTemplate, getTemplateByID } from '../../../api/templateAPI';
-
-const codeEditorStyle = {
-	fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-	fontSize: 12,
-};
+import { codeEditorStyle } from '../../../config';
 
 const validateData = (data) => {
 	if (!data.startUrl) {
@@ -115,7 +111,7 @@ function UpsertTemplatePage() {
 		const file = fileInputRef.current.files[0];
 		// name of file
 		const content = await FileUtil.readFile(file);
-		const jsonTemplate = FileUtil.parseJson(content);
+		const jsonTemplate = FileUtil.parseJSON(content);
 
 		if (!jsonTemplate) {
 			ModalManager.showError('Invalid JSON file');
@@ -135,9 +131,9 @@ function UpsertTemplatePage() {
 				description: descriptionXPathRef.current.value,
 				imageContainer: imageContainerXPathRef.current.value,
 				paginationButton: paginationButtonXPathRef.current.value,
-				metadata: FileUtil.parseJson(metadataXPath || '{}'),
+				metadata: FileUtil.parseJSON(metadataXPath || '{}'),
 			},
-			ignoreUrlPatterns: FileUtil.parseJson(ignoreUrlPatterns || '[]'),
+			ignoreUrlPatterns: FileUtil.parseJSON(ignoreUrlPatterns || '[]'),
 		};
 
 		const error = validateData(data);
@@ -284,7 +280,7 @@ function UpsertTemplatePage() {
 						</div>
 					</div>
 				</div>
-				<div className="">
+				<div>
 					<Button
 						className="col-span-1 bg-primary-700 hover:bg-primary-800 px-2 py-1"
 						onClick={handleSave}

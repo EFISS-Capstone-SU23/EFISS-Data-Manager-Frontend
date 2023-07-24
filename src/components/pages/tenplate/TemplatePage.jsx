@@ -2,7 +2,9 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
-import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+	faPlus, faEdit, faTrash, faCirclePlay,
+} from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, Link } from 'react-router-dom';
 
 import TableData from '../../forms/TableData';
@@ -63,7 +65,7 @@ function TemplatePage() {
 		{
 			header: 'Number of crawls',
 			size: '15%',
-			render: (data) => data.numberOfCrawls,
+			render: (data) => data.numOfCrawls,
 		},
 		{
 			header: 'Actions',
@@ -83,12 +85,23 @@ function TemplatePage() {
 					</Link>
 					<button
 						type="button"
-						className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300"
+						className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 mr-2"
 						onClick={() => handleDelete(data._id)}
 					>
 						<FontAwesomeIcon icon={faTrash} className="w-4 h-4 mr-2" />
 						Delete
 					</button>
+					<Link
+						to={`/crawl/new?templateId=${data._id}`}
+					>
+						<button
+							type="button"
+							className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
+						>
+							<FontAwesomeIcon icon={faCirclePlay} className="w-4 h-4 mr-2" />
+							Start crawl
+						</button>
+					</Link>
 				</>
 			),
 		},
