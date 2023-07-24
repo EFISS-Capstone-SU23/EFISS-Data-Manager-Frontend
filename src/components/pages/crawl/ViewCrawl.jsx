@@ -8,6 +8,7 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 import Breadcrumb from '../../forms/Breadcrumb';
 import { CrawIcon } from '../../../icons';
 import { codeEditorStyle } from '../../../config';
+import { getCrawlById } from '../../../api/crawlAPI';
 
 import './ViewCrawl.css';
 
@@ -17,6 +18,34 @@ function ViewCrawl() {
 	const [visitedURls, setVisitedURls] = useState([]);
 	const [queue, setQueue] = useState([]);
 	const [numOfCrawledProduct, setNumOfCrawledProduct] = useState(0);
+
+	const [runTime, setRunTime] = useState(0);
+
+	useEffect(() => {
+		getCrawlById(id).then((res) => {
+			const { crawl } = res.data;
+			// get difference between start date and current date in minutes
+
+			if (crawl.status === 'running') {
+				setRunTime(Math.abs(new Date() - new Date(crawl.createdAt)) / 1000 / 60);
+				// Create an interval that updates run time every minute
+				const interval = setInterval(() => {
+					setRunTime(Math.abs(new Date() - new Date(crawl.createdAt)) / 1000 / 60);
+				}, 60000);
+
+				return () => {
+					clearInterval(interval);
+				};
+			} if (crawl.status === 'stopped') {
+				setRunTime(Math.abs(new Date(crawl.endTime) - new Date(crawl.createdAt)) / 1000 / 60);
+			} else {
+				// Paused
+				setRunTime(Math.abs(new Date(crawl.updateAt) - new Date(crawl.createdAt)) / 1000 / 60);
+			}
+
+			return () => {};
+		});
+	}, []);
 
 	const breadcrumbList = [
 		{
@@ -95,7 +124,13 @@ function ViewCrawl() {
 							</h3>
 							<span className="text-xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
 								<FontAwesomeIcon icon={faClock} className="mr-3" />
-								1h 20m
+								{Math.floor(runTime / 60)}
+								{' '}
+								h
+								{' '}
+								{Math.floor(runTime % 60)}
+								{' '}
+								m
 							</span>
 						</div>
 					</div>
