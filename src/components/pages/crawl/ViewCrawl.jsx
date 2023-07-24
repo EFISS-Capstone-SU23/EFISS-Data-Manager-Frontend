@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileArrowDown, faClock } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
@@ -11,20 +13,44 @@ import './ViewCrawl.css';
 
 function ViewCrawl() {
 	const { id } = useParams();
+	const [logs, setLogs] = useState([]);
 
-	const breadcrumbList = [{
-		text: 'Crawl',
-		path: '/crawl',
-		icon: CrawIcon,
-	}, {
-		text: `View Crawl ${id}`,
-	}];
+	const breadcrumbList = [
+		{
+			text: 'Crawl',
+			path: '/crawl',
+			icon: CrawIcon,
+		},
+		{
+			text: `View Crawl ${id}`,
+		},
+	];
+
+	useEffect(() => {
+		const socket = io('ws://localhost:5000');
+
+		socket.on('connect', () => {
+			socket.emit('subscribeToLog', id);
+		});
+
+		socket.on(`logData-${id}`, ({ data }) => {
+			setLogs(data);
+		});
+
+		return () => {
+			socket.disconnect();
+		};
+	}, []);
+
+	useEffect(() => {
+		// Scroll to bottom
+		const logPanel = document.querySelector('#log-container');
+		logPanel.scrollTop = logPanel.scrollHeight;
+	}, [logs]);
 
 	return (
 		<>
-			<Breadcrumb
-				breadcrumbList={breadcrumbList}
-			/>
+			<Breadcrumb breadcrumbList={breadcrumbList} />
 			<div className="px-4">
 				<div className="grid gap-4 mb-6" id="view-crawl-conatiner">
 					<div
@@ -32,9 +58,14 @@ function ViewCrawl() {
 						id="number-panel"
 					>
 						<div className="w-full">
-							<h3 className="text-base font-normal text-gray-500 dark:text-gray-400 mb-3">Crawled Products</h3>
+							<h3 className="text-base font-normal text-gray-500 dark:text-gray-400 mb-3">
+								Crawled Products
+							</h3>
 							<span className="text-xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
-								<FontAwesomeIcon icon={faFileArrowDown} className="mr-3" />
+								<FontAwesomeIcon
+									icon={faFileArrowDown}
+									className="mr-3"
+								/>
 								2,340
 							</span>
 						</div>
@@ -44,7 +75,9 @@ function ViewCrawl() {
 						id="time-panel"
 					>
 						<div className="w-full">
-							<h3 className="text-base font-normal text-gray-500 dark:text-gray-400 mb-3">Time taken</h3>
+							<h3 className="text-base font-normal text-gray-500 dark:text-gray-400 mb-3">
+								Time taken
+							</h3>
 							<span className="text-xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
 								<FontAwesomeIcon icon={faClock} className="mr-3" />
 								1h 20m
@@ -101,15 +134,14 @@ function ViewCrawl() {
 						className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm"
 						id="log-panel"
 					>
-						<h3 className="mb-4 text-xl font-semibold">
-							Log
-						</h3>
+						<h3 className="mb-4 text-xl font-semibold">Log</h3>
 						<div
 							data-color-mode="dark"
 							style={{
 								maxHeight: '20rem',
 								overflow: 'auto',
 							}}
+							id="log-container"
 						>
 							<CodeEditor
 								language="json"
@@ -117,6 +149,7 @@ function ViewCrawl() {
 								style={codeEditorStyle}
 								minHeight="20rem"
 								disabled
+								value={logs}
 							/>
 						</div>
 					</div>
