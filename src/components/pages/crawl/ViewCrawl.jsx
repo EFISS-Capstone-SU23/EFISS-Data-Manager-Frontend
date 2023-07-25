@@ -8,12 +8,44 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 import Breadcrumb from '../../forms/Breadcrumb';
 import { CrawIcon } from '../../../icons';
 import { codeEditorStyle } from '../../../config';
+import { getCrawlById } from '../../../api/crawlAPI';
 
 import './ViewCrawl.css';
 
 function ViewCrawl() {
 	const { id } = useParams();
 	const [logs, setLogs] = useState([]);
+	const [visitedURls, setVisitedURls] = useState([]);
+	const [queue, setQueue] = useState([]);
+	const [numOfCrawledProduct, setNumOfCrawledProduct] = useState(0);
+
+	const [runTime, setRunTime] = useState(0);
+
+	useEffect(() => {
+		getCrawlById(id).then((res) => {
+			const { crawl } = res.data;
+			// get difference between start date and current date in minutes
+
+			if (crawl.status === 'running') {
+				setRunTime(Math.abs(new Date() - new Date(crawl.createdAt)) / 1000 / 60);
+				// Create an interval that updates run time every minute
+				const interval = setInterval(() => {
+					setRunTime(Math.abs(new Date() - new Date(crawl.createdAt)) / 1000 / 60);
+				}, 60000);
+
+				return () => {
+					clearInterval(interval);
+				};
+			} if (crawl.status === 'stopped') {
+				setRunTime(Math.abs(new Date(crawl.endTime) - new Date(crawl.createdAt)) / 1000 / 60);
+			} else {
+				// Paused
+				setRunTime(Math.abs(new Date(crawl.updateAt) - new Date(crawl.createdAt)) / 1000 / 60);
+			}
+
+			return () => {};
+		});
+	}, []);
 
 	const breadcrumbList = [
 		{
@@ -35,6 +67,18 @@ function ViewCrawl() {
 
 		socket.on(`logData-${id}`, ({ data }) => {
 			setLogs(data);
+		});
+
+		socket.on(`visitedURLsData-${id}`, ({ visitedURLs }) => {
+			setVisitedURls(visitedURLs);
+		});
+
+		socket.on(`queueData-${id}`, ({ queue: queueData }) => {
+			setQueue(queueData);
+		});
+
+		socket.on(`numOfCrawledProduct-${id}`, ({ numOfCrawledProduct: numOfCrawledProductData }) => {
+			setNumOfCrawledProduct(numOfCrawledProductData);
 		});
 
 		return () => {
@@ -66,7 +110,7 @@ function ViewCrawl() {
 									icon={faFileArrowDown}
 									className="mr-3"
 								/>
-								2,340
+								{numOfCrawledProduct}
 							</span>
 						</div>
 					</div>
@@ -80,7 +124,13 @@ function ViewCrawl() {
 							</h3>
 							<span className="text-xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
 								<FontAwesomeIcon icon={faClock} className="mr-3" />
-								1h 20m
+								{Math.floor(runTime / 60)}
+								{' '}
+								h
+								{' '}
+								{Math.floor(runTime % 60)}
+								{' '}
+								m
 							</span>
 						</div>
 					</div>
@@ -89,7 +139,9 @@ function ViewCrawl() {
 						id="visited-panel"
 					>
 						<h3 className="mb-4 text-xl font-semibold">
-							Visited URL List - 0
+							Visited URL List -
+							{' '}
+							{visitedURls.length}
 						</h3>
 						<div
 							data-color-mode="dark"
@@ -104,6 +156,7 @@ function ViewCrawl() {
 								style={codeEditorStyle}
 								minHeight="28rem"
 								disabled
+								value={JSON.stringify(visitedURls, null, 4)}
 							/>
 						</div>
 					</div>
@@ -112,7 +165,9 @@ function ViewCrawl() {
 						id="queue-panel"
 					>
 						<h3 className="mb-4 text-xl font-semibold">
-							Current Queue - 0
+							Current Queue -
+							{' '}
+							{queue.length}
 						</h3>
 						<div
 							data-color-mode="dark"
@@ -127,6 +182,7 @@ function ViewCrawl() {
 								style={codeEditorStyle}
 								minHeight="28rem"
 								disabled
+								value={JSON.stringify(queue, null, 4)}
 							/>
 						</div>
 					</div>
