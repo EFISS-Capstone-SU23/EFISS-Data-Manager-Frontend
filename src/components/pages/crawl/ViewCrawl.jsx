@@ -40,7 +40,7 @@ function ViewCrawl() {
 				setRunTime(Math.abs(new Date(crawl.endTime) - new Date(crawl.createdAt)) / 1000 / 60);
 			} else {
 				// Paused
-				setRunTime(Math.abs(new Date(crawl.updateAt) - new Date(crawl.createdAt)) / 1000 / 60);
+				setRunTime(Math.abs(new Date(crawl.updatedAt) - new Date(crawl.createdAt)) / 1000 / 60);
 			}
 
 			return () => {};
