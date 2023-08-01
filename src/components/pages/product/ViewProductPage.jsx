@@ -12,25 +12,24 @@ import { codeEditorStyle } from '../../../config';
 function ViewProductPage() {
 	const { id: productId } = useParams();
 
-	const breadcrumbList = [{
-		text: 'Products',
-		path: '/product',
-		icon: ProductIcon,
-	}, {
-		text: `Product ${productId} detail`,
-	}];
+	const breadcrumbList = [
+		{
+			text: 'Products',
+			path: '/product',
+			icon: ProductIcon,
+		},
+		{
+			text: `Product ${productId} detail`,
+		},
+	];
 
 	return (
 		<>
-			<Breadcrumb
-				breadcrumbList={breadcrumbList}
-			/>
+			<Breadcrumb breadcrumbList={breadcrumbList} />
 			<div className="px-4">
 				<div className="grid grid-cols-3 gap-4">
 					<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm col-span-1">
-						<h3 className="mb-4 text-xl font-semibold">
-							Product Detail
-						</h3>
+						<h3 className="mb-4 text-xl font-semibold">Product Detail</h3>
 						<Input
 							label="Title"
 							name="title"
@@ -43,9 +42,7 @@ function ViewProductPage() {
 							placeholder="Product price"
 							disabled
 						/>
-						<div
-							className="mt-4 text-sm font-medium text-gray-900"
-						>
+						<div className="mt-4 text-sm font-medium text-gray-900">
 							<span>Shop Name: </span>
 							<a
 								href="/"
@@ -56,9 +53,7 @@ function ViewProductPage() {
 								domain
 							</a>
 						</div>
-						<div
-							className="mt-4 text-sm font-medium text-gray-900"
-						>
+						<div className="mt-4 text-sm font-medium text-gray-900">
 							<span>Crawl: </span>
 							<a
 								href="/"
@@ -69,14 +64,10 @@ function ViewProductPage() {
 								lkasjdlaskdjklasd
 							</a>
 						</div>
-						<div
-							className="mt-4 text-sm font-medium text-gray-900"
-						>
+						<div className="mt-4 text-sm font-medium text-gray-900">
 							<span>Crawled At: </span>
 						</div>
-						<hr
-							className="my-5 border-gray-300"
-						/>
+						<hr className="my-5 border-gray-300" />
 
 						<div>
 							<a
@@ -99,11 +90,17 @@ function ViewProductPage() {
 								}}
 							>
 								<label className="relative inline-flex items-center cursor-pointer">
-									<input type="checkbox" defaultValue className="sr-only peer" defaultChecked />
+									<input
+										type="checkbox"
+										defaultValue
+										className="sr-only peer"
+										defaultChecked
+									/>
 									<div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
-									<span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Active</span>
+									<span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+										Active
+									</span>
 								</label>
-
 							</div>
 						</div>
 					</div>
