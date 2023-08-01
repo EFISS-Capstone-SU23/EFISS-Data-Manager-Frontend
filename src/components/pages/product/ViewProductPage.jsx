@@ -11,6 +11,7 @@ import Breadcrumb from '../../forms/Breadcrumb';
 import Input from '../../forms/Input';
 import { codeEditorStyle, numberCurrencyFormat } from '../../../config';
 import productAPI from '../../../api/productAPI';
+import ImageViewers from './imageViewer/ImageViewer';
 
 function ViewProductPage() {
 	const { id: productId } = useParams();
@@ -187,13 +188,10 @@ function ViewProductPage() {
 					<div
 						className="grid grid-cols-6 gap-4"
 					>
-						{imageList.map((image) => (
-							<img
-								src={image.url}
-								alt={image.url}
-								className={`col-span-1 rounded-lg shadow-sm ${image.active ? 'product-image-active' : 'product-image-deactive'}`}
-							/>
-						))}
+						<ImageViewers
+							imageList={imageList}
+							productTitle={product.title}
+						/>
 					</div>
 				</div>
 			</div>
