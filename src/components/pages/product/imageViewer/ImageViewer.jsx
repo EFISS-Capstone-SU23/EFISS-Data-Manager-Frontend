@@ -9,6 +9,7 @@ import './ImageViewer.css';
 function ImageViewers({
 	imageList = [],
 	product = {},
+	productActive = true,
 }) {
 	// console.log('asldkjaslkjasdk', open, currentIndex);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -23,7 +24,7 @@ function ImageViewers({
 		<>
 			<h3 className="mb-4 text-xl font-semibold">
 				Product Images (
-				{imageList.filter((el) => el.active).length}
+				{productActive ? imageList.filter((el) => el.active).length : 0}
 				/
 				{imageList.length}
 				{' '}
@@ -36,7 +37,7 @@ function ImageViewers({
 					<img
 						src={image.url}
 						alt={image.url}
-						className={`col-span-1 rounded-lg shadow-sm border-2 ${image.active ? 'product-image-active border-blue-500' : 'product-image-deactive border-gray-200'}`}
+						className={`col-span-1 rounded-lg shadow-sm border-2 ${productActive && image.active ? 'product-image-active border-blue-500' : 'product-image-deactive border-gray-200'}`}
 						onClick={() => {
 							setCurrentImageIndex(i);
 							setIsOpen(true);

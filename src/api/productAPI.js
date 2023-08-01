@@ -22,4 +22,9 @@ export default {
 			active,
 		});
 	},
+	updateProduct: (id, update) => {
+		return instance.post(`/update/${id}`, {
+			...update,
+		});
+	},
 };
