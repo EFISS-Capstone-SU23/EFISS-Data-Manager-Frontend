@@ -5,7 +5,7 @@ import {
 	faChevronLeft, faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 8;
 
 function TableData({
 	schema,
@@ -69,7 +69,7 @@ function TableData({
 									<tr className="hover:bg-gray-100">
 										{schema.map((col) => (
 											<td
-												className="p-4 text-base font-medium text-gray-900 whitespace-nowrap"
+												className="p-3 text-base font-medium text-gray-900 whitespace-nowrap"
 												style={{
 													maxWidth: col.size || 'auto',
 													overflow: 'hidden',
