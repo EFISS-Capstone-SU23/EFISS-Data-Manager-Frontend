@@ -15,6 +15,8 @@ import productAPI from '../../../api/productAPI';
 function ViewProductPage() {
 	const { id: productId } = useParams();
 	const [product, setProduct] = useState({});
+	// eslint-disable-next-line no-unused-vars
+	const [imageList, setImageList] = useState([]);
 
 	const breadcrumbList = [
 		{
@@ -30,7 +32,19 @@ function ViewProductPage() {
 	useEffect(() => {
 		productAPI.getProduct(productId)
 			.then((res) => {
-				setProduct(res.data.product);
+				const productData = res.data.product;
+
+				const {
+					activeImageMap,
+				} = productData;
+
+				const images = productData.images.map((image, i) => ({
+					url: image,
+					active: activeImageMap[i],
+				}));
+
+				setProduct(productData);
+				setImageList(images);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -162,8 +176,25 @@ function ViewProductPage() {
 
 				<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm col-span-3">
 					<h3 className="mb-4 text-xl font-semibold">
-						Product Images (0) - 6 Active Image
+						Product Images (
+						{imageList.filter((el) => el.active).length}
+						/
+						{imageList.length}
+						{' '}
+						active images)
 					</h3>
+
+					<div
+						className="grid grid-cols-6 gap-4"
+					>
+						{imageList.map((image) => (
+							<img
+								src={image.url}
+								alt={image.url}
+								className={`col-span-1 rounded-lg shadow-sm ${image.active ? 'product-image-active' : 'product-image-deactive'}`}
+							/>
+						))}
+					</div>
 				</div>
 			</div>
 		</>
