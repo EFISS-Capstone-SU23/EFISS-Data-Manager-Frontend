@@ -9,16 +9,25 @@ import { ProductIcon } from '../../../icons';
 import productAPI from '../../../api/productAPI';
 import { numberCurrencyFormat } from '../../../config';
 
-const breadcrumbList = [{
-	text: 'Products',
-	path: '/product',
-	icon: ProductIcon,
-}];
+const breadcrumbList = [
+	{
+		text: 'Products',
+		path: '/product',
+		icon: ProductIcon,
+	},
+];
 
 function ProductPage() {
 	// eslint-disable-next-line no-unused-vars
 	const [tableLoad, setTableLoad] = useState(0);
 	const [query, setQuery] = useState({});
+
+	const handleToggleActive = async (productId, active) => {
+		productAPI.updateProduct(productId, { active })
+			.then(() => {
+				setTableLoad(tableLoad + 1);
+			});
+	};
 
 	const schema = [
 		{
@@ -48,9 +57,15 @@ function ProductPage() {
 		{
 			header: 'Active',
 			size: '10%',
-			render: () => (
+			render: (data) => (
 				<label className="relative inline-flex items-center mr-5 cursor-pointer">
-					<input type="checkbox" defaultValue className="sr-only peer" defaultChecked />
+					<input
+						type="checkbox"
+						defaultValue
+						className="sr-only peer"
+						checked={data.active}
+						onChange={(e) => handleToggleActive(data._id, e.target.checked)}
+					/>
 					<div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
 				</label>
 			),
@@ -60,9 +75,7 @@ function ProductPage() {
 			size: '25%',
 			render: (data) => (
 				<>
-					<Link
-						to={`/product/${data._id}`}
-					>
+					<Link to={`/product/${data._id}`}>
 						<button
 							type="button"
 							className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
