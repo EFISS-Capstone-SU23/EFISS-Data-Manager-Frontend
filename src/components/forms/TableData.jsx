@@ -50,7 +50,7 @@ function TableData({
 			<div className="overflow-x-auto">
 				<div className="inline-block min-w-full align-middle">
 					<div className="overflow-hidden shadow">
-						<table className="min-w-full divide-y divide-gray-200 table-fixed">
+						<table className="w-full divide-y divide-gray-200 table-fixed">
 							<thead className="bg-gray-100">
 								<tr>
 									{schema.map((col) => (
@@ -68,7 +68,14 @@ function TableData({
 								{data.map((template) => (
 									<tr className="hover:bg-gray-100">
 										{schema.map((col) => (
-											<td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
+											<td
+												className="p-4 text-base font-medium text-gray-900 whitespace-nowrap"
+												style={{
+													maxWidth: col.size || 'auto',
+													overflow: 'hidden',
+													textOverflow: 'ellipsis',
+												}}
+											>
 												{col.render(template)}
 											</td>
 										))}
