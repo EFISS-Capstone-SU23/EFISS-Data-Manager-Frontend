@@ -9,6 +9,7 @@ const Input = React.forwardRef((props, ref) => {
 		placeholder = '',
 		required = false,
 		disabled = false,
+		value = '',
 	} = props;
 
 	return (
@@ -26,6 +27,7 @@ const Input = React.forwardRef((props, ref) => {
 				required={required}
 				ref={ref}
 				disabled={disabled}
+				value={value}
 			/>
 		</div>
 	);

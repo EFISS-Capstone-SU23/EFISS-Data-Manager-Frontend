@@ -12,4 +12,7 @@ export default {
 			query,
 		});
 	},
+	getProduct: (id) => {
+		return instance.get(`/${id}`);
+	},
 };

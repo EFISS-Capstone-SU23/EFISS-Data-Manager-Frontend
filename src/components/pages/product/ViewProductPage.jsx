@@ -1,16 +1,20 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { Textarea } from 'flowbite-react';
+import { useEffect, useState } from 'react';
+import moment from 'moment';
 
 import { ProductIcon } from '../../../icons';
 import Breadcrumb from '../../forms/Breadcrumb';
 import Input from '../../forms/Input';
-import { codeEditorStyle } from '../../../config';
+import { codeEditorStyle, numberCurrencyFormat } from '../../../config';
+import productAPI from '../../../api/productAPI';
 
 function ViewProductPage() {
 	const { id: productId } = useParams();
+	const [product, setProduct] = useState({});
 
 	const breadcrumbList = [
 		{
@@ -22,6 +26,12 @@ function ViewProductPage() {
 			text: `Product ${productId} detail`,
 		},
 	];
+
+	useEffect(() => {
+		productAPI.getProduct(productId).then((res) => {
+			setProduct(res.data.product);
+		});
+	}, []);
 
 	return (
 		<>
@@ -35,43 +45,45 @@ function ViewProductPage() {
 							name="title"
 							placeholder="Product title"
 							disabled
+							value={product.title}
 						/>
 						<Input
 							label="Price"
 							name="price"
 							placeholder="Product price"
 							disabled
+							value={numberCurrencyFormat.format(product.price)}
 						/>
 						<div className="mt-4 text-sm font-medium text-gray-900">
 							<span>Shop Name: </span>
-							<a
-								href="/"
-								target="_blank"
-								rel="noreferrer"
+							<Link
+								to={`/shop/${product.shopName}`}
 								className="text-primary-700"
 							>
-								domain
-							</a>
+								{product.shopName}
+							</Link>
 						</div>
 						<div className="mt-4 text-sm font-medium text-gray-900">
-							<span>Crawl: </span>
-							<a
-								href="/"
-								target="_blank"
-								rel="noreferrer"
+							<span>Crawl ID: </span>
+							<Link
+								to={`/crawl/view/${product.crawlId}`}
 								className="text-primary-700"
 							>
-								lkasjdlaskdjklasd
-							</a>
+								{product.crawlId}
+							</Link>
 						</div>
 						<div className="mt-4 text-sm font-medium text-gray-900">
-							<span>Crawled At: </span>
+							<span>
+								Last updated:
+								{' '}
+								{moment(product.updatedAt).format('DD/MM/YYYY HH:mm:ss')}
+							</span>
 						</div>
 						<hr className="my-5 border-gray-300" />
 
 						<div>
 							<a
-								href="https://www.example.com"
+								href={product.url}
 								target="_blank"
 								rel="noreferrer"
 							>
@@ -94,7 +106,7 @@ function ViewProductPage() {
 										type="checkbox"
 										defaultValue
 										className="sr-only peer"
-										defaultChecked
+										defaultChecked={product.active}
 									/>
 									<div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
 									<span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -117,6 +129,7 @@ function ViewProductPage() {
 								maxHeight: 340,
 								height: 340,
 							}}
+							value={product.description}
 						/>
 					</div>
 					<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm col-span-1">
@@ -137,7 +150,7 @@ function ViewProductPage() {
 								minHeight={340}
 								style={codeEditorStyle}
 								disabled
-								value="{}"
+								value={JSON.stringify(product.metadata, null, 4)}
 							/>
 						</div>
 					</div>
