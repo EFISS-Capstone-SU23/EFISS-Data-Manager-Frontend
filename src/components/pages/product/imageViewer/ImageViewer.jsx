@@ -11,7 +11,6 @@ function ImageViewers({
 	product = {},
 	productActive = true,
 }) {
-	// console.log('asldkjaslkjasdk', open, currentIndex);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 	const [isOpen, setIsOpen] = useState(false);
 	const [images, setImages] = useState(imageList);
