@@ -28,9 +28,13 @@ function ViewProductPage() {
 	];
 
 	useEffect(() => {
-		productAPI.getProduct(productId).then((res) => {
-			setProduct(res.data.product);
-		});
+		productAPI.getProduct(productId)
+			.then((res) => {
+				setProduct(res.data.product);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	}, []);
 
 	return (
