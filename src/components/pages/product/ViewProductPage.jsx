@@ -176,23 +176,10 @@ function ViewProductPage() {
 				</div>
 
 				<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm col-span-3">
-					<h3 className="mb-4 text-xl font-semibold">
-						Product Images (
-						{imageList.filter((el) => el.active).length}
-						/
-						{imageList.length}
-						{' '}
-						active images)
-					</h3>
-
-					<div
-						className="grid grid-cols-6 gap-4"
-					>
-						<ImageViewers
-							imageList={imageList}
-							productTitle={product.title}
-						/>
-					</div>
+					<ImageViewers
+						imageList={imageList}
+						product={product}
+					/>
 				</div>
 			</div>
 		</>

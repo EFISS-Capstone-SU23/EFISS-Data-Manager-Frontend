@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Lightbox from 'react-spring-lightbox';
 
 import ImageViewerHeader from './ImageViewerHeader';
@@ -8,40 +8,59 @@ import './ImageViewer.css';
 
 function ImageViewers({
 	imageList = [],
-	productTitle = '',
+	product = {},
 }) {
 	// console.log('asldkjaslkjasdk', open, currentIndex);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 	const [isOpen, setIsOpen] = useState(false);
+	const [images, setImages] = useState(imageList);
+
+	useEffect(() => {
+		setImages(imageList);
+	}, [imageList]);
 
 	return (
 		<>
-			{imageList.map((image, i) => (
-				<img
-					src={image.url}
-					alt={image.url}
-					className={`col-span-1 rounded-lg shadow-sm ${image.active ? 'product-image-active' : 'product-image-deactive'}`}
-					onClick={() => {
-						setCurrentImageIndex(i);
-						setIsOpen(true);
-					}}
-					loading="lazy"
-				/>
-			))}
+			<h3 className="mb-4 text-xl font-semibold">
+				Product Images (
+				{imageList.filter((el) => el.active).length}
+				/
+				{imageList.length}
+				{' '}
+				active images)
+			</h3>
+			<div
+				className="grid grid-cols-6 gap-4"
+			>
+				{images.map((image, i) => (
+					<img
+						src={image.url}
+						alt={image.url}
+						className={`col-span-1 rounded-lg shadow-sm ${image.active ? 'product-image-active' : 'product-image-deactive'}`}
+						onClick={() => {
+							setCurrentImageIndex(i);
+							setIsOpen(true);
+						}}
+						loading="lazy"
+					/>
+				))}
+			</div>
 
 			<Lightbox
-				images={imageList.map((image) => ({ src: image.url }))}
+				images={images.map((image) => ({ src: image.url }))}
 				isOpen={isOpen}
 				currentIndex={currentImageIndex}
-				onPrev={() => setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : imageList.length - 1))}
-				onNext={() => setCurrentImageIndex((prev) => (prev < imageList.length - 1 ? prev + 1 : 0))}
+				onPrev={() => setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1))}
+				onNext={() => setCurrentImageIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0))}
 				onClose={() => setIsOpen(false)}
 				className="image-viewer-container"
 				renderHeader={() => (
 					<ImageViewerHeader
-						imageList={imageList}
+						imageList={images}
 						currentImageIndex={currentImageIndex}
-						productTitle={productTitle}
+						productTitle={product.title}
+						productId={product._id}
+						setImages={setImages}
 					/>
 				)}
 			/>

@@ -15,4 +15,11 @@ export default {
 	getProduct: (id) => {
 		return instance.get(`/${id}`);
 	},
+	setActiveForImage: (productId, imageIndex, active) => {
+		return instance.put('/setActiveForImage', {
+			productId,
+			imageIndex,
+			active,
+		});
+	},
 };
