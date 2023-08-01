@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 import TableData from '../../forms/TableData';
 import Breadcrumb from '../../forms/Breadcrumb';
@@ -71,13 +71,13 @@ function ProductPage() {
 							View Product
 						</button>
 					</Link>
-					<button
+					{/* <button
 						type="button"
 						className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 mr-2"
 					>
 						<FontAwesomeIcon icon={faTrash} className="w-4 h-4 mr-2" />
 						Delete
-					</button>
+					</button> */}
 				</>
 			),
 		},
