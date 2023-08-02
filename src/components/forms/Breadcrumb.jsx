@@ -10,7 +10,7 @@ function Breadcrumb({
 		<FlowbiteBreadcrumb
 			className="m-4"
 		>
-			{breadcrumbList.map((breadcrumb) => (
+			{breadcrumbList.map((breadcrumb, i) => (
 				<FlowbiteBreadcrumb.Item
 					icon={breadcrumb.icon}
 					className={`cursor-pointer ${breadcrumb.icon ? 'breadcrumb-hide-first-icon' : ''}`}
@@ -19,6 +19,7 @@ function Breadcrumb({
 							navigate(breadcrumb.path);
 						}
 					}}
+					key={i}
 				>
 					<p className="hover:underline">
 						{breadcrumb.text}
