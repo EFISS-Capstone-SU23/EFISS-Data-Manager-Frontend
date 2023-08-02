@@ -267,6 +267,7 @@ function ViewCrawl() {
 						<ProductTable
 							query={{ crawlId: id }}
 							tableLoad={numOfCrawledProduct}
+							keepPageOnReload
 						/>
 					</div>
 				</div>

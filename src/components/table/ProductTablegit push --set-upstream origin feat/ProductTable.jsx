@@ -12,6 +12,7 @@ import TableData from '../../forms/TableData';
 function ProductTable({
 	query: queryProb = {},
 	tableLoad: tableLoadProb = 0,
+	keepPageOnReload = false,
 }) {
 	const [query, setQuery] = useState(queryProb);
 	const [tableLoad, setTableLoad] = useState(0);
@@ -107,6 +108,7 @@ function ProductTable({
 			fetchData={productAPI.getListProducts}
 			tableLoad={tableLoad}
 			query={query}
+			keepPageOnReload={keepPageOnReload}
 		/>
 	);
 }
