@@ -47,7 +47,7 @@ function ProductTable({
 		{
 			header: 'Last Update',
 			size: '15%',
-			render: (data) => moment(data.lastUpdate).format('DD/MM/YYYY HH:mm'),
+			render: (data) => moment(data.lastUpdate || data.createdAt).format('DD/MM/YYYY HH:mm'),
 		},
 		{
 			header: 'Shop Name',
