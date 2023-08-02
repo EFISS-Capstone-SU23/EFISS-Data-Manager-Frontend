@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
 
 import TableData from '../../forms/TableData';
 import Breadcrumb from '../../forms/Breadcrumb';
@@ -50,13 +51,18 @@ function ProductPage() {
 			render: (data) => numberCurrencyFormat.format(data.price),
 		},
 		{
+			header: 'Last Update',
+			size: '15%',
+			render: (data) => moment(data.lastUpdate).format('DD/MM/YYYY HH:mm'),
+		},
+		{
 			header: 'Shop Name',
 			size: '15%',
 			render: (data) => data.shopName,
 		},
 		{
 			header: 'Active',
-			size: '10%',
+			size: '7%',
 			render: (data) => (
 				<label className="relative inline-flex items-center mr-5 cursor-pointer">
 					<input
@@ -72,7 +78,7 @@ function ProductPage() {
 		},
 		{
 			header: 'Action',
-			size: '25%',
+			size: '13%',
 			render: (data) => (
 				<>
 					<Link to={`/product/${data._id}`}>
@@ -96,10 +102,10 @@ function ProductPage() {
 		},
 	];
 
-	const handleSearch = (website) => {
+	const handleSearch = (search) => {
 		setQuery({
 			...query,
-			website,
+			search,
 		});
 	};
 
