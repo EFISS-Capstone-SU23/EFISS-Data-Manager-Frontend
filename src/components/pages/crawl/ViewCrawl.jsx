@@ -13,6 +13,8 @@ import { codeEditorStyle } from '../../../config';
 import { getCrawlById } from '../../../api/crawlAPI';
 
 import './ViewCrawl.css';
+// eslint-disable-next-line no-unused-vars
+import ProductTable from '../../table/ProductTablegit push --set-upstream origin feat/ProductTable';
 
 function ViewCrawl() {
 	const { id } = useParams();
@@ -254,6 +256,18 @@ function ViewCrawl() {
 								value={logs}
 							/>
 						</div>
+					</div>
+					<div
+						className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm"
+						id="product-panel"
+					>
+						<h3 className="mb-4 text-xl font-semibold">
+							Products
+						</h3>
+						<ProductTable
+							query={{ crawlId: id }}
+							tableLoad={numOfCrawledProduct}
+						/>
 					</div>
 				</div>
 			</div>

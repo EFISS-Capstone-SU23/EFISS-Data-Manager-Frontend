@@ -7,6 +7,7 @@
 	grid-template-areas:
 		"number image time instance log"
 		"visited visited queue queue log"
+		"product product product product product"
 	;
 
 }
@@ -37,4 +38,8 @@
 
 #instance-panel {
 	grid-area: instance;
+}
+
+#product-panel {
+	grid-area: product;
 }

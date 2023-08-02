@@ -11,8 +11,10 @@ import TableData from '../../forms/TableData';
 
 function ProductTable({
 	query: queryProb = {},
+	tableLoad: tableLoadProb = 0,
 }) {
 	const [query, setQuery] = useState(queryProb);
+	const [tableLoad, setTableLoad] = useState(0);
 
 	const handleToggleActive = async (productId, active) => {
 		productAPI.updateProduct(productId, { active })
@@ -95,11 +97,15 @@ function ProductTable({
 		setQuery(queryProb);
 	}, [queryProb]);
 
+	useEffect(() => {
+		setTableLoad(tableLoadProb);
+	}, [tableLoadProb]);
+
 	return (
 		<TableData
 			schema={schema}
 			fetchData={productAPI.getListProducts}
-			tableLoad={0}
+			tableLoad={tableLoad}
 			query={query}
 		/>
 	);
