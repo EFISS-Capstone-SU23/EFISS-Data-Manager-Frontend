@@ -23,6 +23,7 @@ function TableData({
 		fetchData(page, PAGE_SIZE, query)
 			.then((res) => {
 				setData(res.data.data);
+				console.log(res.data.data);
 
 				setTotal(res.data.total);
 				setStart((page - 1) * PAGE_SIZE + 1);

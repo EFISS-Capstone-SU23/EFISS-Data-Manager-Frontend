@@ -2,7 +2,7 @@
 	background: rgba(39, 39, 39, 0.6)
 }
 
-.product-image-deactive {
+.product-image-inactive {
 	filter: grayscale(100%);
 	opacity: 0.3;
 

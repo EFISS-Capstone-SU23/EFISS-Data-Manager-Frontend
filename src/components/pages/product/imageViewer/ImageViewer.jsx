@@ -36,7 +36,7 @@ function ImageViewers({
 					<img
 						src={image.url}
 						alt={image.url}
-						className={`col-span-1 rounded-lg shadow-sm border-2 ${productActive && image.active ? 'product-image-active border-blue-500' : 'product-image-deactive border-gray-200'}`}
+						className={`col-span-1 rounded-lg shadow-sm border-2 ${productActive && image.active ? 'product-image-active border-blue-500' : 'product-image-inactive border-gray-200'}`}
 						onClick={() => {
 							setCurrentImageIndex(i);
 							setIsOpen(true);
