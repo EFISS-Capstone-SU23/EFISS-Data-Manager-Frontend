@@ -9,6 +9,7 @@ import Breadcrumb from '../../forms/Breadcrumb';
 import { ProductIcon } from '../../../icons';
 import productAPI from '../../../api/productAPI';
 import { numberCurrencyFormat } from '../../../config';
+import ToggleButton from '../../forms/ToggleButton';
 
 const breadcrumbList = [
 	{
@@ -63,15 +64,12 @@ function ProductPage() {
 			size: '7%',
 			render: (data) => {
 				return (
-					<label className="relative inline-flex items-center mr-5 cursor-pointer">
-						<input
-							type="checkbox"
-							defaultChecked={data.active}
-							className="sr-only peer"
-							onChange={(e) => handleToggleActive(data._id, e.target.checked)}
-						/>
-						<div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
-					</label>
+					<ToggleButton
+						activeValue={data.active}
+						onChangeHandler={(active) => {
+							handleToggleActive(data._id, active);
+						}}
+					/>
 				);
 			},
 		},
