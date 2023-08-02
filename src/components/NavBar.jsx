@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from 'react-router-dom';
+
 function NavBar() {
 	return (
 		<nav
@@ -42,7 +44,10 @@ function NavBar() {
 								/>
 							</svg>
 						</button>
-						<a href className="flex ml-2 md:mr-24">
+						<Link
+							to="/"
+							className="flex ml-2 md:mr-24"
+						>
 							<img
 								src="/images/logo.svg"
 								className="h-8 mr-3"
@@ -51,7 +56,7 @@ function NavBar() {
 							<span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
 								EFISS
 							</span>
-						</a>
+						</Link>
 					</div>
 					<div className="flex items-center">
 						<button
@@ -108,64 +113,6 @@ function NavBar() {
 										alt="user"
 									/>
 								</button>
-							</div>
-							{/* Dropdown menu */}
-							<div
-								className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
-								id="dropdown-2"
-							>
-								<div className="px-4 py-3" role="none">
-									<p
-										className="text-sm text-gray-900"
-										role="none"
-									>
-										Neil Sims
-									</p>
-									<p
-										className="text-sm font-medium text-gray-900 truncate"
-										role="none"
-									>
-										neil.sims@flowbite.com
-									</p>
-								</div>
-								<ul className="py-1" role="none">
-									<li>
-										<a
-											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-											role="menuitem"
-										>
-											Dashboard
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-											role="menuitem"
-										>
-											Settings
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-											role="menuitem"
-										>
-											Earnings
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-											role="menuitem"
-										>
-											Sign out
-										</a>
-									</li>
-								</ul>
 							</div>
 						</div>
 					</div>
