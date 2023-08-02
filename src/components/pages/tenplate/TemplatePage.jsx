@@ -127,7 +127,7 @@ function TemplatePage() {
 						</div>
 						<div className="sm:flex">
 							<div className="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0">
-								<div className="relative mt-1 lg:w-64 xl:w-96">
+								<div className="relative lg:w-64 xl:w-96">
 									<input
 										type="text"
 										name="email"
