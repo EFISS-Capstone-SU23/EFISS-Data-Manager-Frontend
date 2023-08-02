@@ -63,7 +63,6 @@ function ViewProductPage() {
 				console.log(err);
 			});
 	};
-	console.log(product);
 
 	return (
 		<>
