@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { PRODUCT_SERVICE_URL } from '../config';
+const PRODUCT_SERVICE_URL = process.env.REACT_APP_PRODUCT_SERVICE_URL || 'http://localhost:3002';
 
 const instance = axios.create({
 	baseURL: PRODUCT_SERVICE_URL,
