@@ -75,6 +75,8 @@ function UpsertTemplatePage() {
 	const [descriptionXPath, setDescriptionXPath] = useState('');
 	const [imageContainerXPath, setImageContainerXPath] = useState('');
 	const [paginationButtonXPath, setPaginationButtonXPath] = useState('');
+	const [imageElement, setImageElement] = useState('img');
+	const [imageLinkProperties, setImageLinkProperties] = useState('src');
 	const fileInputRef = useRef('');
 
 	const [metadataXPath, setMetadataXPath] = useState('{}');
@@ -88,6 +90,8 @@ function UpsertTemplatePage() {
 		setDescriptionXPath(xPath.description || descriptionXPath);
 		setImageContainerXPath(xPath.imageContainer || imageContainerXPath);
 		setPaginationButtonXPath(xPath.paginationButton || paginationButtonXPath);
+		setImageElement(jsonTemplate.imageElement || imageElement);
+		setImageLinkProperties(jsonTemplate.imageLinkProperties || imageLinkProperties);
 
 		setMetadataXPath(JSON.stringify(xPath.metadata || {}, null, 4));
 		setIgnoreUrlPatterns(JSON.stringify(jsonTemplate.ignoreUrlPatterns || [], null, 4));
@@ -132,6 +136,8 @@ function UpsertTemplatePage() {
 				imageContainer: imageContainerXPath,
 				paginationButton: paginationButtonXPath,
 				metadata: FileUtil.parseJSON(metadataXPath || '{}'),
+				imageElement,
+				imageLinkProperties,
 			},
 			ignoreUrlPatterns: FileUtil.parseJSON(ignoreUrlPatterns || '[]'),
 		};
@@ -218,6 +224,29 @@ function UpsertTemplatePage() {
 									onChange={(e) => setPaginationButtonXPath(e.target.value)}
 								/>
 							</div>
+
+							<hr
+								className="mt-5 border-gray-300"
+							/>
+
+							<div
+								className="grid grid-cols-2 gap-x-4"
+							>
+								<Input
+									label="Image Element Tag"
+									name="image-element-tag"
+									placeholder="img"
+									value={imageElement}
+									onChange={(e) => setImageElement(e.target.value)}
+								/>
+								<Input
+									label="Image Link Properties Name"
+									name="image-link-properties-name"
+									placeholder="src"
+									value={imageLinkProperties}
+									onChange={(e) => setImageLinkProperties(e.target.value)}
+								/>
+							</div>
 						</div>
 
 						<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 sm:p-6">
@@ -248,7 +277,7 @@ function UpsertTemplatePage() {
 							<div
 								data-color-mode="light"
 								style={{
-									maxHeight: 200,
+									maxHeight: 270,
 									overflow: 'auto',
 								}}
 							>
@@ -270,7 +299,7 @@ function UpsertTemplatePage() {
 							<div
 								data-color-mode="light"
 								style={{
-									maxHeight: 200,
+									maxHeight: 270,
 									overflow: 'auto',
 								}}
 							>
