@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileArrowDown, faClock } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 import CodeEditor from '@uiw/react-textarea-code-editor';
+import {
+	faFileArrowDown, faClock, faImage, faMicrochip,
+} from '@fortawesome/free-solid-svg-icons';
 
 import Breadcrumb from '../../forms/Breadcrumb';
 import { CrawIcon } from '../../../icons';
@@ -11,6 +13,8 @@ import { codeEditorStyle } from '../../../config';
 import { getCrawlById } from '../../../api/crawlAPI';
 
 import './ViewCrawl.css';
+// eslint-disable-next-line no-unused-vars
+import ProductTable from '../../table/ProductTablegit push --set-upstream origin feat/ProductTable';
 
 function ViewCrawl() {
 	const { id } = useParams();
@@ -18,14 +22,20 @@ function ViewCrawl() {
 	const [visitedURls, setVisitedURls] = useState([]);
 	const [queue, setQueue] = useState([]);
 	const [numOfCrawledProduct, setNumOfCrawledProduct] = useState(0);
+	const [numOfInstances, setNumOfInstances] = useState(0);
+	const [numOfCrawledImage, setNumOfCrawledImage] = useState(0);
 
 	const [runTime, setRunTime] = useState(0);
 
 	useEffect(() => {
 		getCrawlById(id).then((res) => {
 			const { crawl } = res.data;
-			// get difference between start date and current date in minutes
 
+			setNumOfInstances(crawl.numInstance);
+			setNumOfCrawledProduct(crawl.numOfCrawledProduct);
+			setNumOfCrawledImage(crawl.numOfCrawledImage);
+
+			// get difference between start date and current date in minutes
 			if (crawl.status === 'running') {
 				setRunTime(Math.abs(new Date() - new Date(crawl.createdAt)) / 1000 / 60);
 				// Create an interval that updates run time every minute
@@ -79,6 +89,10 @@ function ViewCrawl() {
 
 		socket.on(`numOfCrawledProduct-${id}`, ({ numOfCrawledProduct: numOfCrawledProductData }) => {
 			setNumOfCrawledProduct(numOfCrawledProductData);
+		});
+
+		socket.on(`numOfCrawledImage-${id}`, ({ numOfCrawledImage: numOfCrawledImageData }) => {
+			setNumOfCrawledImage(numOfCrawledImageData);
 		});
 
 		return () => {
@@ -136,6 +150,40 @@ function ViewCrawl() {
 					</div>
 					<div
 						className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm"
+						id="image-panel"
+					>
+						<div className="w-full">
+							<h3 className="text-base font-normal text-gray-500 dark:text-gray-400 mb-3">
+								Crawled Images
+							</h3>
+							<span className="text-xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+								<FontAwesomeIcon
+									icon={faImage}
+									className="mr-3"
+								/>
+								{numOfCrawledImage}
+							</span>
+						</div>
+					</div>
+					<div
+						className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm"
+						id="instance-panel"
+					>
+						<div className="w-full">
+							<h3 className="text-base font-normal text-gray-500 dark:text-gray-400 mb-3">
+								Number of Instances
+							</h3>
+							<span className="text-xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+								<FontAwesomeIcon
+									icon={faMicrochip}
+									className="mr-3"
+								/>
+								{numOfInstances}
+							</span>
+						</div>
+					</div>
+					<div
+						className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm"
 						id="visited-panel"
 					>
 						<h3 className="mb-4 text-xl font-semibold">
@@ -146,7 +194,7 @@ function ViewCrawl() {
 						<div
 							data-color-mode="dark"
 							style={{
-								maxHeight: '28rem',
+								maxHeight: '20rem',
 								overflow: 'auto',
 							}}
 						>
@@ -154,7 +202,7 @@ function ViewCrawl() {
 								language="json"
 								padding={15}
 								style={codeEditorStyle}
-								minHeight="28rem"
+								minHeight="20rem"
 								disabled
 								value={JSON.stringify(visitedURls, null, 4)}
 							/>
@@ -172,7 +220,7 @@ function ViewCrawl() {
 						<div
 							data-color-mode="dark"
 							style={{
-								maxHeight: '28rem',
+								maxHeight: '20rem',
 								overflow: 'auto',
 							}}
 						>
@@ -180,7 +228,7 @@ function ViewCrawl() {
 								language="json"
 								padding={15}
 								style={codeEditorStyle}
-								minHeight="28rem"
+								minHeight="20rem"
 								disabled
 								value={JSON.stringify(queue, null, 4)}
 							/>
@@ -194,7 +242,7 @@ function ViewCrawl() {
 						<div
 							data-color-mode="dark"
 							style={{
-								maxHeight: '20rem',
+								maxHeight: '28rem',
 								overflow: 'auto',
 							}}
 							id="log-container"
@@ -203,11 +251,24 @@ function ViewCrawl() {
 								language="json"
 								padding={15}
 								style={codeEditorStyle}
-								minHeight="20rem"
+								minHeight="28rem"
 								disabled
 								value={logs}
 							/>
 						</div>
+					</div>
+					<div
+						className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm"
+						id="product-panel"
+					>
+						<h3 className="mb-4 text-xl font-semibold">
+							Products
+						</h3>
+						<ProductTable
+							query={{ crawlId: id }}
+							tableLoad={numOfCrawledProduct}
+							keepPageOnReload
+						/>
 					</div>
 				</div>
 			</div>

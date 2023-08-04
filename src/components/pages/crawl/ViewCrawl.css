@@ -1,12 +1,13 @@
 #view-crawl-conatiner {
 	display: grid;
 
-	grid-template-columns: 1fr 1fr 2fr 2fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr  2fr;
 	grid-template-rows: 7rem 26rem;
 
 	grid-template-areas:
-		"number time visited queue"
-		"log log visited queue"
+		"number image time instance log"
+		"visited visited queue queue log"
+		"product product product product product"
 	;
 
 }
@@ -29,4 +30,16 @@
 
 #log-panel {
 	grid-area: log;
+}
+
+#image-panel {
+	grid-area: image;
+}
+
+#instance-panel {
+	grid-area: instance;
+}
+
+#product-panel {
+	grid-area: product;
 }

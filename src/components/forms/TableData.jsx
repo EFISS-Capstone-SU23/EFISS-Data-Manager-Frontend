@@ -12,6 +12,7 @@ function TableData({
 	fetchData,
 	tableLoad,
 	query,
+	keepPageOnReload = false,
 }) {
 	const [data, setData] = useState([]);
 	const [page, setPage] = useState(1);
@@ -42,7 +43,9 @@ function TableData({
 	}, [page]);
 
 	useEffect(() => {
-		setPage(1);
+		if (!keepPageOnReload) {
+			setPage(1);
+		}
 		loadData();
 	}, [tableLoad, query]);
 
