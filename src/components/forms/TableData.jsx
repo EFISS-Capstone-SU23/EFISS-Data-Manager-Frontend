@@ -5,7 +5,7 @@ import {
 	faChevronLeft, faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 8;
 
 function TableData({
 	schema,
@@ -23,6 +23,7 @@ function TableData({
 		fetchData(page, PAGE_SIZE, query)
 			.then((res) => {
 				setData(res.data.data);
+				console.log(res.data.data);
 
 				setTotal(res.data.total);
 				setStart((page - 1) * PAGE_SIZE + 1);
@@ -50,7 +51,7 @@ function TableData({
 			<div className="overflow-x-auto">
 				<div className="inline-block min-w-full align-middle">
 					<div className="overflow-hidden shadow">
-						<table className="min-w-full divide-y divide-gray-200 table-fixed">
+						<table className="w-full divide-y divide-gray-200 table-fixed">
 							<thead className="bg-gray-100">
 								<tr>
 									{schema.map((col) => (
@@ -68,7 +69,14 @@ function TableData({
 								{data.map((template) => (
 									<tr className="hover:bg-gray-100">
 										{schema.map((col) => (
-											<td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
+											<td
+												className="p-3 text-base font-medium text-gray-900 whitespace-nowrap"
+												style={{
+													maxWidth: col.size || 'auto',
+													overflow: 'hidden',
+													textOverflow: 'ellipsis',
+												}}
+											>
 												{col.render(template)}
 											</td>
 										))}

@@ -1,0 +1,14 @@
+.image-viewer-container {
+	background: rgba(39, 39, 39, 0.6)
+}
+
+.product-image-inactive {
+	filter: grayscale(100%);
+	opacity: 0.3;
+
+	/* border: 3px solid #e0e0e0; */
+}
+
+/* .product-image-active {
+	border: 3px solid blue;
+} */

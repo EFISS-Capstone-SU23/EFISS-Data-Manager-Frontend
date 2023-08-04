@@ -6,6 +6,8 @@ import UpsertTemplatePage from './components/pages/tenplate/UpsertTemplatePage';
 import CrawlPage from './components/pages/crawl/CrawlPage';
 import ViewCrawl from './components/pages/crawl/ViewCrawl';
 import UpsertCrawlPage from './components/pages/crawl/UpsertCrawlPage';
+import ProductPage from './components/pages/product/ProductPage';
+import ViewProductPage from './components/pages/product/ViewProductPage';
 
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
@@ -29,6 +31,8 @@ function App() {
 						<Route path="/crawl" element={<CrawlPage />} />
 						<Route path="/crawl/view/:id" element={<ViewCrawl />} />
 						<Route path="/crawl/:id" element={<UpsertCrawlPage />} />
+						<Route path="/product" element={<ProductPage />} />
+						<Route path="/product/:id" element={<ViewProductPage />} />
 					</Routes>
 				</main>
 			</div>
