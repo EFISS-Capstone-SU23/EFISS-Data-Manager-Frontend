@@ -16,6 +16,8 @@ import './ViewCrawl.css';
 // eslint-disable-next-line no-unused-vars
 import ProductTable from '../../table/ProductTablegit push --set-upstream origin feat/ProductTable';
 
+const REACT_APP_WS_URL = process.env.REACT_APP_WS_URL || 'ws://localhost:3000';
+
 function ViewCrawl() {
 	const { id } = useParams();
 	const [logs, setLogs] = useState([]);
@@ -69,7 +71,7 @@ function ViewCrawl() {
 	];
 
 	useEffect(() => {
-		const socket = io('ws://localhost:5000');
+		const socket = io(REACT_APP_WS_URL);
 
 		socket.on('connect', () => {
 			socket.emit('subscribeToLog', id);
