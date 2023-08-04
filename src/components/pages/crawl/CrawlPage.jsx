@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import { faCog, faEye } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import TableData from '../../forms/TableData';
 import { getListCrawl } from '../../../api/crawlAPI';
@@ -19,8 +18,6 @@ const breadcrumbList = [{
 }];
 
 function TemplatePage() {
-	const navigate = useNavigate();
-	const [tableLoad, setTableLoad] = useState(0);
 	const [query, setQuery] = useState({});
 
 	const schema = [
@@ -85,13 +82,6 @@ function TemplatePage() {
 		},
 	];
 
-	const handleSearch = (website) => {
-		setQuery({
-			...query,
-			website,
-		});
-	};
-
 	return (
 		<>
 			<Breadcrumb breadcrumbList={breadcrumbList} />
@@ -105,7 +95,7 @@ function TemplatePage() {
 						</div>
 						<div className="sm:flex">
 							<div className="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0">
-								<div className="relative mt-1 lg:w-64 xl:w-96">
+								<div className="relative lg:w-64 xl:w-96">
 									<input
 										type="text"
 										name="email"
@@ -114,11 +104,31 @@ function TemplatePage() {
 										placeholder="Search for crawls"
 										onKeyDown={(e) => {
 											if (e.key === 'Enter') {
-												handleSearch(e.target.value);
+												setQuery({
+													...query,
+													website: e.target.value,
+												});
 											}
 										}}
 									/>
 								</div>
+							</div>
+							<div className="flex pl-0 mt-3 space-x-1 sm:pl-2 sm:mt-0">
+								<select
+									className="bg-gray-50 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full "
+									defaultValue="all"
+									onChange={(e) => {
+										setQuery({
+											...query,
+											status: e.target.value,
+										});
+									}}
+								>
+									<option value="all">All</option>
+									<option value="running">Running</option>
+									<option value="paused">Paused</option>
+									<option value="stopped">Stopped</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -126,7 +136,7 @@ function TemplatePage() {
 				<TableData
 					schema={schema}
 					fetchData={getListCrawl}
-					tableLoad={tableLoad}
+					tableLoad={0}
 					query={query}
 				/>
 			</div>

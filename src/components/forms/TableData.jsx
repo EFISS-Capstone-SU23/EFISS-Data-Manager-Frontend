@@ -24,7 +24,6 @@ function TableData({
 		fetchData(page, PAGE_SIZE, query)
 			.then((res) => {
 				setData(res.data.data);
-				console.log(res.data.data);
 
 				setTotal(res.data.total);
 				setStart((page - 1) * PAGE_SIZE + 1);
@@ -62,6 +61,7 @@ function TableData({
 											scope="col"
 											className="p-4 text-xs font-medium text-left text-gray-500 uppercase"
 											width={col.size || 'auto'}
+											key={col.header}
 										>
 											{col.header}
 										</th>
@@ -69,9 +69,12 @@ function TableData({
 								</tr>
 							</thead>
 							<tbody className="bg-white divide-y divide-gray-200">
-								{data.map((template) => (
-									<tr className="hover:bg-gray-100">
-										{schema.map((col) => (
+								{data.map((rowData) => (
+									<tr
+										className="hover:bg-gray-100"
+										key={rowData._id}
+									>
+										{schema.map((col, i) => (
 											<td
 												className="p-3 text-base font-medium text-gray-900 whitespace-nowrap"
 												style={{
@@ -79,8 +82,9 @@ function TableData({
 													overflow: 'hidden',
 													textOverflow: 'ellipsis',
 												}}
+												key={i}
 											>
-												{col.render(template)}
+												{col.render(rowData)}
 											</td>
 										))}
 									</tr>

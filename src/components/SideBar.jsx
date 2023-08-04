@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
 	DashboardIcon, CrawIcon, TemplateIcon, ProductIcon,
 } from '../icons';
@@ -13,40 +14,40 @@ function SideBar() {
 					<div className="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200">
 						<ul className="pb-2 space-y-2">
 							<li>
-								<a
-									href="/"
+								<Link
+									to="/"
 									className="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group"
 								>
 									<DashboardIcon />
 									<span className="ml-3">Dashboard</span>
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="/crawl"
+								<Link
+									to="/crawl"
 									className="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group"
 								>
 									<CrawIcon />
 									<span className="ml-3">Crawls</span>
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="/template"
+								<Link
+									to="/template"
 									className="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group"
 								>
 									<TemplateIcon />
 									<span className="ml-3">Templates</span>
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="/product"
+								<Link
+									to="/product"
 									className="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group"
 								>
 									<ProductIcon />
 									<span className="ml-3">Products</span>
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>

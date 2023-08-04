@@ -68,12 +68,15 @@ function UpsertTemplatePage() {
 		text: isCreateNew ? 'Create new template' : 'Edit template',
 	}];
 
-	const startUrlRef = useRef('');
-	const titleXPathRef = useRef('');
-	const priceXPathRef = useRef('');
-	const descriptionXPathRef = useRef('');
-	const imageContainerXPathRef = useRef('');
-	const paginationButtonXPathRef = useRef('');
+	// convert upper to use state
+	const [startUrl, setStartUrl] = useState('');
+	const [titleXPath, setTitleXPath] = useState('');
+	const [priceXPath, setPriceXPath] = useState('');
+	const [descriptionXPath, setDescriptionXPath] = useState('');
+	const [imageContainerXPath, setImageContainerXPath] = useState('');
+	const [paginationButtonXPath, setPaginationButtonXPath] = useState('');
+	const [imageElement, setImageElement] = useState('img');
+	const [imageLinkProperties, setImageLinkProperties] = useState('src');
 	const fileInputRef = useRef('');
 
 	const [metadataXPath, setMetadataXPath] = useState('{}');
@@ -81,13 +84,14 @@ function UpsertTemplatePage() {
 
 	const updateFormByTemplate = (jsonTemplate) => {
 		const { xPath } = jsonTemplate;
-
-		startUrlRef.current.value = jsonTemplate.startUrl || startUrlRef.current.value;
-		titleXPathRef.current.value = xPath.title || titleXPathRef.current.value;
-		priceXPathRef.current.value = xPath.price || priceXPathRef.current.value;
-		descriptionXPathRef.current.value = xPath.description || descriptionXPathRef.current.value;
-		imageContainerXPathRef.current.value = xPath.imageContainer || imageContainerXPathRef.current.value;
-		paginationButtonXPathRef.current.value = xPath.paginationButton || paginationButtonXPathRef.current.value;
+		setStartUrl(jsonTemplate.startUrl || startUrl);
+		setTitleXPath(xPath.title || titleXPath);
+		setPriceXPath(xPath.price || priceXPath);
+		setDescriptionXPath(xPath.description || descriptionXPath);
+		setImageContainerXPath(xPath.imageContainer || imageContainerXPath);
+		setPaginationButtonXPath(xPath.paginationButton || paginationButtonXPath);
+		setImageElement(jsonTemplate.imageElement || imageElement);
+		setImageLinkProperties(jsonTemplate.imageLinkProperties || imageLinkProperties);
 
 		setMetadataXPath(JSON.stringify(xPath.metadata || {}, null, 4));
 		setIgnoreUrlPatterns(JSON.stringify(jsonTemplate.ignoreUrlPatterns || [], null, 4));
@@ -124,14 +128,16 @@ function UpsertTemplatePage() {
 
 	const handleSave = () => {
 		const data = {
-			startUrl: startUrlRef.current.value,
+			startUrl,
 			xPath: {
-				title: titleXPathRef.current.value,
-				price: priceXPathRef.current.value,
-				description: descriptionXPathRef.current.value,
-				imageContainer: imageContainerXPathRef.current.value,
-				paginationButton: paginationButtonXPathRef.current.value,
+				title: titleXPath,
+				price: priceXPath,
+				description: descriptionXPath,
+				imageContainer: imageContainerXPath,
+				paginationButton: paginationButtonXPath,
 				metadata: FileUtil.parseJSON(metadataXPath || '{}'),
+				imageElement,
+				imageLinkProperties,
 			},
 			ignoreUrlPatterns: FileUtil.parseJSON(ignoreUrlPatterns || '[]'),
 		};
@@ -171,7 +177,8 @@ function UpsertTemplatePage() {
 								label="Start URL"
 								name="start-url"
 								placeholder="https://www.example.com"
-								ref={startUrlRef}
+								value={startUrl}
+								onChange={(e) => setStartUrl(e.target.value)}
 							/>
 
 							<hr
@@ -185,31 +192,59 @@ function UpsertTemplatePage() {
 									label="Title XPath"
 									name="title-xpath"
 									placeholder="//*[@id='title']"
-									ref={titleXPathRef}
+									value={titleXPath}
+									onChange={(e) => setTitleXPath(e.target.value)}
 								/>
 								<Input
 									label="Price XPath"
 									name="price-xpath"
 									placeholder="//*[@id='price']"
-									ref={priceXPathRef}
+									value={priceXPath}
+									onChange={(e) => setPriceXPath(e.target.value)}
 								/>
 								<Input
 									label="Description XPath"
 									name="description-xpath"
 									placeholder="//*[@id='description']"
-									ref={descriptionXPathRef}
+									value={descriptionXPath}
+									onChange={(e) => setDescriptionXPath(e.target.value)}
 								/>
 								<Input
 									label="Image Conatiner XPath"
 									name="image-container-xpath"
 									placeholder="//*[@id='image-container']"
-									ref={imageContainerXPathRef}
+									value={imageContainerXPath}
+									onChange={(e) => setImageContainerXPath(e.target.value)}
 								/>
 								<Input
 									label="Pagination Button XPath"
 									name="pagination-button-xpath"
 									placeholder="//*[@id='pagination-button']"
-									ref={paginationButtonXPathRef}
+									value={paginationButtonXPath}
+									onChange={(e) => setPaginationButtonXPath(e.target.value)}
+								/>
+							</div>
+
+							<hr
+								className="mt-5 border-gray-300"
+							/>
+
+							<div
+								className="grid grid-cols-2 gap-x-4"
+							>
+								<Input
+									label="Image Element Tag"
+									name="image-element-tag"
+									placeholder="img"
+									value={imageElement}
+									onChange={(e) => setImageElement(e.target.value)}
+								/>
+								<Input
+									label="Image Link Properties Name"
+									name="image-link-properties-name"
+									placeholder="src"
+									value={imageLinkProperties}
+									onChange={(e) => setImageLinkProperties(e.target.value)}
 								/>
 							</div>
 						</div>
@@ -242,7 +277,7 @@ function UpsertTemplatePage() {
 							<div
 								data-color-mode="light"
 								style={{
-									maxHeight: 200,
+									maxHeight: 270,
 									overflow: 'auto',
 								}}
 							>
@@ -264,7 +299,7 @@ function UpsertTemplatePage() {
 							<div
 								data-color-mode="light"
 								style={{
-									maxHeight: 200,
+									maxHeight: 270,
 									overflow: 'auto',
 								}}
 							>

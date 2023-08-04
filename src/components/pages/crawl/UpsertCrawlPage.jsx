@@ -36,6 +36,7 @@ function UpsertCrawlPage() {
 	const [website, setWebsite] = useState();
 	const [formDisabled, setFormDisabled] = useState(false);
 	const [ignoreUrlPatterns, setIgnoreUrlPatterns] = useState([]);
+	const [isCurrentPaused, setIsCurrentPaused] = useState(false);
 
 	const numInstanceRef = useRef(1);
 	const statusRef = useRef('running');
@@ -82,6 +83,8 @@ function UpsertCrawlPage() {
 
 				if (crawl.status === 'stopped') {
 					setFormDisabled(true);
+				} else if (crawl.status === 'paused') {
+					setIsCurrentPaused(true);
 				}
 			})
 			.catch((err) => {
@@ -197,7 +200,7 @@ function UpsertCrawlPage() {
 									min="1"
 									defaultValue={1}
 									ref={numInstanceRef}
-									disabled={formDisabled || !isCreate}
+									disabled={formDisabled || !isCurrentPaused}
 								/>
 								<label
 									htmlFor="status"

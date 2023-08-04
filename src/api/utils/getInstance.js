@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_URL } from '../../config';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
 export default function getInstance(prefix = '') {
 	return axios.create({

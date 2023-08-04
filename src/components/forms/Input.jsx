@@ -1,7 +1,7 @@
 import React from 'react';
 import { Label, TextInput } from 'flowbite-react';
 
-const Input = React.forwardRef((props, ref) => {
+function Input(props) {
 	const {
 		label,
 		name,
@@ -10,6 +10,7 @@ const Input = React.forwardRef((props, ref) => {
 		required = false,
 		disabled = false,
 		value = '',
+		onChange = () => {},
 	} = props;
 
 	return (
@@ -25,12 +26,12 @@ const Input = React.forwardRef((props, ref) => {
 				name={name}
 				placeholder={placeholder}
 				required={required}
-				ref={ref}
 				disabled={disabled}
 				value={value}
+				onChange={onChange}
 			/>
 		</div>
 	);
-});
+}
 
 export default Input;
