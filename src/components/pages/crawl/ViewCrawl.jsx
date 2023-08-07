@@ -36,8 +36,8 @@ function ViewCrawl() {
 			setNumOfInstances(crawl.numInstance);
 			setNumOfCrawledProduct(crawl.numOfCrawledProduct);
 			setNumOfCrawledImage(crawl.numOfCrawledImage);
-			setQueue(crawl.queue);
-			setVisitedURls(Object.keys(crawl.visitedUrls));
+			setQueue(crawl.queue || []);
+			setVisitedURls(Object.keys(crawl.visitedUrls || {}));
 
 			// get difference between start date and current date in minutes
 			if (crawl.status === 'running') {
