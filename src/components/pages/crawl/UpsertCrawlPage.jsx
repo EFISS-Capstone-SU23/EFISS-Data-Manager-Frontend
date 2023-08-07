@@ -201,7 +201,7 @@ function UpsertCrawlPage() {
 									min="1"
 									defaultValue={1}
 									ref={numInstanceRef}
-									disabled={formDisabled || !isCurrentPaused}
+									disabled={isCreate ? false : (formDisabled || !isCurrentPaused)}
 								/>
 								<label
 									htmlFor="status"
