@@ -11,6 +11,7 @@ import ModalManager from '../../../utils/ModalManager';
 import FileUtil from '../../../utils/FileUtil';
 
 const validateData = (data) => {
+	console.log(data.ignoreUrlPatterns);
 	if (!Array.isArray(data.ignoreUrlPatterns)) {
 		return 'Ignore URL Patterns must be an array';
 	}
@@ -107,7 +108,7 @@ function UpsertCrawlPage() {
 		const error = validateData(data);
 
 		if (error) {
-			ModalManager.getInstance().alert(error);
+			ModalManager.showError(error);
 			return;
 		}
 
