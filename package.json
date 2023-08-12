@@ -1,6 +1,6 @@
 {
-	"name": "efiss-data-manager-frontend",
-	"version": "0.1.0",
+	"name": "efiss-data-manager-portal",
+	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^6.4.0",
