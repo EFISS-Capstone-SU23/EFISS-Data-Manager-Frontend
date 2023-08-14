@@ -8,6 +8,7 @@ import ViewCrawl from './components/pages/crawl/ViewCrawl';
 import UpsertCrawlPage from './components/pages/crawl/UpsertCrawlPage';
 import ProductPage from './components/pages/product/ProductPage';
 import ViewProductPage from './components/pages/product/ViewProductPage';
+import NotFoundPage from './components/pages/static/NotFoundPage';
 
 import BaseLayout from './components/BaseLayout';
 
@@ -49,6 +50,8 @@ function App() {
 					path="/product/:id"
 					element={<BaseLayout page={<ViewProductPage />} />}
 				/>
+
+				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
