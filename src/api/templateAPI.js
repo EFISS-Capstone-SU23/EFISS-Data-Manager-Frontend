@@ -19,7 +19,7 @@ export const deleteById = (id) => {
 };
 
 export const getTemplateByID = (id) => {
-	return instance.get(`/${id}`);
+	return instance.get(`/get/${id}`);
 };
 
 export const countAllTemplate = () => {
