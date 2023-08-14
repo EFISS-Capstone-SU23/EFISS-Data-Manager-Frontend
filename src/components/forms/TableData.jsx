@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faChevronLeft, faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
+import converNumber from '../../utils/convertNumber';
 
 const PAGE_SIZE = 8;
 
@@ -100,13 +101,13 @@ function TableData({
 						Showing
 						{' '}
 						<span className="font-semibold text-gray-900">
-							{`${start}-${end}`}
+							{`${converNumber(start)} - ${converNumber(end)}`}
 						</span>
 						{' '}
 						of
 						{' '}
 						<span className="font-semibold text-gray-900">
-							{total}
+							{converNumber(total)}
 						</span>
 					</span>
 				</div>
