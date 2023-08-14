@@ -8,6 +8,7 @@ import {
 import ProductTable from '../../table/ProductTable/ProductTable';
 import { countAllTemplate } from '../../../api/templateAPI';
 import productAPI from '../../../api/productAPI';
+import converNumber from '../../../utils/convertNumber';
 
 function Dashboard() {
 	const [numOfWebsites, setNumOfWebsites] = useState(0);
@@ -41,7 +42,7 @@ function Dashboard() {
 								icon={faFileArrowDown}
 								className="mr-3"
 							/>
-							{numOfProducts}
+							{converNumber(numOfProducts)}
 						</span>
 					</div>
 				</div>
@@ -55,7 +56,7 @@ function Dashboard() {
 								icon={faImage}
 								className="mr-3"
 							/>
-							{numOfImages}
+							{converNumber(numOfImages)}
 						</span>
 					</div>
 				</div>
@@ -69,7 +70,7 @@ function Dashboard() {
 								icon={faGlobe}
 								className="mr-3"
 							/>
-							{numOfWebsites}
+							{converNumber(numOfWebsites)}
 						</span>
 					</div>
 				</div>
