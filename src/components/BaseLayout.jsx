@@ -5,7 +5,7 @@ function BaseLayout({
 	page,
 }) {
 	return (
-		<>
+		<div className="grid-container">
 			<NavBar />
 			<SideBar />
 			<div
@@ -16,7 +16,7 @@ function BaseLayout({
 					{page}
 				</main>
 			</div>
-		</>
+		</div>
 	);
 }
 
