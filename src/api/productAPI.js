@@ -30,4 +30,7 @@ export default {
 	countProduct: () => {
 		return instance.get('/stat/product');
 	},
+	countImage: () => {
+		return instance.get('/stat/image');
+	},
 };

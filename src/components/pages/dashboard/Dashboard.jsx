@@ -12,6 +12,7 @@ import productAPI from '../../../api/productAPI';
 function Dashboard() {
 	const [numOfWebsites, setNumOfWebsites] = useState(0);
 	const [numOfProducts, setNumOfProducts] = useState(0);
+	const [numOfImages, setNumOfImages] = useState(0);
 
 	useEffect(() => {
 		countAllTemplate().then((res) => {
@@ -20,6 +21,10 @@ function Dashboard() {
 
 		productAPI.countProduct().then((res) => {
 			setNumOfProducts(res.data.numberOfProducts);
+		});
+
+		productAPI.countImage().then((res) => {
+			setNumOfImages(res.data.totalImages);
 		});
 	}, []);
 
@@ -50,7 +55,7 @@ function Dashboard() {
 								icon={faImage}
 								className="mr-3"
 							/>
-							2,340
+							{numOfImages}
 						</span>
 					</div>
 				</div>
