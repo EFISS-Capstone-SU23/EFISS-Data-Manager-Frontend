@@ -27,4 +27,7 @@ export default {
 			...update,
 		});
 	},
+	countProduct: () => {
+		return instance.get('/stat/product');
+	},
 };

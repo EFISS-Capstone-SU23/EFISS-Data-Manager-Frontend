@@ -7,14 +7,19 @@ import {
 
 import ProductTable from '../../table/ProductTable/ProductTable';
 import { countAllTemplate } from '../../../api/templateAPI';
+import productAPI from '../../../api/productAPI';
 
 function Dashboard() {
-	console.log('Dashboard');
 	const [numOfWebsites, setNumOfWebsites] = useState(0);
+	const [numOfProducts, setNumOfProducts] = useState(0);
 
 	useEffect(() => {
 		countAllTemplate().then((res) => {
 			setNumOfWebsites(res.data.total);
+		});
+
+		productAPI.countProduct().then((res) => {
+			setNumOfProducts(res.data.numberOfProducts);
 		});
 	}, []);
 
@@ -31,7 +36,7 @@ function Dashboard() {
 								icon={faFileArrowDown}
 								className="mr-3"
 							/>
-							2,340
+							{numOfProducts}
 						</span>
 					</div>
 				</div>
