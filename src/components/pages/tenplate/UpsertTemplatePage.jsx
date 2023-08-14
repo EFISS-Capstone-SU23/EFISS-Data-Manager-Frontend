@@ -106,8 +106,8 @@ function UpsertTemplatePage() {
 			.then((res) => {
 				updateFormByTemplate(res.data.template.template);
 			})
-			.catch((err) => {
-				ModalManager.showError(err.response.data.message);
+			.catch(() => {
+				navigate('/404');
 			});
 	}, []);
 
@@ -156,8 +156,8 @@ function UpsertTemplatePage() {
 		upsertTemplate(data)
 			.then(() => {
 				navigate('/template');
-			}).catch((err) => {
-				ModalManager.showError(err.response.data.message);
+			}).catch(() => {
+				navigate('/500');
 			});
 	};
 

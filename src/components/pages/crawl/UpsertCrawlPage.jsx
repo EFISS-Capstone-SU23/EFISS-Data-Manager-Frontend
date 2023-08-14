@@ -115,8 +115,8 @@ function UpsertCrawlPage() {
 			.then(() => {
 				navigate('/crawl');
 			})
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
+				navigate('/500');
 			});
 	};
 

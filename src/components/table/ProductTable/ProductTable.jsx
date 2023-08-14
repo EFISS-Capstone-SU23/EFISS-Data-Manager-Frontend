@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,13 +14,14 @@ function ProductTable({
 	tableLoad: tableLoadProb = 0,
 	keepPageOnReload = false,
 }) {
+	const navigate = useNavigate();
 	const [query, setQuery] = useState(queryProb);
 	const [tableLoad, setTableLoad] = useState(0);
 
 	const handleToggleActive = async (productId, active) => {
 		productAPI.updateProduct(productId, { active })
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
+				navigate('/500');
 			});
 	};
 

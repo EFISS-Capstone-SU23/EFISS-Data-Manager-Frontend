@@ -9,6 +9,7 @@ import UpsertCrawlPage from './components/pages/crawl/UpsertCrawlPage';
 import ProductPage from './components/pages/product/ProductPage';
 import ViewProductPage from './components/pages/product/ViewProductPage';
 import NotFoundPage from './components/pages/static/NotFoundPage';
+import ErrorPage from './components/pages/static/ErrorPage';
 
 import BaseLayout from './components/BaseLayout';
 
@@ -51,6 +52,8 @@ function App() {
 					element={<BaseLayout page={<ViewProductPage />} />}
 				/>
 
+				<Route path="/404" element={<NotFoundPage />} />
+				<Route path="/500" element={<ErrorPage />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>

@@ -61,8 +61,8 @@ function ViewProductPage() {
 			.then(() => {
 				setProductActive(active);
 			})
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
+				navigate('/500');
 			});
 	};
 
