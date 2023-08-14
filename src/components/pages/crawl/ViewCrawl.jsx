@@ -11,10 +11,10 @@ import Breadcrumb from '../../forms/Breadcrumb';
 import { CrawIcon } from '../../../icons';
 import { codeEditorStyle } from '../../../config';
 import { getCrawlById } from '../../../api/crawlAPI';
+import ProductTable from '../../table/ProductTable/ProductTable';
 
 import './ViewCrawl.css';
 // eslint-disable-next-line no-unused-vars
-import ProductTable from '../../table/ProductTablegit push --set-upstream origin feat/ProductTable';
 
 const REACT_APP_WS_URL = process.env.REACT_APP_WS_URL || 'ws://localhost:3000';
 

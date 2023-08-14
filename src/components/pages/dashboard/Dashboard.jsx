@@ -1,11 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faFileArrowDown, faImage, faGlobe,
 } from '@fortawesome/free-solid-svg-icons';
-import ProductTable from '../../table/ProductTablegit push --set-upstream origin feat/ProductTable';
+
+import ProductTable from '../../table/ProductTable/ProductTable';
+import { countAllTemplate } from '../../../api/templateAPI';
 
 function Dashboard() {
+	const [numOfWebsites, setNumOfWebsites] = useState(0);
+
+	useEffect(() => {
+		countAllTemplate().then((res) => {
+			setNumOfWebsites(res.data.total);
+		});
+	}, []);
+
 	return (
 		<div className="px-4 pt-6">
 			<div className="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3">
@@ -47,7 +58,7 @@ function Dashboard() {
 								icon={faGlobe}
 								className="mr-3"
 							/>
-							2,340
+							{numOfWebsites}
 						</span>
 					</div>
 				</div>
