@@ -9,6 +9,7 @@ import ProductTable from '../../table/ProductTable/ProductTable';
 import { countAllTemplate } from '../../../api/templateAPI';
 
 function Dashboard() {
+	console.log('Dashboard');
 	const [numOfWebsites, setNumOfWebsites] = useState(0);
 
 	useEffect(() => {
@@ -74,7 +75,9 @@ function Dashboard() {
 						</span>
 					</div>
 				</div>
-				<ProductTable />
+				<ProductTable
+					query={{}}
+				/>
 			</div>
 		</div>
 	);
