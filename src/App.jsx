@@ -9,33 +9,47 @@ import UpsertCrawlPage from './components/pages/crawl/UpsertCrawlPage';
 import ProductPage from './components/pages/product/ProductPage';
 import ViewProductPage from './components/pages/product/ViewProductPage';
 
-import NavBar from './components/NavBar';
-import SideBar from './components/SideBar';
+import BaseLayout from './components/BaseLayout';
 
 import './App.css';
 
 function App() {
 	return (
 		<BrowserRouter>
-			<NavBar />
-			<SideBar />
-			<div
-				className="relative overflow-y-auto bg-gray-50 pt-16 pl-64"
-				id="main-content"
-			>
-				<main>
-					<Routes>
-						<Route path="/" element={<Dashboard />} />
-						<Route path="/template" element={<TemplatePage />} />
-						<Route path="/template/:id" element={<UpsertTemplatePage />} />
-						<Route path="/crawl" element={<CrawlPage />} />
-						<Route path="/crawl/view/:id" element={<ViewCrawl />} />
-						<Route path="/crawl/:id" element={<UpsertCrawlPage />} />
-						<Route path="/product" element={<ProductPage />} />
-						<Route path="/product/:id" element={<ViewProductPage />} />
-					</Routes>
-				</main>
-			</div>
+			<Routes>
+				<Route
+					path="/"
+					element={<BaseLayout page={<Dashboard />} />}
+				/>
+				<Route
+					path="/template"
+					element={<BaseLayout page={<TemplatePage />} />}
+				/>
+				<Route
+					path="/template/:id"
+					element={<BaseLayout page={<UpsertTemplatePage />} />}
+				/>
+				<Route
+					path="/crawl"
+					element={<BaseLayout page={<CrawlPage />} />}
+				/>
+				<Route
+					path="/crawl/view/:id"
+					element={<BaseLayout page={<ViewCrawl />} />}
+				/>
+				<Route
+					path="/crawl/:id"
+					element={<BaseLayout page={<UpsertCrawlPage />} />}
+				/>
+				<Route
+					path="/product"
+					element={<BaseLayout page={<ProductPage />} />}
+				/>
+				<Route
+					path="/product/:id"
+					element={<BaseLayout page={<ViewProductPage />} />}
+				/>
+			</Routes>
 		</BrowserRouter>
 	);
 }
