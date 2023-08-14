@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import CodeEditor from '@uiw/react-textarea-code-editor';
@@ -14,6 +14,8 @@ import productAPI from '../../../api/productAPI';
 import ImageViewers from './imageViewer/ImageViewer';
 
 function ViewProductPage() {
+	const navigate = useNavigate();
+
 	const { id: productId } = useParams();
 	const [product, setProduct] = useState({});
 	const [productActive, setProductActive] = useState(true);
@@ -49,8 +51,8 @@ function ViewProductPage() {
 				setProductActive(productData.active);
 				setImageList(images);
 			})
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
+				navigate('/404');
 			});
 	}, []);
 

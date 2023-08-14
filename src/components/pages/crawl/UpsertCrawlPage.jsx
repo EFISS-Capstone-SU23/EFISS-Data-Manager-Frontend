@@ -11,7 +11,6 @@ import ModalManager from '../../../utils/ModalManager';
 import FileUtil from '../../../utils/FileUtil';
 
 const validateData = (data) => {
-	console.log(data.ignoreUrlPatterns);
 	if (!Array.isArray(data.ignoreUrlPatterns)) {
 		return 'Ignore URL Patterns must be an array';
 	}
@@ -63,8 +62,8 @@ function UpsertCrawlPage() {
 				setTemplate(templateData);
 				setWebsite(websiteData);
 			})
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
+				navigate('/404');
 			});
 	};
 
@@ -88,8 +87,8 @@ function UpsertCrawlPage() {
 					setIsCurrentPaused(true);
 				}
 			})
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
+				navigate('/404');
 			});
 	};
 
