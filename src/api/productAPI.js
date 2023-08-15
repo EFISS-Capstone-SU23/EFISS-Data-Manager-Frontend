@@ -27,4 +27,10 @@ export default {
 			...update,
 		});
 	},
+	countProduct: () => {
+		return instance.get('/stat/product');
+	},
+	countImage: () => {
+		return instance.get('/stat/image');
+	},
 };

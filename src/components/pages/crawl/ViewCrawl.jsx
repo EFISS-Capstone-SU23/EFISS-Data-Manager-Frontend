@@ -11,10 +11,11 @@ import Breadcrumb from '../../forms/Breadcrumb';
 import { CrawIcon } from '../../../icons';
 import { codeEditorStyle } from '../../../config';
 import { getCrawlById } from '../../../api/crawlAPI';
+import ProductTable from '../../table/ProductTable/ProductTable';
 
 import './ViewCrawl.css';
+import converNumber from '../../../utils/convertNumber';
 // eslint-disable-next-line no-unused-vars
-import ProductTable from '../../table/ProductTablegit push --set-upstream origin feat/ProductTable';
 
 const REACT_APP_WS_URL = process.env.REACT_APP_WS_URL || 'ws://localhost:3000';
 
@@ -128,7 +129,7 @@ function ViewCrawl() {
 									icon={faFileArrowDown}
 									className="mr-3"
 								/>
-								{numOfCrawledProduct}
+								{converNumber(numOfCrawledProduct)}
 							</span>
 						</div>
 					</div>
@@ -165,7 +166,7 @@ function ViewCrawl() {
 									icon={faImage}
 									className="mr-3"
 								/>
-								{numOfCrawledImage}
+								{converNumber(numOfCrawledImage)}
 							</span>
 						</div>
 					</div>
@@ -193,7 +194,7 @@ function ViewCrawl() {
 						<h3 className="mb-4 text-xl font-semibold">
 							Visited URL List -
 							{' '}
-							{visitedURls.length}
+							{converNumber(visitedURls.length)}
 						</h3>
 						<div
 							data-color-mode="dark"
@@ -219,7 +220,7 @@ function ViewCrawl() {
 						<h3 className="mb-4 text-xl font-semibold">
 							Current Queue -
 							{' '}
-							{queue.length}
+							{converNumber(queue.length)}
 						</h3>
 						<div
 							data-color-mode="dark"

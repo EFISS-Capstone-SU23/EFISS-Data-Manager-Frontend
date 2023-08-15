@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Breadcrumb from '../../forms/Breadcrumb';
 import { ProductIcon } from '../../../icons';
-import ProductTable from '../../table/ProductTablegit push --set-upstream origin feat/ProductTable';
+import ProductTable from '../../table/ProductTable/ProductTable';
 
 const breadcrumbList = [
 	{
