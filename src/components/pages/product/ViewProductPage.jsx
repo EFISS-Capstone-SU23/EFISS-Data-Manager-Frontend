@@ -9,7 +9,7 @@ import moment from 'moment';
 import { ProductIcon } from '../../../icons';
 import Breadcrumb from '../../forms/Breadcrumb';
 import Input from '../../forms/Input';
-import { codeEditorStyle, numberCurrencyFormat } from '../../../config';
+import { codeEditorStyle } from '../../../config';
 import productAPI from '../../../api/productAPI';
 import ImageViewers from './imageViewer/ImageViewer';
 
@@ -19,6 +19,11 @@ function ViewProductPage() {
 	const { id: productId } = useParams();
 	const [product, setProduct] = useState({});
 	const [productActive, setProductActive] = useState(true);
+
+	const [title, setTitle] = useState('');
+	const [price, setPrice] = useState('');
+	const [description, setDescription] = useState('');
+
 	// eslint-disable-next-line no-unused-vars
 	const [imageList, setImageList] = useState([]);
 
@@ -48,6 +53,11 @@ function ViewProductPage() {
 				}));
 
 				setProduct(productData);
+
+				setTitle(productData.title);
+				setPrice(productData.price);
+				setDescription(productData.description);
+
 				setProductActive(productData.active);
 				setImageList(images);
 			})
@@ -77,15 +87,18 @@ function ViewProductPage() {
 							label="Title"
 							name="title"
 							placeholder="Product title"
-							disabled
-							value={product.title}
+							// disabled
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
 						/>
 						<Input
 							label="Price"
 							name="price"
 							placeholder="Product price"
-							disabled
-							value={numberCurrencyFormat.format(product.price)}
+							// disabled
+							type="number"
+							value={price}
+							onChange={(e) => setPrice(e.target.value)}
 						/>
 						<div className="mt-4 text-sm font-medium text-gray-900">
 							<span>Shop Name: </span>
@@ -157,13 +170,14 @@ function ViewProductPage() {
 
 						<Textarea
 							placeholder="Product Description..."
-							disabled
+							// disabled
 							className="text-sm resize-none"
 							style={{
 								maxHeight: 340,
 								height: 340,
 							}}
-							value={product.description}
+							value={description}
+							onChange={(e) => setDescription(e.target.value)}
 						/>
 					</div>
 					<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm col-span-1">
