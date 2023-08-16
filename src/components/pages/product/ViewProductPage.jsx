@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { Textarea } from 'flowbite-react';
 import { useEffect, useState } from 'react';
@@ -9,9 +9,32 @@ import moment from 'moment';
 import { ProductIcon } from '../../../icons';
 import Breadcrumb from '../../forms/Breadcrumb';
 import Input from '../../forms/Input';
-import { codeEditorStyle, numberCurrencyFormat } from '../../../config';
+import { codeEditorStyle } from '../../../config';
 import productAPI from '../../../api/productAPI';
 import ImageViewers from './imageViewer/ImageViewer';
+import ModalManager from '../../../utils/ModalManager';
+
+const validate = (product) => {
+	// not empty
+	if (!product.title) {
+		return 'Title is required';
+	}
+
+	if (!product.price) {
+		return 'Price is required';
+	}
+
+	if (!product.description) {
+		return 'Description is required';
+	}
+
+	// change range of price > 0
+	if (product.price < 0) {
+		return 'Price must be greater than 0';
+	}
+
+	return '';
+};
 
 function ViewProductPage() {
 	const navigate = useNavigate();
@@ -19,8 +42,40 @@ function ViewProductPage() {
 	const { id: productId } = useParams();
 	const [product, setProduct] = useState({});
 	const [productActive, setProductActive] = useState(true);
+
+	const [title, setTitle] = useState('');
+	const [price, setPrice] = useState('');
+	const [description, setDescription] = useState('');
+
 	// eslint-disable-next-line no-unused-vars
 	const [imageList, setImageList] = useState([]);
+
+	const handleUpdateProduct = async () => {
+		const productData = {
+			title,
+			price,
+			description,
+		};
+
+		if (price === -1) {
+			productData.price = 0;
+		}
+
+		// validate
+		const error = validate(productData);
+		if (error) {
+			ModalManager.showError(error);
+			return;
+		}
+
+		productAPI.updateProduct(productId, productData)
+			.then(() => {
+				navigate('/product');
+			})
+			.catch(() => {
+				navigate('/500');
+			});
+	};
 
 	const breadcrumbList = [
 		{
@@ -48,6 +103,11 @@ function ViewProductPage() {
 				}));
 
 				setProduct(productData);
+
+				setTitle(productData.title);
+				setPrice(productData.price);
+				setDescription(productData.description);
+
 				setProductActive(productData.active);
 				setImageList(images);
 			})
@@ -77,15 +137,18 @@ function ViewProductPage() {
 							label="Title"
 							name="title"
 							placeholder="Product title"
-							disabled
-							value={product.title}
+							// disabled
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
 						/>
 						<Input
 							label="Price"
 							name="price"
 							placeholder="Product price"
-							disabled
-							value={numberCurrencyFormat.format(product.price)}
+							// disabled
+							type="number"
+							value={price}
+							onChange={(e) => setPrice(e.target.value)}
 						/>
 						<div className="mt-4 text-sm font-medium text-gray-900">
 							<span>Shop Name: </span>
@@ -112,22 +175,26 @@ function ViewProductPage() {
 								{moment(product.updatedAt).format('DD/MM/YYYY HH:mm:ss')}
 							</span>
 						</div>
-						<hr className="my-5 border-gray-300" />
-
-						<div>
+						<div className="mt-4 text-sm font-medium text-blue-700">
 							<a
 								href={product.url}
 								target="_blank"
 								rel="noreferrer"
 							>
-								<button
-									type="button"
-									className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
-								>
-									<FontAwesomeIcon icon={faEye} className="mr-2" />
-									Product URL
-								</button>
+								Product URL
 							</a>
+						</div>
+						<hr className="my-5 border-gray-300" />
+
+						<div>
+							<button
+								type="button"
+								className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
+								onClick={handleUpdateProduct}
+							>
+								<FontAwesomeIcon icon={faSave} className="mr-2" />
+								Save
+							</button>
 
 							<div
 								style={{
@@ -157,13 +224,14 @@ function ViewProductPage() {
 
 						<Textarea
 							placeholder="Product Description..."
-							disabled
+							// disabled
 							className="text-sm resize-none"
 							style={{
 								maxHeight: 340,
 								height: 340,
 							}}
-							value={product.description}
+							value={description}
+							onChange={(e) => setDescription(e.target.value)}
 						/>
 					</div>
 					<div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm col-span-1">
