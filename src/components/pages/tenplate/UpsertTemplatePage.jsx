@@ -90,8 +90,8 @@ function UpsertTemplatePage() {
 		setDescriptionXPath(xPath.description || descriptionXPath);
 		setImageContainerXPath(xPath.imageContainer || imageContainerXPath);
 		setPaginationButtonXPath(xPath.paginationButton || paginationButtonXPath);
-		setImageElement(jsonTemplate.imageElement || imageElement);
-		setImageLinkProperties(jsonTemplate.imageLinkProperties || imageLinkProperties);
+		setImageElement(xPath.imageElement || imageElement);
+		setImageLinkProperties(xPath.imageLinkProperties || imageLinkProperties);
 
 		setMetadataXPath(JSON.stringify(xPath.metadata || {}, null, 4));
 		setIgnoreUrlPatterns(JSON.stringify(jsonTemplate.ignoreUrlPatterns || [], null, 4));
@@ -233,7 +233,7 @@ function UpsertTemplatePage() {
 								className="grid grid-cols-2 gap-x-4"
 							>
 								<Input
-									label="Image Element Tag"
+									label="Image Selector"
 									name="image-element-tag"
 									placeholder="img"
 									value={imageElement}
