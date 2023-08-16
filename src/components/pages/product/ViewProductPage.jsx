@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { Textarea } from 'flowbite-react';
 import { useEffect, useState } from 'react';
@@ -125,22 +125,25 @@ function ViewProductPage() {
 								{moment(product.updatedAt).format('DD/MM/YYYY HH:mm:ss')}
 							</span>
 						</div>
-						<hr className="my-5 border-gray-300" />
-
-						<div>
+						<div className="mt-4 text-sm font-medium text-blue-700">
 							<a
 								href={product.url}
 								target="_blank"
 								rel="noreferrer"
 							>
-								<button
-									type="button"
-									className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
-								>
-									<FontAwesomeIcon icon={faEye} className="mr-2" />
-									Product URL
-								</button>
+								Product URL
 							</a>
+						</div>
+						<hr className="my-5 border-gray-300" />
+
+						<div>
+							<button
+								type="button"
+								className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
+							>
+								<FontAwesomeIcon icon={faSave} className="mr-2" />
+								Save
+							</button>
 
 							<div
 								style={{
