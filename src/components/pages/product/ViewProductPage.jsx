@@ -12,6 +12,29 @@ import Input from '../../forms/Input';
 import { codeEditorStyle } from '../../../config';
 import productAPI from '../../../api/productAPI';
 import ImageViewers from './imageViewer/ImageViewer';
+import ModalManager from '../../../utils/ModalManager';
+
+const validate = (product) => {
+	// not empty
+	if (!product.title) {
+		return 'Title is required';
+	}
+
+	if (!product.price) {
+		return 'Price is required';
+	}
+
+	if (!product.description) {
+		return 'Description is required';
+	}
+
+	// change range of price > 0
+	if (product.price < 0) {
+		return 'Price must be greater than 0';
+	}
+
+	return '';
+};
 
 function ViewProductPage() {
 	const navigate = useNavigate();
@@ -26,6 +49,33 @@ function ViewProductPage() {
 
 	// eslint-disable-next-line no-unused-vars
 	const [imageList, setImageList] = useState([]);
+
+	const handleUpdateProduct = async () => {
+		const productData = {
+			title,
+			price,
+			description,
+		};
+
+		if (price === -1) {
+			productData.price = 0;
+		}
+
+		// validate
+		const error = validate(productData);
+		if (error) {
+			ModalManager.showError(error);
+			return;
+		}
+
+		productAPI.updateProduct(productId, productData)
+			.then(() => {
+				navigate('/product');
+			})
+			.catch(() => {
+				navigate('/500');
+			});
+	};
 
 	const breadcrumbList = [
 		{
@@ -140,6 +190,7 @@ function ViewProductPage() {
 							<button
 								type="button"
 								className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 mr-2"
+								onClick={handleUpdateProduct}
 							>
 								<FontAwesomeIcon icon={faSave} className="mr-2" />
 								Save
