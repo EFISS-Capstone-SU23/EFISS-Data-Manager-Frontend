@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import { AuthProvider } from './contexts/AuthContext';
 import Dashboard from './components/pages/dashboard/Dashboard';
 import TemplatePage from './components/pages/tenplate/TemplatePage';
 import UpsertTemplatePage from './components/pages/tenplate/UpsertTemplatePage';
@@ -18,48 +19,50 @@ import './App.css';
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route
-					path="/"
-					element={<BaseLayout page={<Dashboard />} />}
-				/>
-				<Route
-					path="/template"
-					element={<BaseLayout page={<TemplatePage />} />}
-				/>
-				<Route
-					path="/template/:id"
-					element={<BaseLayout page={<UpsertTemplatePage />} />}
-				/>
-				<Route
-					path="/crawl"
-					element={<BaseLayout page={<CrawlPage />} />}
-				/>
-				<Route
-					path="/crawl/view/:id"
-					element={<BaseLayout page={<ViewCrawl />} />}
-				/>
-				<Route
-					path="/crawl/:id"
-					element={<BaseLayout page={<UpsertCrawlPage />} />}
-				/>
-				<Route
-					path="/product"
-					element={<BaseLayout page={<ProductPage />} />}
-				/>
-				<Route
-					path="/product/:id"
-					element={<BaseLayout page={<ViewProductPage />} />}
-				/>
+		<AuthProvider>
+			<BrowserRouter>
+				<Routes>
+					<Route
+						path="/"
+						element={<BaseLayout page={<Dashboard />} />}
+					/>
+					<Route
+						path="/template"
+						element={<BaseLayout page={<TemplatePage />} />}
+					/>
+					<Route
+						path="/template/:id"
+						element={<BaseLayout page={<UpsertTemplatePage />} />}
+					/>
+					<Route
+						path="/crawl"
+						element={<BaseLayout page={<CrawlPage />} />}
+					/>
+					<Route
+						path="/crawl/view/:id"
+						element={<BaseLayout page={<ViewCrawl />} />}
+					/>
+					<Route
+						path="/crawl/:id"
+						element={<BaseLayout page={<UpsertCrawlPage />} />}
+					/>
+					<Route
+						path="/product"
+						element={<BaseLayout page={<ProductPage />} />}
+					/>
+					<Route
+						path="/product/:id"
+						element={<BaseLayout page={<ViewProductPage />} />}
+					/>
 
-				<Route path="/404" element={<NotFoundPage />} />
-				<Route path="/500" element={<ErrorPage />} />
-				<Route path="*" element={<NotFoundPage />} />
+					<Route path="/404" element={<NotFoundPage />} />
+					<Route path="/500" element={<ErrorPage />} />
+					<Route path="*" element={<NotFoundPage />} />
 
-				<Route path="/login" element={<LoginPage />} />
-			</Routes>
-		</BrowserRouter>
+					<Route path="/login" element={<LoginPage />} />
+				</Routes>
+			</BrowserRouter>
+		</AuthProvider>
 	);
 }
 
