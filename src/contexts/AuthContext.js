@@ -15,19 +15,15 @@ export const useAuth = () => {
 export function AuthProvider({ children }) {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [currentUser, setCurrentUser] = useState(null);
+	const cookies = new Cookies();
 
 	useEffect(() => {
-		const cookies = new Cookies();
-
 		authAPI.getAccountInfo()
 			.then((res) => {
 				// check user contain role
 				if (!res.data.roles || !res.data.roles.includes(REQUIRE_ROLE)) {
 					setIsAuthenticated(false);
 					setCurrentUser(null);
-
-					// remove cookie
-					cookies.remove(COOKIE_NAME);
 					return;
 				}
 
@@ -37,11 +33,15 @@ export function AuthProvider({ children }) {
 			.catch(() => {
 				setIsAuthenticated(false);
 				setCurrentUser(null);
-
-				// remove cookie
-				cookies.remove(COOKIE_NAME);
 			});
 	}, []);
+
+	useEffect(() => {
+		// remove cookie if user logout
+		if (!isAuthenticated) {
+			cookies.remove(COOKIE_NAME);
+		}
+	}, [isAuthenticated]);
 
 	const value = useMemo(() => ({
 		isAuthenticated,
