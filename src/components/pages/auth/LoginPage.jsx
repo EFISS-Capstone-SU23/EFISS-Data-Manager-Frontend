@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import ModalManager from '../../../utils/ModalManager';
 import authAPI from '../../../api/authAPI';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const validate = (username, password) => {
 	// check not empty
@@ -20,6 +21,11 @@ function LoginPage() {
 	const navigate = useNavigate();
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+
+	const { isAuthenticated } = useAuth();
+	if (isAuthenticated) {
+		navigate('/');
+	}
 
 	const handleLogin = () => {
 		const error = validate(username, password);
