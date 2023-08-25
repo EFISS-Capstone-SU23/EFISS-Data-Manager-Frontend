@@ -23,7 +23,6 @@ export function AuthProvider({ children }) {
 				// check user contain role
 				if (!res.data.roles || !res.data.roles.includes(REQUIRE_ROLE)) {
 					setIsAuthenticated(false);
-					setCurrentUser(null);
 					return;
 				}
 
@@ -32,7 +31,6 @@ export function AuthProvider({ children }) {
 			})
 			.catch(() => {
 				setIsAuthenticated(false);
-				setCurrentUser(null);
 			});
 	}, []);
 
@@ -40,6 +38,7 @@ export function AuthProvider({ children }) {
 		// remove cookie if user logout
 		if (!isAuthenticated) {
 			cookies.remove(COOKIE_NAME);
+			setCurrentUser(null);
 		}
 	}, [isAuthenticated]);
 
