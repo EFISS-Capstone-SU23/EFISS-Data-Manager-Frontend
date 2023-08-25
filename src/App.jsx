@@ -25,15 +25,27 @@ function App() {
 				<Routes>
 					<Route
 						path="/"
-						element={<BaseLayout page={<Dashboard />} />}
+						element={(
+							<ProtectedRoute>
+								<BaseLayout page={<Dashboard />} />
+							</ProtectedRoute>
+						)}
 					/>
 					<Route
 						path="/template"
-						element={<BaseLayout page={<TemplatePage />} />}
+						element={(
+							<ProtectedRoute>
+								<BaseLayout page={<TemplatePage />} />
+							</ProtectedRoute>
+						)}
 					/>
 					<Route
 						path="/template/:id"
-						element={<BaseLayout page={<UpsertTemplatePage />} />}
+						element={(
+							<ProtectedRoute>
+								<BaseLayout page={<UpsertTemplatePage />} />
+							</ProtectedRoute>
+						)}
 					/>
 					<Route
 						path="/crawl"
@@ -41,24 +53,36 @@ function App() {
 					/>
 					<Route
 						path="/crawl/view/:id"
-						element={<BaseLayout page={<ViewCrawl />} />}
+						element={(
+							<ProtectedRoute>
+								<BaseLayout page={<ViewCrawl />} />
+							</ProtectedRoute>
+						)}
 					/>
 					<Route
 						path="/crawl/:id"
-						element={<BaseLayout page={<UpsertCrawlPage />} />}
+						element={(
+							<ProtectedRoute>
+								<BaseLayout page={<UpsertCrawlPage />} />
+							</ProtectedRoute>
+						)}
 					/>
 					<Route
 						path="/product"
-						element={<BaseLayout page={<ProductPage />} />}
+						element={(
+							<ProtectedRoute>
+								<BaseLayout page={<ProductPage />} />
+							</ProtectedRoute>
+						)}
 					/>
 					<Route
 						path="/product/:id"
-						element={<BaseLayout page={<ViewProductPage />} />}
+						element={(
+							<ProtectedRoute>
+								<BaseLayout page={<ViewProductPage />} />
+							</ProtectedRoute>
+						)}
 					/>
-
-					<Route path="/404" element={<NotFoundPage />} />
-					<Route path="/500" element={<ErrorPage />} />
-					<Route path="*" element={<NotFoundPage />} />
 
 					<Route
 						path="/login"
@@ -68,6 +92,10 @@ function App() {
 							</ProtectedRoute>
 						)}
 					/>
+
+					<Route path="/404" element={<NotFoundPage />} />
+					<Route path="/500" element={<ErrorPage />} />
+					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
 			</BrowserRouter>
 		</AuthProvider>

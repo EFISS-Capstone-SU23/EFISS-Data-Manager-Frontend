@@ -9,7 +9,7 @@ function ProtectedRoute({
 	const { isAuthenticated } = useAuth();
 
 	return (
-		((needLoggedIn ? isAuthenticated : !isAuthenticated) ? (
+		((needLoggedIn && isAuthenticated) || (!needLoggedIn && !isAuthenticated)) ? (
 			children
 		) : (
 			<Navigate
@@ -17,7 +17,7 @@ function ProtectedRoute({
 					pathname: needLoggedIn ? '/login' : '/',
 				}}
 			/>
-		))
+		)
 	);
 }
 
