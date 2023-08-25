@@ -14,6 +14,7 @@ import ErrorPage from './components/pages/static/ErrorPage';
 import LoginPage from './components/pages/auth/LoginPage';
 
 import BaseLayout from './components/BaseLayout';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import './App.css';
 
@@ -59,7 +60,14 @@ function App() {
 					<Route path="/500" element={<ErrorPage />} />
 					<Route path="*" element={<NotFoundPage />} />
 
-					<Route path="/login" element={<LoginPage />} />
+					<Route
+						path="/login"
+						element={(
+							<ProtectedRoute needLoggedIn={false}>
+								<LoginPage />
+							</ProtectedRoute>
+						)}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</AuthProvider>

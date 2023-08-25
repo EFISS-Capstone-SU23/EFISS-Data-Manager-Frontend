@@ -18,6 +18,7 @@ export function AuthProvider({ children }) {
 
 	useEffect(() => {
 		const cookies = new Cookies();
+
 		authAPI.getAccountInfo()
 			.then((res) => {
 				// check user contain role
