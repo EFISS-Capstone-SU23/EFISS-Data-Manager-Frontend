@@ -22,10 +22,7 @@ function LoginPage() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
-	const { isAuthenticated } = useAuth();
-	if (isAuthenticated) {
-		navigate('/');
-	}
+	const { setIsAuthenticated, setCurrentUser } = useAuth();
 
 	const handleLogin = () => {
 		const error = validate(username, password);
@@ -39,6 +36,8 @@ function LoginPage() {
 			.then((res) => {
 				if (res.status === 200) {
 					ModalManager.showSuccess('Login successfully.');
+					setIsAuthenticated(true);
+					setCurrentUser(res.data);
 					navigate('/');
 				} else {
 					ModalManager.showError('Login failed.');
