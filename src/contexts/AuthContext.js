@@ -5,6 +5,7 @@ import { Cookies } from 'react-cookie';
 
 import { COOKIE_NAME, REQUIRE_ROLE } from '../config';
 import authAPI from '../api/authAPI';
+import Loading from '../components/Loading';
 
 const AuthContext = createContext();
 
@@ -15,6 +16,8 @@ export const useAuth = () => {
 export function AuthProvider({ children }) {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [currentUser, setCurrentUser] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
+
 	const cookies = new Cookies();
 
 	useEffect(() => {
@@ -23,6 +26,8 @@ export function AuthProvider({ children }) {
 				// check user contain role
 				if (!res.data.roles || !res.data.roles.includes(REQUIRE_ROLE)) {
 					setIsAuthenticated(false);
+
+					setIsLoading(false);
 					return;
 				}
 
@@ -31,6 +36,9 @@ export function AuthProvider({ children }) {
 			})
 			.catch(() => {
 				setIsAuthenticated(false);
+			})
+			.finally(() => {
+				setIsLoading(false);
 			});
 	}, []);
 
@@ -48,6 +56,12 @@ export function AuthProvider({ children }) {
 		currentUser,
 		setCurrentUser,
 	}), [isAuthenticated, setIsAuthenticated]);
+
+	if (isLoading) {
+		return (
+			<Loading />
+		);
+	}
 
 	return (
 		<AuthContext.Provider value={value}>
