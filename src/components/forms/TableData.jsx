@@ -6,6 +6,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import converNumber from '../../utils/convertNumber';
 
+import Loading from '../Loading';
+
 const PAGE_SIZE = 8;
 
 function TableData({
@@ -20,8 +22,10 @@ function TableData({
 	const [total, setTotal] = useState(0);
 	const [start, setStart] = useState(1);
 	const [end, setEnd] = useState(0);
+	const [tableLoadState, setTableLoadState] = useState(false);
 
 	const loadData = () => {
+		setTableLoadState(true);
 		fetchData(page, PAGE_SIZE, query)
 			.then((res) => {
 				setData(res.data.data);
@@ -35,6 +39,8 @@ function TableData({
 				if (newEnd === 0) {
 					setStart(0);
 				}
+
+				setTableLoadState(false);
 			});
 	};
 
@@ -48,6 +54,27 @@ function TableData({
 		}
 		loadData();
 	}, [tableLoad, query]);
+
+	const TableBody = data.map((rowData) => (
+		<tr
+			className="hover:bg-gray-100"
+			key={rowData._id}
+		>
+			{schema.map((col, i) => (
+				<td
+					className="p-3 text-base font-medium text-gray-900 whitespace-nowrap"
+					style={{
+						maxWidth: col.size || 'auto',
+						overflow: 'hidden',
+						textOverflow: 'ellipsis',
+					}}
+					key={i}
+				>
+					{col.render(rowData)}
+				</td>
+			))}
+		</tr>
+	));
 
 	return (
 		<>
@@ -70,26 +97,13 @@ function TableData({
 								</tr>
 							</thead>
 							<tbody className="bg-white divide-y divide-gray-200">
-								{data.map((rowData) => (
-									<tr
-										className="hover:bg-gray-100"
-										key={rowData._id}
-									>
-										{schema.map((col, i) => (
-											<td
-												className="p-3 text-base font-medium text-gray-900 whitespace-nowrap"
-												style={{
-													maxWidth: col.size || 'auto',
-													overflow: 'hidden',
-													textOverflow: 'ellipsis',
-												}}
-												key={i}
-											>
-												{col.render(rowData)}
-											</td>
-										))}
+								{tableLoadState ? (
+									<tr>
+										<td colSpan={schema.length}>
+											<Loading height="200px" />
+										</td>
 									</tr>
-								))}
+								) : TableBody}
 							</tbody>
 						</table>
 					</div>
