@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { REQUIRE_ROLE } from '../config';
 
 const AUTH_SERVICE_URL = process.env.REACT_APP_AUTH_SERVICE_URL || 'http://localhost:3001';
 
@@ -12,7 +13,10 @@ export default {
 		return instance.post('/sign-in', {
 			username,
 			password,
-			requireRole: 'data_manager',
+			requireRole: REQUIRE_ROLE,
 		});
+	},
+	getAccountInfo: () => {
+		return instance.get('/account-info');
 	},
 };
