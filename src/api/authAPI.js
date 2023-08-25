@@ -12,6 +12,7 @@ export default {
 		return instance.post('/sign-in', {
 			username,
 			password,
+			requireRole: 'data_manager',
 		});
 	},
 };
