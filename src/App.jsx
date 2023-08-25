@@ -10,6 +10,7 @@ import ProductPage from './components/pages/product/ProductPage';
 import ViewProductPage from './components/pages/product/ViewProductPage';
 import NotFoundPage from './components/pages/static/NotFoundPage';
 import ErrorPage from './components/pages/static/ErrorPage';
+import LoginPage from './components/pages/auth/LoginPage';
 
 import BaseLayout from './components/BaseLayout';
 
@@ -55,6 +56,8 @@ function App() {
 				<Route path="/404" element={<NotFoundPage />} />
 				<Route path="/500" element={<ErrorPage />} />
 				<Route path="*" element={<NotFoundPage />} />
+
+				<Route path="/login" element={<LoginPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
