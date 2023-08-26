@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faFileArrowDown, faImage, faGlobe,
@@ -28,6 +28,8 @@ function Dashboard() {
 			setNumOfImages(res.data.totalImages);
 		});
 	}, []);
+
+	const productTable = useMemo(() => <ProductTable query={{}} />, []);
 
 	return (
 		<div className="px-4 pt-6">
@@ -86,9 +88,7 @@ function Dashboard() {
 						</span>
 					</div>
 				</div>
-				<ProductTable
-					query={{}}
-				/>
+				{productTable}
 			</div>
 		</div>
 	);
