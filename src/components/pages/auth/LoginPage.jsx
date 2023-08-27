@@ -56,7 +56,7 @@ function LoginPage() {
 					className="flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10"
 				>
 					<img
-						src="/images/logo.svg"
+						src="/images/logo_efiss.png"
 						className="mr-4 h-11"
 						alt="FlowBite Logo"
 					/>

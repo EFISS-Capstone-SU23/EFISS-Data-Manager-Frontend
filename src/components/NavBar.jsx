@@ -31,7 +31,7 @@ function NavBar() {
 							className="flex ml-2 md:mr-24"
 						>
 							<img
-								src="/images/logo.svg"
+								src="/images/logo_efiss.png"
 								className="h-8 mr-3"
 								alt="EFISS Logo"
 							/>
