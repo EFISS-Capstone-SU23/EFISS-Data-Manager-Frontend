@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   # dev-data-manager-portal:
-  #   image: dev-data-manager-portal
+  #   image: asia-southeast1-docker.pkg.dev/efiss-duong/efiss/dev-data-manager-portal:latest
   #   build:
   #     context: .
   #     dockerfile: Dockerfile
@@ -12,8 +12,7 @@ services:
   #       - REACT_APP_WS_URL=ws://crawler.efiss.tech:5000
     
   local-data-manager-portal:
-    # image: local-data-manager-portal
-    image: asia-southeast1-docker.pkg.dev/efiss-duong/efiss/data-manager-fe:latest
+    image: asia-southeast1-docker.pkg.dev/efiss-duong/efiss/local-data-manager-portal:latest
     build:
       context: .
       dockerfile: Dockerfile
