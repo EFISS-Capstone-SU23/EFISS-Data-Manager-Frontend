@@ -29,8 +29,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"lint": "npx eslint . --ext .js,.jsx",
-		"postinstall": "husky install"
+		"lint": "npx eslint . --ext .js,.jsx"
 	},
 	"eslintConfig": {
 		"extends": [

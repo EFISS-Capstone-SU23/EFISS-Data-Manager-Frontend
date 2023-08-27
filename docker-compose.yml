@@ -12,7 +12,8 @@ services:
   #       - REACT_APP_WS_URL=ws://crawler.efiss.tech:5000
     
   local-data-manager-portal:
-    image: local-data-manager-portal
+    # image: local-data-manager-portal
+    image: asia-southeast1-docker.pkg.dev/efiss-duong/efiss/data-manager-fe:latest
     build:
       context: .
       dockerfile: Dockerfile
