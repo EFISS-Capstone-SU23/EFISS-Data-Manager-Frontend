@@ -1,19 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-	faFileArrowDown, faImage, faGlobe,
+	faFileArrowDown,
+	faImage,
+	faGlobe,
 } from '@fortawesome/free-solid-svg-icons';
 
 import ProductTable from '../../table/ProductTable/ProductTable';
 import { countAllTemplate } from '../../../api/templateAPI';
 import productAPI from '../../../api/productAPI';
-import converNumber from '../../../utils/convertNumber';
+import NumberLoading from '../../NumberLoading';
 
 function Dashboard() {
-	const [numOfWebsites, setNumOfWebsites] = useState(0);
-	const [numOfProducts, setNumOfProducts] = useState(0);
-	const [numOfImages, setNumOfImages] = useState(0);
+	const [numOfWebsites, setNumOfWebsites] = useState(null);
+	const [numOfProducts, setNumOfProducts] = useState(null);
+	const [numOfImages, setNumOfImages] = useState(null);
 
 	useEffect(() => {
 		countAllTemplate().then((res) => {
@@ -29,6 +31,8 @@ function Dashboard() {
 		});
 	}, []);
 
+	const productTable = useMemo(() => <ProductTable query={{}} />, []);
+
 	return (
 		<div className="px-4 pt-6">
 			<div className="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3">
@@ -38,11 +42,12 @@ function Dashboard() {
 							Number of Products
 						</h3>
 						<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl">
-							<FontAwesomeIcon
-								icon={faFileArrowDown}
-								className="mr-3"
-							/>
-							{converNumber(numOfProducts)}
+							<FontAwesomeIcon icon={faFileArrowDown} className="mr-3" />
+							{numOfProducts !== null ? (
+								<NumberLoading to={numOfProducts} duration={2000} />
+							) : (
+								'...'
+							)}
 						</span>
 					</div>
 				</div>
@@ -52,11 +57,12 @@ function Dashboard() {
 							Number of Images
 						</h3>
 						<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl">
-							<FontAwesomeIcon
-								icon={faImage}
-								className="mr-3"
-							/>
-							{converNumber(numOfImages)}
+							<FontAwesomeIcon icon={faImage} className="mr-3" />
+							{numOfImages !== null ? (
+								<NumberLoading to={numOfImages} duration={2000} />
+							) : (
+								'...'
+							)}
 						</span>
 					</div>
 				</div>
@@ -66,11 +72,12 @@ function Dashboard() {
 							Number of Websites
 						</h3>
 						<span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl">
-							<FontAwesomeIcon
-								icon={faGlobe}
-								className="mr-3"
-							/>
-							{converNumber(numOfWebsites)}
+							<FontAwesomeIcon icon={faGlobe} className="mr-3" />
+							{numOfWebsites !== null ? (
+								<NumberLoading to={numOfWebsites} />
+							) : (
+								'...'
+							)}
 						</span>
 					</div>
 				</div>
@@ -86,9 +93,7 @@ function Dashboard() {
 						</span>
 					</div>
 				</div>
-				<ProductTable
-					query={{}}
-				/>
+				{productTable}
 			</div>
 		</div>
 	);

@@ -18,6 +18,13 @@ const ModalManager = {
 			cancelButtonText: 'No',
 		});
 	},
+	showSuccess(message) {
+		Swal.fire({
+			icon: 'success',
+			title: 'Success!',
+			text: message,
+		});
+	},
 };
 
 export default ModalManager;
