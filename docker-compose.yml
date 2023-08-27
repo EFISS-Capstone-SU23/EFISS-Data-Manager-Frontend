@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  # dev-data-manager-portal:
+  #   image: dev-data-manager-portal
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #     args:
+  #       - REACT_APP_PRODUCT_SERVICE_URL="https://dev.efiss.tech/product"
+  #       - REACT_APP_AUTH_SERVICE_URL="https://dev.efiss.tech/auth"
+  #       - REACT_APP_BACKEND_URL=http://crawler.efiss.tech:5000
+  #       - REACT_APP_WS_URL=ws://crawler.efiss.tech:5000
+    
+  local-data-manager-portal:
+    image: local-data-manager-portal
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_PRODUCT_SERVICE_URL="http://192.168.0.16/product"
+        - REACT_APP_AUTH_SERVICE_URL="http://192.168.0.16/auth"
+        - REACT_APP_BACKEND_URL=http://192.168.0.37:5000
+        - REACT_APP_WS_URL=ws://192.168.0.37:5000
+    ports:
+      - 80:80
+    
+    
