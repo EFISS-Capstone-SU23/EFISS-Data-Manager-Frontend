@@ -14,6 +14,9 @@ import productAPI from '../../../api/productAPI';
 import ImageViewers from './imageViewer/ImageViewer';
 import ModalManager from '../../../utils/ModalManager';
 
+const REWRITE_IMAGE_URL_BASE = process.env.REACT_APP_REWRITE_IMAGE_URL_BASE;
+const REWRITE_IMAGE_URL_NEW = process.env.REACT_APP_REWRITE_IMAGE_URL_NEW;
+
 const validate = (product) => {
 	// not empty
 	if (!product.title) {
@@ -109,7 +112,19 @@ function ViewProductPage() {
 				setDescription(productData.description);
 
 				setProductActive(productData.active);
-				setImageList(images);
+
+				// Check if rewrite image url
+				if (REWRITE_IMAGE_URL_BASE && REWRITE_IMAGE_URL_NEW) {
+					const newImages = images.map((el) => {
+						return {
+							url: el.url.replace(REWRITE_IMAGE_URL_BASE, REWRITE_IMAGE_URL_NEW),
+							active: el.active,
+						};
+					});
+					setImageList(newImages);
+				} else {
+					setImageList(images);
+				}
 			})
 			.catch(() => {
 				navigate('/404');
